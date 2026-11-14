@@ -252,7 +252,7 @@
   },
   {
     "id": "T01",
-    "split": "test",
+    "split": "dev",
     "question": "Khi dữ liệu ảnh 64x64 pixel (4096 chiều) và chỉ cần giữ ít thành phần chính, nên dùng tùy chọn svd_solver nào của PCA và vì sao?",
     "type": "conditional_exception",
     "filter": null,
@@ -267,7 +267,7 @@
   },
   {
     "id": "T02",
-    "split": "test",
+    "split": "dev",
     "question": "Giá trị mặc định tốt thường dùng cho max_features trong random forest khác nhau thế nào giữa bài toán hồi quy và phân loại?",
     "type": "conditional_exception",
     "filter": null,
@@ -282,7 +282,7 @@
   },
   {
     "id": "T03",
-    "split": "test",
+    "split": "dev",
     "question": "NCA (Neighborhood Components Analysis) tối đa hóa đại lượng nào để cải thiện độ chính xác của phân loại láng giềng gần nhất?",
     "type": "paraphrase",
     "filter": null,
@@ -297,7 +297,7 @@
   },
   {
     "id": "T04",
-    "split": "test",
+    "split": "dev",
     "question": "Mật độ phần tử khác 0 mặc định của SparseRandomProjection được chọn như thế nào?",
     "type": "direct",
     "filter": null,
@@ -312,7 +312,7 @@
   },
   {
     "id": "T05",
-    "split": "test",
+    "split": "dev",
     "question": "Tham số bandwidth ảnh hưởng thế nào đến độ mượt của ước lượng mật độ bằng kernel?",
     "type": "filter",
     "filter": {
@@ -330,7 +330,7 @@
   },
   {
     "id": "T06",
-    "split": "test",
+    "split": "dev",
     "question": "Vì sao độ quan trọng đặc trưng dựa trên impurity của cây có thể gây sai lệch?",
     "type": "filter",
     "filter": {
@@ -343,6 +343,102 @@
         "source_id": "permutation_importance",
         "page": "permutation_importance:001",
         "evidence": "impurity-based feature importance for trees is strongly biased and favor high cardinality features (typically numerical features) over low cardinality features"
+      }
+    ]
+  },
+  {
+    "id": "N01",
+    "split": "test",
+    "type": "direct",
+    "filter": null,
+    "question": "Theo kinh nghiệm, SGD thường hội tụ sau khoảng bao nhiêu mẫu huấn luyện, và nên đoán max_iter ban đầu thế nào?",
+    "expected_answer": "Khoảng 10^6 mẫu; max_iter ban đầu hợp lý là np.ceil(10**6 / n) với n là kích thước tập train.",
+    "gold": [
+      {
+        "source_id": "sgd",
+        "page": "sgd:004",
+        "evidence": "Empirically, we found that SGD converges after observing approximately $10^6$ training samples. Thus, a reasonable first guess for the number of iterations is max_iter = np.ceil(10**6 / n)"
+      }
+    ]
+  },
+  {
+    "id": "N02",
+    "split": "test",
+    "type": "conditional_exception",
+    "filter": null,
+    "question": "Khi nào mới nên dùng cv=\"prefit\" trong TunedThresholdClassifierCV?",
+    "expected_answer": "Chỉ khi classifier đã được huấn luyện sẵn và muốn tìm ngưỡng tốt nhất trên một tập validation mới (không dùng chung dữ liệu train).",
+    "gold": [
+      {
+        "source_id": "classification_threshold",
+        "page": "classification_threshold:002",
+        "evidence": "The option cv=\"prefit\" should only be used when the provided classifier was already trained, and you just want to find the best decision threshold using a new validation set."
+      }
+    ]
+  },
+  {
+    "id": "N03",
+    "split": "test",
+    "type": "paraphrase",
+    "filter": null,
+    "question": "Trong học bán giám sát của scikit-learn, mẫu chưa có nhãn được đánh dấu bằng giá trị nào trong y?",
+    "expected_answer": "Số nguyên -1.",
+    "gold": [
+      {
+        "source_id": "semi_supervised",
+        "page": "semi_supervised:000",
+        "evidence": "The identifier that this implementation uses is the integer value $-1$."
+      }
+    ]
+  },
+  {
+    "id": "N04",
+    "split": "test",
+    "type": "conditional_exception",
+    "filter": null,
+    "question": "Với MLP, nên chọn solver nào cho tập dữ liệu nhỏ và solver nào cho tập dữ liệu tương đối lớn?",
+    "expected_answer": "Dữ liệu nhỏ: L-BFGS (hội tụ nhanh, nghiệm tốt hơn); dữ liệu tương đối lớn: Adam (rất bền).",
+    "gold": [
+      {
+        "source_id": "neural_networks_supervised",
+        "page": "neural_networks_supervised:004",
+        "evidence": "Empirically, we observed that L-BFGS converges faster and with better solutions on small datasets. For relatively large datasets, however, Adam is very robust."
+      }
+    ]
+  },
+  {
+    "id": "N05",
+    "split": "test",
+    "type": "filter",
+    "filter": {
+      "field": "guide_section",
+      "value": "Unsupervised learning"
+    },
+    "question": "Đặt weight_concentration_prior thấp thì trọng số các thành phần của mô hình hỗn hợp thay đổi ra sao?",
+    "expected_answer": "Mô hình dồn phần lớn trọng số vào vài thành phần, các thành phần còn lại có trọng số rất gần 0.",
+    "gold": [
+      {
+        "source_id": "mixture",
+        "page": "mixture:001",
+        "evidence": "Specifying a low value for the concentration prior will make the model put most of the weight on a few components and set the remaining components' weights very close to zero."
+      }
+    ]
+  },
+  {
+    "id": "N06",
+    "split": "test",
+    "type": "filter",
+    "filter": {
+      "field": "guide_section",
+      "value": "Dataset transformations"
+    },
+    "question": "Khi bật tham số memory để cache Pipeline, bước cuối cùng có được cache không?",
+    "expected_answer": "Không, bước cuối không bao giờ được cache, kể cả khi nó là transformer.",
+    "gold": [
+      {
+        "source_id": "compose",
+        "page": "compose:002",
+        "evidence": "The last step will never be cached, even if it is a transformer."
       }
     ]
   }

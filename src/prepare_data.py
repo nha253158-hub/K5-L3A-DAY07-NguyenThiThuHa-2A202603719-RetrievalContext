@@ -14,7 +14,10 @@ qs = json.load(open("data/day6/questions.json", encoding="utf-8"))["questions"]
 out_q = [{**{k: q[k] for k in ("id", "split", "question", "type", "filter", "expected_answer")},
           "gold": [{"source_id": g["gold_source_id"], "page": g["gold_page"],
                     "evidence": g["evidence_quote"]} for g in q["gold"]]} for q in qs]
-
+for q in out_q:
+    if q["split"] == "test":   # test Day 6 -> dev (T02 đã bị nhìn khi sửa chunker)
+        q["split"] = "dev"
+out_q += json.load(open("data/new_test.json", encoding="utf-8"))
 for name, data in (("chunks.json", out_c), ("questions.json", out_q)):
     (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 print(len(out_c), "chunks,", len(out_q), "questions")

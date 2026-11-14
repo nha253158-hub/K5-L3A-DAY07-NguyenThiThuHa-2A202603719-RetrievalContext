@@ -1,0 +1,14 @@
+[
+ {"id":"D17","split":"dev","question":"Theo User Guide, K-means đạt độ chính xác bao nhiêu trên bộ dữ liệu MNIST?",
+  "answerable":false,"expected_behavior":"search_and_abstain",
+  "absence_reason":"Corpus không nhắc tới MNIST (grep 'MNIST' trên 288 trang = 0); trang clustering chỉ nói về giả định của inertia."},
+ {"id":"D18","split":"dev","question":"Cần đặt tham số device nào để RandomForestClassifier huấn luyện trên GPU CUDA?",
+  "answerable":false,"expected_behavior":"search_and_abstain",
+  "absence_reason":"Không có 'CUDA' hay 'device=' trong corpus; trang ensemble không nói về GPU."},
+ {"id":"N07","split":"test","question":"Trong ví dụ công ty bảo hiểm, việc tinh chỉnh ngưỡng bằng TunedThresholdClassifierCV giúp tăng lợi nhuận bao nhiêu tiền?",
+  "answerable":false,"expected_behavior":"search_and_abstain",
+  "absence_reason":"classification_threshold:001 có nhắc ví dụ bảo hiểm và ngưỡng ~0.02 nhưng không có số tiền/lợi nhuận (không có 'profit', 'gain', 'revenue')."},
+ {"id":"N08","split":"test","question":"Thư mục cache của Pipeline (tham số memory) có giới hạn dung lượng mặc định bao nhiêu?",
+  "answerable":false,"expected_behavior":"search_and_abstain",
+  "absence_reason":"compose:002 chỉ nói memory là đường dẫn hoặc joblib.Memory và cách xóa bằng rmtree; không có giới hạn dung lượng ('size', 'limit', 'disk' không xuất hiện)."}
+]
