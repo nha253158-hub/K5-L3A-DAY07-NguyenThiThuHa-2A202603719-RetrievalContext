@@ -30,7 +30,7 @@ class Retriever(Protocol):
 
 def run_agent(question: str, controller: Controller, retriever: Retriever, *,
               filters: dict[str, Any] | None = None, max_searches: int = 4,
-              top_k: int = 3, budget: int = 800) -> dict[str, Any]:
+              top_k: int = 3, budget: int = 800,context_order="first") -> dict[str, Any]:
     """Return answer, citation IDs and trace; no benchmark gold enters this loop.
 
     A final answer without valid citations, an empty context, and a search limit
@@ -55,7 +55,12 @@ def run_agent(question: str, controller: Controller, retriever: Retriever, *,
             if len(results) > top_k or len({r['id'] for r in results}) != len(results):
                 raise ValueError('retriever phải trả tối đa top_k chunk ID duy nhất')
             candidates.extend(results)
-            context, ids = pack_context(candidates, budget=budget)
+            if context_order == "latest":
+                new_ids = {r['id'] for r in results}
+                ordered = results + [c for c in candidates if c['id'] not in new_ids]
+            else:
+                ordered = candidates
+            context, ids = pack_context(ordered, budget=budget)
             chunks = {c['id']: c for c in candidates if c['id'] in ids}
             events.append({'event': 'search', 'query': query, 'filter': filters, 'results': results,
                            'context': context, 'context_ids': ids})

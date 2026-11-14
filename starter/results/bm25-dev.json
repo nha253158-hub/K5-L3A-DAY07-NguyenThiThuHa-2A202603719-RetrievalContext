@@ -1,0 +1,442 @@
+[
+ {
+  "query_id": "D01",
+  "filter": null,
+  "top3": [
+   [
+    "B:kernel_approximation:002:000",
+    10.353
+   ],
+   [
+    "B:tree:003:004",
+    10.181
+   ],
+   [
+    "B:tree:003:000",
+    10.181
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D02",
+  "filter": null,
+  "top3": [
+   [
+    "B:clustering:019:000",
+    18.012
+   ],
+   [
+    "B:clustering:019:001",
+    17.45
+   ],
+   [
+    "B:clustering:019:002",
+    15.363
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D03",
+  "filter": null,
+  "top3": [
+   [
+    "B:biclustering:000:004",
+    9.691
+   ],
+   [
+    "B:feature_extraction:004:007",
+    8.361
+   ],
+   [
+    "B:preprocessing:006:000",
+    8.292
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D04",
+  "filter": null,
+  "top3": [
+   [
+    "B:linear_model:002:004",
+    10.687
+   ],
+   [
+    "B:classification_threshold:002:000",
+    10.319
+   ],
+   [
+    "B:cross_validation:003:003",
+    10.023
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "D05",
+  "filter": null,
+  "top3": [
+   [
+    "B:svm:004:009",
+    13.224
+   ],
+   [
+    "B:svm:003:000",
+    11.085
+   ],
+   [
+    "B:svm:003:001",
+    9.219
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D06",
+  "filter": null,
+  "top3": [
+   [
+    "B:naive_bayes:000:000",
+    15.585
+   ],
+   [
+    "B:naive_bayes:003:002",
+    14.654
+   ],
+   [
+    "B:naive_bayes:000:005",
+    14.337
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "D07",
+  "filter": null,
+  "top3": [
+   [
+    "B:model_evaluation:007:000",
+    14.952
+   ],
+   [
+    "B:model_evaluation:007:003",
+    14.575
+   ],
+   [
+    "B:model_evaluation:007:005",
+    12.827
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "D08",
+  "filter": null,
+  "top3": [
+   [
+    "B:outlier_detection:003:000",
+    10.873
+   ],
+   [
+    "B:outlier_detection:003:002",
+    8.365
+   ],
+   [
+    "B:outlier_detection:003:001",
+    7.366
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D09",
+  "filter": null,
+  "top3": [
+   [
+    "B:linear_model:005:001",
+    25.181
+   ],
+   [
+    "B:feature_selection:002:003",
+    17.059
+   ],
+   [
+    "B:ensemble:011:003",
+    9.305
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "D10",
+  "filter": null,
+  "top3": [
+   [
+    "B:grid_search:006:002",
+    20.598
+   ],
+   [
+    "B:grid_search:001:003",
+    12.844
+   ],
+   [
+    "B:grid_search:006:001",
+    12.183
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "D11",
+  "filter": null,
+  "top3": [
+   [
+    "B:impute:004:000",
+    15.481
+   ],
+   [
+    "B:ensemble:001:000",
+    11.398
+   ],
+   [
+    "B:compose:005:000",
+    8.362
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "D12",
+  "filter": null,
+  "top3": [
+   [
+    "B:calibration:002:001",
+    12.202
+   ],
+   [
+    "B:calibration:002:003",
+    11.632
+   ],
+   [
+    "B:calibration:002:005",
+    9.893
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "D13",
+  "filter": null,
+  "top3": [
+   [
+    "B:clustering:001:001",
+    14.638
+   ],
+   [
+    "B:clustering:009:003",
+    12.63
+   ],
+   [
+    "B:clustering:001:002",
+    11.771
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "D14",
+  "filter": null,
+  "top3": [
+   [
+    "B:linear_model:017:001",
+    10.509
+   ],
+   [
+    "B:outlier_detection:000:004",
+    9.518
+   ],
+   [
+    "B:linear_model:019:000",
+    9.326
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "D15",
+  "filter": null,
+  "top3": [
+   [
+    "B:impute:003:002",
+    15.701
+   ],
+   [
+    "B:impute:004:000",
+    15.581
+   ],
+   [
+    "B:impute:004:004",
+    13.327
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "D16",
+  "filter": null,
+  "top3": [
+   [
+    "B:lda_qda:003:000",
+    12.199
+   ],
+   [
+    "B:lda_qda:003:002",
+    11.788
+   ],
+   [
+    "B:ensemble:002:024",
+    8.328
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "T01",
+  "filter": null,
+  "top3": [
+   [
+    "B:decomposition:001:001",
+    21.584
+   ],
+   [
+    "B:decomposition:002:003",
+    17.153
+   ],
+   [
+    "B:decomposition:001:005",
+    14.665
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "T02",
+  "filter": null,
+  "top3": [
+   [
+    "B:ensemble:003:002",
+    13.81
+   ],
+   [
+    "B:ensemble:005:001",
+    12.307
+   ],
+   [
+    "B:outlier_detection:003:001",
+    12.258
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "T03",
+  "filter": null,
+  "top3": [
+   [
+    "B:neighbors:008:000",
+    22.04
+   ],
+   [
+    "B:decomposition:010:010",
+    16.748
+   ],
+   [
+    "B:neighbors:008:005",
+    16.037
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "T04",
+  "filter": null,
+  "top3": [
+   [
+    "B:random_projection:001:004",
+    7.472
+   ],
+   [
+    "B:random_projection:001:001",
+    6.525
+   ],
+   [
+    "B:random_projection:001:002",
+    6.017
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "T05",
+  "filter": null,
+  "top3": [
+   [
+    "B:density:001:003",
+    11.659
+   ],
+   [
+    "B:density:001:002",
+    10.333
+   ],
+   [
+    "B:density:001:001",
+    9.138
+   ]
+  ],
+  "hit1": true,
+  "hit3": true
+ },
+ {
+  "query_id": "T06",
+  "filter": null,
+  "top3": [
+   [
+    "B:tree:006:004",
+    6.949
+   ],
+   [
+    "B:permutation_importance:001:004",
+    6.822
+   ],
+   [
+    "B:tree:009:001",
+    6.767
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ }
+]

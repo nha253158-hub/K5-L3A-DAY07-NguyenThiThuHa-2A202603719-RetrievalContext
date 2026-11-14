@@ -1,0 +1,128 @@
+[
+ {
+  "query_id": "N01",
+  "filter": null,
+  "ms": 21.3,
+  "top3": [
+   [
+    "B:neural_networks_supervised:004:003",
+    11.41
+   ],
+   [
+    "B:sgd:004:003",
+    10.803
+   ],
+   [
+    "B:sgd:001:000",
+    9.478
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "N02",
+  "filter": null,
+  "ms": 8.2,
+  "top3": [
+   [
+    "B:classification_threshold:002:000",
+    18.699
+   ],
+   [
+    "B:classification_threshold:002:001",
+    10.35
+   ],
+   [
+    "B:classification_threshold:001:004",
+    8.301
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "N03",
+  "filter": null,
+  "ms": 13.8,
+  "top3": [
+   [
+    "B:classification_threshold:000:001",
+    8.977
+   ],
+   [
+    "B:feature_selection:003:006",
+    8.521
+   ],
+   [
+    "B:compose:005:000",
+    8.362
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "N04",
+  "filter": null,
+  "ms": 23.0,
+  "top3": [
+   [
+    "B:neural_networks_supervised:001:000",
+    17.125
+   ],
+   [
+    "B:linear_model:013:010",
+    14.955
+   ],
+   [
+    "B:linear_model:001:004",
+    14.488
+   ]
+  ],
+  "hit1": false,
+  "hit3": false
+ },
+ {
+  "query_id": "N05",
+  "filter": null,
+  "ms": 15.8,
+  "top3": [
+   [
+    "B:mixture:001:004",
+    8.203
+   ],
+   [
+    "B:mixture:001:006",
+    6.559
+   ],
+   [
+    "B:mixture:001:002",
+    5.955
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ },
+ {
+  "query_id": "N06",
+  "filter": null,
+  "ms": 6.2,
+  "top3": [
+   [
+    "B:compose:002:001",
+    31.335
+   ],
+   [
+    "B:compose:002:003",
+    20.988
+   ],
+   [
+    "B:compose:002:000",
+    19.178
+   ]
+  ],
+  "hit1": false,
+  "hit3": true
+ }
+]

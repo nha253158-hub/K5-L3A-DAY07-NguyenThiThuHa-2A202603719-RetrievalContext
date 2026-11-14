@@ -1,0 +1,58 @@
+[
+ {
+  "method": "tfidf",
+  "n": 6,
+  "hit1": 1,
+  "hit3": 3,
+  "context": 2,
+  "median_ms": 1.6
+ },
+ {
+  "method": "dense",
+  "n": 6,
+  "hit1": 2,
+  "hit3": 3,
+  "context": 3,
+  "median_ms": 40.5
+ },
+ {
+  "method": "dense+filter",
+  "n": 6,
+  "hit1": 2,
+  "hit3": 3,
+  "context": 3,
+  "median_ms": 53.9
+ },
+ {
+  "method": "bm25",
+  "n": 6,
+  "hit1": 0,
+  "hit3": 4,
+  "context": 3,
+  "median_ms": 15.8
+ },
+ {
+  "method": "bm25+filter",
+  "n": 6,
+  "hit1": 0,
+  "hit3": 4,
+  "context": 3,
+  "median_ms": 13.5
+ },
+ {
+  "method": "hybrid",
+  "n": 6,
+  "hit1": 2,
+  "hit3": 3,
+  "context": 3,
+  "median_ms": 56.3
+ },
+ {
+  "method": "hybrid+filter",
+  "n": 6,
+  "hit1": 2,
+  "hit3": 3,
+  "context": 3,
+  "median_ms": 72.5
+ }
+]

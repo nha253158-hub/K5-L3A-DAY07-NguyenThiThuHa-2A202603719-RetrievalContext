@@ -15,8 +15,9 @@ ret = {"dense": DenseRetriever, "bm25": BM25Retriever,                  # ← (3
 traces, t0 = [], time.perf_counter()
 for q in qs:
     f = {q["filter"]["field"]: q["filter"]["value"]} if args.use_filter and q.get("filter") else None
+    tq = time.perf_counter()
     res = ret.search(q["question"], filters=f, top_k=3)
-    traces.append({"query_id": q["id"], "filter": f,
+    traces.append({"query_id": q["id"], "filter": f, "ms": round((time.perf_counter() - tq) * 1000, 1),
                    "top3": [(r["id"], round(r["score"], 3)) for r in res],
                    "hit1": hit(res[0], q["gold"]), "hit3": any(hit(r, q["gold"]) for r in res)})
 ms = (time.perf_counter() - t0) / len(qs) * 1000

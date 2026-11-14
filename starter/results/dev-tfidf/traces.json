@@ -1,0 +1,1506 @@
+[
+  {
+    "query_id": "D01",
+    "split": "dev",
+    "question": "Chi phí suy luận (inference) của một cây quyết định phụ thuộc vào yếu tố nào, và có phụ thuộc vào chiến lược chọn splitter không?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "tree",
+        "page": "tree:003",
+        "evidence": "Inference cost is independent of the splitter strategy. It depends only on the tree depth"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:kernel_approximation:002:000",
+        "text": "## Additive Chi Squared Kernel\n\nThe additive chi squared kernel is a kernel on histograms, often used in computer vision.\n\nThe additive chi squared kernel as used here is given by\n\nMath:\n\n    k(x, y) = \\sum_i \\frac{2x_iy_i}{x_i+y_i}",
+        "source_id": "kernel_approximation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/kernel_approximation.rst",
+        "page": "kernel_approximation:002",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "Additive Chi Squared Kernel"
+        },
+        "score": 0.2931888224153076,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:tree:006:002",
+        "text": "* With the best splitter (default, splitter='best'), $\\theta^*$ is\n  found by performing a greedy exhaustive search over all available features\n  and all possible thresholds $t_m$ (i.e. midpoints between sorted,\n  distinct feature values), selecting the pair that exactly minimizes\n  $G(Q_m, \\theta)$.\n\n* With the random splitter (splitter='random'), $\\theta^*$ is\n  found by sampling a single random candidate threshold for each available\n  feature. This performs a stochastic approximation of the greedy search,\n  effectively reducing computation time (see tree_complexity).",
+        "source_id": "tree",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst",
+        "page": "tree:006",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Mathematical formulation"
+        },
+        "score": 0.2691934906756304,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:kernel_approximation:002:004",
+        "text": "## Skewed Chi Squared Kernel\n\nThe skewed chi squared kernel is given by:\n\nMath:\n\n    k(x,y) = \\prod_i \\frac{2\\sqrt{x_i+c}\\sqrt{y_i+c}}{x_i + y_i + 2c}\n\nIt has properties that are similar to the exponentiated chi squared kernel\noften used in computer vision, but allows for a simple Monte Carlo\napproximation of the feature map.\n\nThe usage of the SkewedChi2Sampler is the same as the usage described\nabove for the RBFSampler. The only difference is in the free\nparameter, that is called $c$.\nFor a motivation for this mapping and the mathematical details see [LS2010].",
+        "source_id": "kernel_approximation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/kernel_approximation.rst",
+        "page": "kernel_approximation:002",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "Skewed Chi Squared Kernel"
+        },
+        "score": 0.2239212943105534,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:kernel_approximation:002:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/kernel_approximation.rst | page kernel_approximation:002]\n## Additive Chi Squared Kernel\n\nThe additive chi squared kernel is a kernel on histograms, often used in computer vision.\n\nThe additive chi squared kernel as used here is given by\n\nMath:\n\n    k(x, y) = \\sum_i \\frac{2x_iy_i}{x_i+y_i}",
+    "context_ids": [
+      "B:kernel_approximation:002:000"
+    ],
+    "context_chars": 392,
+    "elapsed_ms": 1.6131000011228025,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D02",
+    "split": "dev",
+    "question": "Tại sao Silhouette Coefficient có thể đánh giá thấp các cụm dựa trên mật độ như kết quả của DBSCAN?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "clustering",
+        "page": "clustering:019",
+        "evidence": "The Silhouette Coefficient is generally higher for convex clusters than other concepts of clusters, such as density based clusters like those obtained through DBSCAN."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:clustering:019:000",
+        "text": "### Silhouette Coefficient\n\nIf the ground truth labels are not known, evaluation must be performed using\nthe model itself. The Silhouette Coefficient\n(sklearn.metrics.silhouette_score)\nis an example of such an evaluation, where a\nhigher Silhouette Coefficient score relates to a model with better defined\nclusters. The Silhouette Coefficient is defined for each sample and is composed\nof two scores:\n\n- a: The mean distance between a sample and all other points in the same\n  class.\n\n- b: The mean distance between a sample and all other points in the *next\n  nearest cluster*.",
+        "source_id": "clustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst",
+        "page": "clustering:019",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Silhouette Coefficient"
+        },
+        "score": 0.5708588648934301,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:clustering:019:001",
+        "text": "The Silhouette Coefficient s for a single sample is then given as:\n\nMath:\n    s = \\frac{b - a}{max(a, b)}\n\nThe Silhouette Coefficient for a set of samples is given as the mean of the\nSilhouette Coefficient for each sample.\n\n  >>> from sklearn import metrics\n  >>> from sklearn.metrics import pairwise_distances\n  >>> from sklearn import datasets\n  >>> X, y = datasets.load_iris(return_X_y=True)\n\nIn normal usage, the Silhouette Coefficient is applied to the results of a\ncluster analysis.\n\n  >>> import numpy as np\n  >>> from sklearn.cluster import KMeans\n  >>> kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)\n  >>> labels = kmeans_model.labels_\n  >>> metrics.silhouette_score(X, labels, metric='euclidean')\n  0.55",
+        "source_id": "clustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst",
+        "page": "clustering:019",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Silhouette Coefficient"
+        },
+        "score": 0.5011840116414936,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:clustering:011:003",
+        "text": "Note:\n\nTaking the connected components of a trimmed graph $G_{ms,\\varepsilon}$ is\nequivalent to running DBSCAN* with min_samples and $\\varepsilon$. DBSCAN* is a\nslightly modified version of DBSCAN mentioned in [CM2013].",
+        "source_id": "clustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst",
+        "page": "clustering:011",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Mutual Reachability Graph"
+        },
+        "score": 0.2729330076487883,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:clustering:019:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst | page clustering:019]\n### Silhouette Coefficient\n\nIf the ground truth labels are not known, evaluation must be performed using\nthe model itself. The Silhouette Coefficient\n(sklearn.metrics.silhouette_score)\nis an example of such an evaluation, where a\nhigher Silhouette Coefficient score relates to a model with better defined\nclusters. The Silhouette Coefficient is defined for each sample and is composed\nof two scores:\n\n- a: The mean distance between a sample and all other points in the same\n  class.\n\n- b: The mean distance between a sample and all other points in the *next\n  nearest cluster*.",
+    "context_ids": [
+      "B:clustering:019:000"
+    ],
+    "context_chars": 707,
+    "elapsed_ms": 1.4975999984017108,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D03",
+    "split": "dev",
+    "question": "Khi nào việc co giãn từng mẫu về chuẩn đơn vị (unit norm) là hữu ích?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "preprocessing",
+        "page": "preprocessing:006",
+        "evidence": "This process can be useful if you plan to use a quadratic form such as the dot-product or any other kernel to quantify the similarity of any pair of samples."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:biclustering:000:004",
+        "text": "Biclustering has many other names in different fields including\nco-clustering, two-mode clustering, two-way clustering, block\nclustering, coupled two-way clustering, etc. The names of some\nalgorithms, such as the Spectral Co-Clustering algorithm, reflect\nthese alternate names.",
+        "source_id": "biclustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/biclustering.rst",
+        "page": "biclustering:000",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Biclustering"
+        },
+        "score": 0.21171651632031122,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:linear_model:014:001",
+        "text": "where $\\alpha$ is the L2 regularization penalty. When sample weights are\nprovided, the average becomes a weighted average.\n\nThe following table lists some specific EDMs and their unit deviance :\n\nDistribution       Target Domain                    Unit Deviance $d(y, \\hat{y})$",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:014",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Generalized Linear Models"
+        },
+        "score": 0.20623209708470938,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:decomposition:002:005",
+        "text": "$||.||_{\\text{Fro}}$ stands for the Frobenius norm and $||.||_{1,1}$\nstands for the entry-wise matrix norm which is the sum of the absolute values\nof all the entries in the matrix.\nThe sparsity-inducing $||.||_{1,1}$ matrix norm also prevents learning\ncomponents from noise when few training samples are available. The degree\nof penalization (and thus sparsity) can be adjusted through the\nhyperparameter alpha. Small values lead to a gently regularized\nfactorization, while larger values shrink many coefficients to zero.\n\nNote:",
+        "source_id": "decomposition",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst",
+        "page": "decomposition:002",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Sparse principal components analysis (SparsePCA and MiniBatchSparsePCA)"
+        },
+        "score": 0.15975667653677578,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:biclustering:000:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/biclustering.rst | page biclustering:000]\nBiclustering has many other names in different fields including\nco-clustering, two-mode clustering, two-way clustering, block\nclustering, coupled two-way clustering, etc. The names of some\nalgorithms, such as the Spectral Co-Clustering algorithm, reflect\nthese alternate names.",
+    "context_ids": [
+      "B:biclustering:000:004"
+    ],
+    "context_chars": 413,
+    "elapsed_ms": 1.3621999969473109,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D04",
+    "split": "dev",
+    "question": "Vì sao không nên xáo trộn dữ liệu trước khi cross-validation nếu các mẫu là bài báo được sắp xếp theo thời gian đăng?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "cross_validation",
+        "page": "cross_validation:007",
+        "evidence": "if samples correspond to news articles, and are ordered by their time of publication, then shuffling the data will likely lead to a model that is overfit and an inflated validation score"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:linear_model:002:004",
+        "text": "Specifying the value of the cv attribute will trigger the use of\ncross-validation with GridSearchCV, for\nexample cv=10 for 10-fold cross-validation, rather than Leave-One-Out\nCross-Validation.\n\nReferences",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Setting the regularization parameter: leave-one-out Cross-Validation"
+        },
+        "score": 0.5744869578770151,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:classification_threshold:002:000",
+        "text": "### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.",
+        "source_id": "classification_threshold",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+        "page": "classification_threshold:002",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Important notes regarding the internal cross-validation"
+        },
+        "score": 0.5420713591733295,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:cross_validation:003:003",
+        "text": "## Cross validation iterators\n\nThe following sections list utilities to generate indices\nthat can be used to generate dataset splits according to different cross\nvalidation strategies.",
+        "source_id": "cross_validation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/cross_validation.rst",
+        "page": "cross_validation:003",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Cross validation iterators"
+        },
+        "score": 0.440468613191086,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:linear_model:002:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst | page linear_model:002]\nSpecifying the value of the cv attribute will trigger the use of\ncross-validation with GridSearchCV, for\nexample cv=10 for 10-fold cross-validation, rather than Leave-One-Out\nCross-Validation.\n\nReferences\n\n[B:cross_validation:003:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/cross_validation.rst | page cross_validation:003]\n## Cross validation iterators\n\nThe following sections list utilities to generate indices\nthat can be used to generate dataset splits according to different cross\nvalidation strategies.",
+    "context_ids": [
+      "B:linear_model:002:004",
+      "B:cross_validation:003:003"
+    ],
+    "context_chars": 674,
+    "elapsed_ms": 1.1806000002252404,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D05",
+    "split": "dev",
+    "question": "Tham số class_weight của SVC xử lý bài toán các lớp mất cân bằng như thế nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "svm",
+        "page": "svm:003",
+        "evidence": "sets the parameter C of class class_label to C * value"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:svm:004:009",
+        "text": "* In SVC, if the data is unbalanced (e.g. many\n  positive and few negative), set class_weight='balanced' and/or try\n  different penalty parameters C.",
+        "source_id": "svm",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst",
+        "page": "svm:004",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Tips on Practical Use"
+        },
+        "score": 0.40498729735244193,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:svm:003:000",
+        "text": "### Unbalanced problems\n\nIn problems where it is desired to give more importance to certain\nclasses or certain individual samples, the parameters class_weight and\nsample_weight can be used.\n\nSVC (but not NuSVC) implements the parameter\nclass_weight in the fit method. It's a dictionary of the form\n{class_label : value}, where value is a floating point number > 0\nthat sets the parameter C of class class_label to C * value.\nThe figure below illustrates the decision boundary of an unbalanced problem,\nwith and without weight correction.",
+        "source_id": "svm",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst",
+        "page": "svm:003",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Unbalanced problems"
+        },
+        "score": 0.3032170913403399,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:sgd:001:009",
+        "text": "SGDClassifier supports both weighted classes and weighted\ninstances via the fit parameters class_weight and sample_weight. See\nthe examples below and the docstring of SGDClassifier.fit for\nfurther information.",
+        "source_id": "sgd",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+        "page": "sgd:001",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Classification"
+        },
+        "score": 0.2148947180670548,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:svm:004:009 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst | page svm:004]\n* In SVC, if the data is unbalanced (e.g. many\n  positive and few negative), set class_weight='balanced' and/or try\n  different penalty parameters C.\n\n[B:sgd:001:009 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst | page sgd:001]\nSGDClassifier supports both weighted classes and weighted\ninstances via the fit parameters class_weight and sample_weight. See\nthe examples below and the docstring of SGDClassifier.fit for\nfurther information.",
+    "context_ids": [
+      "B:svm:004:009",
+      "B:sgd:001:009"
+    ],
+    "context_chars": 578,
+    "elapsed_ms": 1.1104000004706904,
+    "hit1": false,
+    "hit3": true,
+    "context_hit": false
+  },
+  {
+    "query_id": "D06",
+    "split": "dev",
+    "question": "Biến thể Naive Bayes nào đặc biệt phù hợp với tập dữ liệu mất cân bằng?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "naive_bayes",
+        "page": "naive_bayes:002",
+        "evidence": "CNB is an adaptation of the standard multinomial naive Bayes (MNB) algorithm that is particularly suited for imbalanced data sets."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:naive_bayes:004:003",
+        "text": "## Out-of-core naive Bayes model fitting\n\nNaive Bayes models can be used to tackle large scale classification problems\nfor which the full training set might not fit in memory. To handle this case,\nMultinomialNB, BernoulliNB, and GaussianNB\nexpose a partial_fit method that can be used\nincrementally as done with other classifiers as demonstrated in\n(example: plot_out_of_core_classification.py). All naive Bayes\nclassifiers support sample weighting.\n\nContrary to the fit method, the first call to partial_fit needs to be\npassed the list of all the expected class labels.",
+        "source_id": "naive_bayes",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/naive_bayes.rst",
+        "page": "naive_bayes:004",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Out-of-core naive Bayes model fitting"
+        },
+        "score": 0.49336709690308755,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:naive_bayes:000:000",
+        "text": "# Naive Bayes\n\nNaive Bayes methods are a set of supervised learning algorithms\nbased on applying Bayes' theorem with the \"naive\" assumption of\nconditional independence between every pair of features given the\nvalue of the class variable. Bayes' theorem states the following\nrelationship, given class variable $y$ and dependent feature\nvector $x_1$ through $x_n$:\n\nMath:\n\n    P(y \\mid x_1, \\dots, x_n) = \\frac{P(y) P(x_1, \\dots, x_n \\mid y)}\n                                     {P(x_1, \\dots, x_n)}\n\nUsing the naive conditional independence assumption that\n\nMath:",
+        "source_id": "naive_bayes",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/naive_bayes.rst",
+        "page": "naive_bayes:000",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Naive Bayes"
+        },
+        "score": 0.45913891170322785,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:naive_bayes:003:000",
+        "text": "## Bernoulli Naive Bayes\n\nBernoulliNB implements the naive Bayes training and classification\nalgorithms for data that is distributed according to multivariate Bernoulli\ndistributions; i.e., there may be multiple features but each one is assumed\nto be a binary-valued (Bernoulli, boolean) variable.\nTherefore, this class requires samples to be represented as binary-valued\nfeature vectors; if handed any other kind of data, a BernoulliNB instance\nmay binarize its input (depending on the binarize parameter).\n\nThe decision rule for Bernoulli naive Bayes is based on\n\nMath:",
+        "source_id": "naive_bayes",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/naive_bayes.rst",
+        "page": "naive_bayes:003",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Bernoulli Naive Bayes"
+        },
+        "score": 0.4371980845864874,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:naive_bayes:004:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/naive_bayes.rst | page naive_bayes:004]\n## Out-of-core naive Bayes model fitting\n\nNaive Bayes models can be used to tackle large scale classification problems\nfor which the full training set might not fit in memory. To handle this case,\nMultinomialNB, BernoulliNB, and GaussianNB\nexpose a partial_fit method that can be used\nincrementally as done with other classifiers as demonstrated in\n(example: plot_out_of_core_classification.py). All naive Bayes\nclassifiers support sample weighting.\n\nContrary to the fit method, the first call to partial_fit needs to be\npassed the list of all the expected class labels.",
+    "context_ids": [
+      "B:naive_bayes:004:003"
+    ],
+    "context_chars": 703,
+    "elapsed_ms": 1.0323000024072826,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D07",
+    "split": "dev",
+    "question": "Balanced accuracy được tính như thế nào trong trường hợp phân loại nhị phân?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "model_evaluation",
+        "page": "model_evaluation:007",
+        "evidence": "In the binary case, balanced accuracy is equal to the arithmetic mean of sensitivity (true positive rate) and specificity (true negative rate)"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:model_evaluation:007:000",
+        "text": "### Balanced accuracy score\n\nThe balanced_accuracy_score function computes the balanced accuracy, which avoids inflated\nperformance estimates on imbalanced datasets. It is the macro-average of recall\nscores per class or, equivalently, raw accuracy where each sample is weighted\naccording to the inverse prevalence of its true class.\nThus for balanced datasets, the score is equal to accuracy.",
+        "source_id": "model_evaluation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst",
+        "page": "model_evaluation:007",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Balanced accuracy score"
+        },
+        "score": 0.6329848105828744,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:model_evaluation:007:003",
+        "text": "where $1(x)$ is the indicator function.\nGiven predicted $\\hat{y}_i$ for sample $i$, balanced accuracy is\ndefined as:\n\nMath:\n\n    \\texttt{balanced-accuracy}(y, \\hat{y}, w) = \\frac{1}{\\sum{\\hat{w}_i}} \\sum_i 1(\\hat{y}_i = y_i) \\hat{w}_i\n\nWith adjusted=True, balanced accuracy reports the relative increase from\n$\\texttt{balanced-accuracy}(y, \\mathbf{0}, w) =\n\\frac{1}{n\\_classes}$.  In the binary case, this is also known as\nYouden's J statistic,\nor informedness.\n\nNote:",
+        "source_id": "model_evaluation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst",
+        "page": "model_evaluation:007",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Balanced accuracy score"
+        },
+        "score": 0.5051878753826595,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:model_evaluation:007:005",
+        "text": "* Our definition: [Mosley2013], [Kelleher2015] and [Guyon2015], where\n  [Guyon2015] adopt the adjusted version to ensure that random predictions\n  have a score of $0$ and perfect predictions have a score of $1$.\n* Class balanced accuracy as described in [Mosley2013]: the minimum between the precision\n  and the recall for each class is computed. Those values are then averaged over the total\n  number of classes to get the balanced accuracy.\n* Balanced Accuracy as described in [Urbanowicz2015]: the average of sensitivity and specificity\n  is computed for each class and then averaged over total number of classes.",
+        "source_id": "model_evaluation",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst",
+        "page": "model_evaluation:007",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Balanced accuracy score"
+        },
+        "score": 0.4163363949173029,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:model_evaluation:007:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst | page model_evaluation:007]\n### Balanced accuracy score\n\nThe balanced_accuracy_score function computes the balanced accuracy, which avoids inflated\nperformance estimates on imbalanced datasets. It is the macro-average of recall\nscores per class or, equivalently, raw accuracy where each sample is weighted\naccording to the inverse prevalence of its true class.\nThus for balanced datasets, the score is equal to accuracy.",
+    "context_ids": [
+      "B:model_evaluation:007:000"
+    ],
+    "context_chars": 540,
+    "elapsed_ms": 1.056199998856755,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D08",
+    "split": "dev",
+    "question": "Isolation Forest nhận biết điểm bất thường dựa trên độ dài đường đi trong các cây ngẫu nhiên như thế nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "outlier_detection",
+        "page": "outlier_detection:003",
+        "evidence": "Random partitioning produces noticeably shorter paths for anomalies."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:outlier_detection:003:000",
+        "text": "### Isolation Forest\n\nOne efficient way of performing outlier detection in high-dimensional datasets\nis to use random forests.\nThe ensemble.IsolationForest 'isolates' observations by randomly selecting\na feature and then randomly selecting a split value between the maximum and\nminimum values of the selected feature.\n\nSince recursive partitioning can be represented by a tree structure, the\nnumber of splittings required to isolate a sample is equivalent to the path\nlength from the root node to the terminating node.",
+        "source_id": "outlier_detection",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/outlier_detection.rst",
+        "page": "outlier_detection:003",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Isolation Forest"
+        },
+        "score": 0.22238518886788672,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:outlier_detection:003:001",
+        "text": "This path length, averaged over a forest of such random trees, is a\nmeasure of normality and our decision function.\n\nRandom partitioning produces noticeably shorter paths for anomalies.\nHence, when a forest of random trees collectively produce shorter path\nlengths for particular samples, they are highly likely to be anomalies.",
+        "source_id": "outlier_detection",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/outlier_detection.rst",
+        "page": "outlier_detection:003",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Isolation Forest"
+        },
+        "score": 0.16777505539258,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:outlier_detection:003:002",
+        "text": "The implementation of ensemble.IsolationForest is based on an ensemble\nof tree.ExtraTreeRegressor. Following Isolation Forest original paper,\nthe maximum depth of each tree is set to $\\lceil \\log_2(n) \\rceil$ where\n$n$ is the number of samples used to build the tree (see [1]\nfor more details).\n\nThis algorithm is illustrated below.\n\nThe ensemble.IsolationForest supports warm_start=True which\nallows you to add more trees to an already fitted model:\n\n  >>> from sklearn.ensemble import IsolationForest\n  >>> import numpy as np\n  >>> X = np.array([[-1, -1], [-2, -1], [-3, -2], [0, 0], [-20, 50], [3, 5]])\n  >>> clf = IsolationForest(n_estimators=10, warm_start=True)\n  >>> clf.fit(X)  # fit 10 trees  # doctest: +SKIP\n  >>> clf.set_params(n_estimators=20)  # add 10 more trees  # doctest: +SKIP\n  >>> clf.fit(X)  # fit the added trees  # doctest: +SKIP",
+        "source_id": "outlier_detection",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/outlier_detection.rst",
+        "page": "outlier_detection:003",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Isolation Forest"
+        },
+        "score": 0.13379054709443988,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:outlier_detection:003:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/outlier_detection.rst | page outlier_detection:003]\n### Isolation Forest\n\nOne efficient way of performing outlier detection in high-dimensional datasets\nis to use random forests.\nThe ensemble.IsolationForest 'isolates' observations by randomly selecting\na feature and then randomly selecting a split value between the maximum and\nminimum values of the selected feature.\n\nSince recursive partitioning can be represented by a tree structure, the\nnumber of splittings required to isolate a sample is equivalent to the path\nlength from the root node to the terminating node.",
+    "context_ids": [
+      "B:outlier_detection:003:000"
+    ],
+    "context_chars": 669,
+    "elapsed_ms": 1.0990000009769574,
+    "hit1": false,
+    "hit3": true,
+    "context_hit": false
+  },
+  {
+    "query_id": "D09",
+    "split": "dev",
+    "question": "Khi số mẫu rất nhỏ so với số đặc trưng thì LassoLarsCV có lợi thế gì so với LassoCV khi chọn tham số alpha?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "linear_model",
+        "page": "linear_model:005",
+        "evidence": "if the number of samples is very small compared to the number of features, it is often faster than LassoCV"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:linear_model:005:001",
+        "text": "#### Using cross-validation\n\nscikit-learn exposes objects that set the Lasso alpha parameter by\ncross-validation: LassoCV and LassoLarsCV.\nLassoLarsCV is based on the least_angle_regression algorithm\nexplained below.\n\nFor high-dimensional datasets with many collinear features,\nLassoCV is most often preferable. However, LassoLarsCV has\nthe advantage of exploring more relevant values of alpha parameter, and\nif the number of samples is very small compared to the number of\nfeatures, it is often faster than LassoCV.",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:005",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Using cross-validation"
+        },
+        "score": 0.5409738388178158,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:feature_selection:002:003",
+        "text": "There is no general rule to select an alpha parameter for recovery of\nnon-zero coefficients. It can be set by cross-validation\n(LassoCV or\nLassoLarsCV), though this may lead to\nunder-penalized models: including a small number of non-relevant variables\nis not detrimental to prediction score. BIC\n(LassoLarsIC) tends, on the opposite, to set\nhigh values of alpha.\n\nRichard G. Baraniuk \"Compressive Sensing\",\nIEEE Signal Processing Magazine [120] July 2007",
+        "source_id": "feature_selection",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/feature_selection.rst",
+        "page": "feature_selection:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "L1-based feature selection"
+        },
+        "score": 0.2403697572902454,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:svm:007:001",
+        "text": "Here, we are penalizing samples whose prediction is at least $\\varepsilon$\naway from their true target. These samples penalize the objective by\n$\\zeta_i$ or $\\zeta_i^*$, depending on whether their predictions\nlie above or below the $\\varepsilon$ tube.\n\nThe dual problem is\n\nMath:\n\n    \\min_{\\alpha, \\alpha^} \\frac{1}{2} (\\alpha - \\alpha^)^T Q (\\alpha - \\alpha^) + \\varepsilon e^T (\\alpha + \\alpha^) - y^T (\\alpha - \\alpha^*)\n\n    \\textrm {subject to } & e^T (\\alpha - \\alpha^*) = 0\\\\\n    & 0 \\leq \\alpha_i, \\alpha_i^* \\leq C, i=1, ..., n",
+        "source_id": "svm",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst",
+        "page": "svm:007",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "SVR"
+        },
+        "score": 0.22139147274328733,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:linear_model:005:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst | page linear_model:005]\n#### Using cross-validation\n\nscikit-learn exposes objects that set the Lasso alpha parameter by\ncross-validation: LassoCV and LassoLarsCV.\nLassoLarsCV is based on the least_angle_regression algorithm\nexplained below.\n\nFor high-dimensional datasets with many collinear features,\nLassoCV is most often preferable. However, LassoLarsCV has\nthe advantage of exploring more relevant values of alpha parameter, and\nif the number of samples is very small compared to the number of\nfeatures, it is often faster than LassoCV.",
+    "context_ids": [
+      "B:linear_model:005:001"
+    ],
+    "context_chars": 652,
+    "elapsed_ms": 1.7138000002887566,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "D10",
+    "split": "dev",
+    "question": "Khi dùng nhiều metric cùng lúc (multimetric) với GridSearchCV thì tham số refit phải được đặt như thế nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "grid_search",
+        "page": "grid_search:006",
+        "evidence": "When specifying multiple metrics, the refit parameter must be set to the metric (string) for which the best_params_ will be found and used to build the best_estimator_ on the whole dataset."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:grid_search:006:002",
+        "text": "When specifying multiple metrics, the refit parameter must be set to the\nmetric (string) for which the best_params_ will be found and used to build\nthe best_estimator_ on the whole dataset. If the search should not be\nrefit, set refit=False. Leaving refit to the default value None will\nresult in an error when using multiple metrics.\n\nSee (example: plot_multi_metric_evaluation.py)\nfor an example usage.\n\nHalvingRandomSearchCV and HalvingGridSearchCV do not support\nmultimetric scoring.",
+        "source_id": "grid_search",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/grid_search.rst",
+        "page": "grid_search:006",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Specifying multiple metrics for evaluation"
+        },
+        "score": 0.476530726761501,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:grid_search:001:003",
+        "text": "- See (example: plot_grid_search_refit_callable.py)\n  for an example of using refit=callable interface in\n  GridSearchCV. The example shows how this interface adds a certain\n  amount of flexibility in identifying the \"best\" estimator. This interface\n  can also be used in multiple metrics evaluation.\n\n- See (example: plot_grid_search_stats.py)\n  for an example of how to do a statistical comparison on the outputs of\n  GridSearchCV.",
+        "source_id": "grid_search",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/grid_search.rst",
+        "page": "grid_search:001",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Exhaustive Grid Search"
+        },
+        "score": 0.2030024778379496,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:grid_search:006:001",
+        "text": "### Specifying multiple metrics for evaluation\n\nGridSearchCV and RandomizedSearchCV allow specifying\nmultiple metrics for the scoring parameter.\n\nMultimetric scoring can either be specified as a list of strings of predefined\nscores names or a dict mapping the scorer name to the scorer function and/or\nthe predefined scorer name(s). See multimetric_scoring for more details.",
+        "source_id": "grid_search",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/grid_search.rst",
+        "page": "grid_search:006",
+        "metadata": {
+          "guide_section": "Model selection and evaluation",
+          "section_heading": "Specifying multiple metrics for evaluation"
+        },
+        "score": 0.17465905548998906,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:grid_search:006:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/grid_search.rst | page grid_search:006]\nWhen specifying multiple metrics, the refit parameter must be set to the\nmetric (string) for which the best_params_ will be found and used to build\nthe best_estimator_ on the whole dataset. If the search should not be\nrefit, set refit=False. Leaving refit to the default value None will\nresult in an error when using multiple metrics.\n\nSee (example: plot_multi_metric_evaluation.py)\nfor an example usage.\n\nHalvingRandomSearchCV and HalvingGridSearchCV do not support\nmultimetric scoring.",
+    "context_ids": [
+      "B:grid_search:006:002"
+    ],
+    "context_chars": 620,
+    "elapsed_ms": 1.5340999998443294,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "D11",
+    "split": "dev",
+    "question": "Mặc định các imputer của scikit-learn xử lý cột chỉ chứa toàn giá trị thiếu như thế nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "impute",
+        "page": "impute:004",
+        "evidence": "By default, the scikit-learn imputers will drop fully empty features, i.e. columns containing only missing values."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:impute:004:000",
+        "text": "## Keeping the number of features constant\n\nBy default, the scikit-learn imputers will drop fully empty features, i.e.\ncolumns containing only missing values. For instance:\n\n  >>> imputer = SimpleImputer()\n  >>> X = np.array([[np.nan, 1], [np.nan, 2], [np.nan, 3]])\n  >>> imputer.fit_transform(X)\n  array([[1.],\n         [2.],\n         [3.]])",
+        "source_id": "impute",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/impute.rst",
+        "page": "impute:004",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "Keeping the number of features constant"
+        },
+        "score": 0.36520187586867553,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:ensemble:001:000",
+        "text": "### Histogram-Based Gradient Boosting\n\nScikit-learn 0.21 introduced two new implementations of\ngradient boosted trees, namely HistGradientBoostingClassifier\nand HistGradientBoostingRegressor, inspired by\nLightGBM (See [LightGBM]).\n\nThese histogram-based estimators can be orders of magnitude faster\nthan GradientBoostingClassifier and\nGradientBoostingRegressor when the number of samples is larger\nthan tens of thousands of samples.\n\nThey also have built-in support for missing values, which avoids the need\nfor an imputer.",
+        "source_id": "ensemble",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+        "page": "ensemble:001",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Histogram-Based Gradient Boosting"
+        },
+        "score": 0.2068013009183517,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:impute:004:001",
+        "text": "The first feature in X containing only np.nan was dropped after the\nimputation. While this feature will not help in predictive setting, dropping\nthe columns will change the shape of X which could be problematic when using\nimputers in a more complex machine-learning pipeline. The parameter\nkeep_empty_features offers the option to keep the empty features by imputing\nwith a constant value. In most of the cases, this constant value is zero:\n\n  >>> imputer.set_params(keep_empty_features=True)\n  SimpleImputer(keep_empty_features=True)\n  >>> imputer.fit_transform(X)\n  array([[0., 1.],\n         [0., 2.],\n         [0., 3.]])",
+        "source_id": "impute",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/impute.rst",
+        "page": "impute:004",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "Keeping the number of features constant"
+        },
+        "score": 0.2013113631851697,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:impute:004:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/impute.rst | page impute:004]\n## Keeping the number of features constant\n\nBy default, the scikit-learn imputers will drop fully empty features, i.e.\ncolumns containing only missing values. For instance:\n\n  >>> imputer = SimpleImputer()\n  >>> X = np.array([[np.nan, 1], [np.nan, 2], [np.nan, 3]])\n  >>> imputer.fit_transform(X)\n  array([[1.],\n         [2.],\n         [3.]])",
+    "context_ids": [
+      "B:impute:004:000"
+    ],
+    "context_chars": 460,
+    "elapsed_ms": 2.327900001546368,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "D12",
+    "split": "dev",
+    "question": "Tại sao không nên fit bộ hiệu chỉnh xác suất (calibrator) trên chính dữ liệu đã dùng để huấn luyện bộ phân loại?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "calibration",
+        "page": "calibration:002",
+        "evidence": "Using the classifier output of training data to fit the calibrator would thus result in a biased calibrator that maps to probabilities closer to 0 and 1 than it should."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:calibration:002:001",
+        "text": "Ideally, the calibrator is fit on a dataset independent of the training data used to\nfit the classifier in the first place.\nThis is because performance of the classifier on its training data would be\nbetter than for novel data. Using the classifier output of training data\nto fit the calibrator would thus result in a biased calibrator that maps to\nprobabilities closer to 0 and 1 than it should.",
+        "source_id": "calibration",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/calibration.rst",
+        "page": "calibration:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Calibrating a classifier"
+        },
+        "score": 0.5291007857519069,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:calibration:002:003",
+        "text": "1. a clone of base_estimator is trained on the train subset\n2. the trained base_estimator makes predictions on the test subset\n3. the predictions are used to fit a calibrator (either a sigmoid or isotonic\n   regressor) (when the data is multiclass, a calibrator is fit for every class)",
+        "source_id": "calibration",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/calibration.rst",
+        "page": "calibration:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Usage"
+        },
+        "score": 0.42702481001868253,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:calibration:002:006",
+        "text": "When ensemble=False, cross-validation is used to obtain 'unbiased'\npredictions for all the data, via\ncross_val_predict.\nThese unbiased predictions are then used to train the calibrator. The attribute\ncalibrated_classifiers_ consists of only one (classifier, calibrator)\ncouple where the classifier is the base_estimator trained on all the data.\nIn this case the output of predict_proba for\nCalibratedClassifierCV is the predicted probabilities obtained\nfrom the single (classifier, calibrator) couple.",
+        "source_id": "calibration",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/calibration.rst",
+        "page": "calibration:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Usage"
+        },
+        "score": 0.4093032861751485,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:calibration:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/calibration.rst | page calibration:002]\nIdeally, the calibrator is fit on a dataset independent of the training data used to\nfit the classifier in the first place.\nThis is because performance of the classifier on its training data would be\nbetter than for novel data. Using the classifier output of training data\nto fit the calibrator would thus result in a biased calibrator that maps to\nprobabilities closer to 0 and 1 than it should.",
+    "context_ids": [
+      "B:calibration:002:001"
+    ],
+    "context_chars": 529,
+    "elapsed_ms": 1.3438999994832557,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "D13",
+    "split": "dev",
+    "question": "Giả định nào của inertia làm K-means hoạt động kém với các cụm kéo dài hoặc hình dạng không đều?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "clustering",
+        "page": "clustering:001",
+        "evidence": "Inertia makes the assumption that clusters are convex and isotropic, which is not always the case. It responds poorly to elongated clusters, or manifolds with irregular shapes."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:mixture:000:008",
+        "text": "k-means++\n  This uses the initialization method of k-means clustering: k-means++.\n  This will pick the first center at random from the data. Subsequent centers will be\n  chosen from a weighted distribution of the data favouring points further away from\n  existing centers. k-means++ is the default initialization for k-means so will be\n  quicker than running a full k-means but can still take a significant amount of\n  time for large data sets with many components.",
+        "source_id": "mixture",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+        "page": "mixture:000",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Gaussian Mixture"
+        },
+        "score": 0.4185266378897301,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:clustering:001:001",
+        "text": "The k-means algorithm divides a set of $N$ samples $X$ into\n$K$ disjoint clusters $C$, each described by the mean $\\mu_j$\nof the samples in the cluster. The means are commonly called the cluster\n\"centroids\"; note that they are not, in general, points from $X$,\nalthough they live in the same space.\n\nThe K-means algorithm aims to choose centroids that minimise the inertia,\nor within-cluster sum-of-squares criterion:\n\nMath:\n    \\sum_{i=0}^{N-1}\\min_{\\mu_j \\in C}(||x_i - \\mu_j||^2)\n\nInertia can be recognized as a measure of how internally coherent clusters are.\nIt suffers from various drawbacks:",
+        "source_id": "clustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst",
+        "page": "clustering:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "K-means"
+        },
+        "score": 0.36459000283840115,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:clustering:001:002",
+        "text": "- Inertia makes the assumption that clusters are convex and isotropic,\n  which is not always the case. It responds poorly to elongated clusters,\n  or manifolds with irregular shapes.\n\n- Inertia is not a normalized metric: we just know that lower values are\n  better and zero is optimal. But in very high-dimensional spaces, Euclidean\n  distances tend to become inflated\n  (this is an instance of the so-called \"curse of dimensionality\").\n  Running a dimensionality reduction algorithm such as PCA prior to\n  k-means clustering can alleviate this problem and speed up the\n  computations.",
+        "source_id": "clustering",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/clustering.rst",
+        "page": "clustering:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "K-means"
+        },
+        "score": 0.2933889302311971,
+        "strategy": "tfidf",
+        "hit": true
+      }
+    ],
+    "context": "[B:mixture:000:008 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:000]\nk-means++\n  This uses the initialization method of k-means clustering: k-means++.\n  This will pick the first center at random from the data. Subsequent centers will be\n  chosen from a weighted distribution of the data favouring points further away from\n  existing centers. k-means++ is the default initialization for k-means so will be\n  quicker than running a full k-means but can still take a significant amount of\n  time for large data sets with many components.",
+    "context_ids": [
+      "B:mixture:000:008"
+    ],
+    "context_chars": 586,
+    "elapsed_ms": 1.5289000002667308,
+    "hit1": false,
+    "hit3": true,
+    "context_hit": false
+  },
+  {
+    "query_id": "D14",
+    "split": "dev",
+    "question": "Estimator hồi quy bền vững nào xử lý tốt hơn các ngoại lai (outliers) lớn theo hướng y?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "linear_model",
+        "page": "linear_model:017",
+        "evidence": "RANSAC will deal better with large outliers in the y direction (most common situation)."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:linear_model:017:001",
+        "text": "### Different scenario and useful concepts\n\nThere are different things to keep in mind when dealing with data\ncorrupted by outliers:\n\n* Outliers in X or in y?\n\n  Outliers in the y direction          Outliers in the X direction\n\n* Fraction of outliers versus amplitude of error\n\n  The number of outlying points matters, but also how much they are\n  outliers.\n\n  Small outliers                       Large outliers\n\nAn important notion of robust fitting is that of breakdown point: the\nfraction of data that can be outlying for the fit to start missing the\ninlying data.",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:017",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Different scenario and useful concepts"
+        },
+        "score": 0.5376421137143889,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:linear_model:014:002",
+        "text": "Normal            $y \\in (-\\infty, \\infty)$   $(y-\\hat{y})^2$\nBernoulli         $y \\in \\{0, 1\\}$            $2({y}\\log\\frac{y}{\\hat{y}}+({1}-{y})\\log\\frac{{1}-{y}}{{1}-\\hat{y}})$\nCategorical       $y \\in \\{0, 1, ..., k\\}$    $2\\sum_{i \\in \\{0, 1, ..., k\\}} I(y = i) y_\\text{i}\\log\\frac{I(y = i)}{\\hat{I(y = i)}}$\nPoisson           $y \\in [0, \\infty)$         $2(y\\log\\frac{y}{\\hat{y}}-y+\\hat{y})$\nGamma             $y \\in (0, \\infty)$         $2(\\log\\frac{\\hat{y}}{y}+\\frac{y}{\\hat{y}}-1)$\nInverse Gaussian  $y \\in (0, \\infty)$         $\\frac{(y-\\hat{y})^2}{y\\hat{y}^2}$",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:014",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Generalized Linear Models"
+        },
+        "score": 0.3138751595089022,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:linear_model:017:000",
+        "text": "## Robustness regression: outliers and modeling errors\n\nRobust regression aims to fit a regression model in the\npresence of corrupt data: either outliers, or error in the model.",
+        "source_id": "linear_model",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+        "page": "linear_model:017",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Robustness regression: outliers and modeling errors"
+        },
+        "score": 0.2978088267514513,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:linear_model:017:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst | page linear_model:017]\n### Different scenario and useful concepts\n\nThere are different things to keep in mind when dealing with data\ncorrupted by outliers:\n\n* Outliers in X or in y?\n\n  Outliers in the y direction          Outliers in the X direction\n\n* Fraction of outliers versus amplitude of error\n\n  The number of outlying points matters, but also how much they are\n  outliers.\n\n  Small outliers                       Large outliers\n\nAn important notion of robust fitting is that of breakdown point: the\nfraction of data that can be outlying for the fit to start missing the\ninlying data.",
+    "context_ids": [
+      "B:linear_model:017:001"
+    ],
+    "context_chars": 704,
+    "elapsed_ms": 2.338199999940116,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "D15",
+    "split": "dev",
+    "question": "Những estimator nào hỗ trợ sẵn giá trị thiếu (missing values) mà không cần imputer?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "tree",
+        "page": "tree:008",
+        "evidence": "DecisionTreeClassifier, DecisionTreeRegressor have built-in support for missing values using splitter='best'"
+      },
+      {
+        "source_id": "ensemble",
+        "page": "ensemble:001",
+        "evidence": "They also have built-in support for missing values, which avoids the need for an imputer."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:ensemble:001:020",
+        "text": "If there are missing values during training, the missing values will be\ntreated as a proper category. If there are no missing values during training,\nthen at prediction time, missing values are mapped to the child node that has\nthe most samples (just like for continuous features). When predicting,\ncategories that were not seen during fit time will be treated as missing\nvalues.\n\nSplit finding with categorical features",
+        "source_id": "ensemble",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+        "page": "ensemble:001",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Categorical Features Support"
+        },
+        "score": 0.3758236268759787,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:impute:004:000",
+        "text": "## Keeping the number of features constant\n\nBy default, the scikit-learn imputers will drop fully empty features, i.e.\ncolumns containing only missing values. For instance:\n\n  >>> imputer = SimpleImputer()\n  >>> X = np.array([[np.nan, 1], [np.nan, 2], [np.nan, 3]])\n  >>> imputer.fit_transform(X)\n  array([[1.],\n         [2.],\n         [3.]])",
+        "source_id": "impute",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/impute.rst",
+        "page": "impute:004",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "Keeping the number of features constant"
+        },
+        "score": 0.3362682926196907,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:tree:008:003",
+        "text": "## Missing Values Support\n\nDecisionTreeClassifier, DecisionTreeRegressor\nhave built-in support for missing values using splitter='best', where\nthe splits are determined in a greedy fashion.\nExtraTreeClassifier, and ExtraTreeRegressor have built-in\nsupport for missing values for splitter='random', where the splits\nare determined randomly. For more details on how the splitter differs on\nnon-missing values, see the Forest section.\n\nFirst we will describe how DecisionTreeClassifier, DecisionTreeRegressor\nhandle missing-values in the data.",
+        "source_id": "tree",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst",
+        "page": "tree:008",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Missing Values Support"
+        },
+        "score": 0.3261546281509336,
+        "strategy": "tfidf",
+        "hit": true
+      }
+    ],
+    "context": "[B:ensemble:001:020 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst | page ensemble:001]\nIf there are missing values during training, the missing values will be\ntreated as a proper category. If there are no missing values during training,\nthen at prediction time, missing values are mapped to the child node that has\nthe most samples (just like for continuous features). When predicting,\ncategories that were not seen during fit time will be treated as missing\nvalues.\n\nSplit finding with categorical features",
+    "context_ids": [
+      "B:ensemble:001:020"
+    ],
+    "context_chars": 544,
+    "elapsed_ms": 1.7728999991959427,
+    "hit1": false,
+    "hit3": true,
+    "context_hit": false
+  },
+  {
+    "query_id": "D16",
+    "split": "dev",
+    "question": "Shrinkage trong LDA giúp ích trong tình huống nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "lda_qda",
+        "page": "lda_qda:003",
+        "evidence": "Shrinkage is a form of regularization used to improve the estimation of covariance matrices in situations where the number of training samples is small compared to the number of features."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:lda_qda:003:000",
+        "text": "## Shrinkage and Covariance Estimator\n\nShrinkage is a form of regularization used to improve the estimation of\ncovariance matrices in situations where the number of training samples is\nsmall compared to the number of features.\nIn this scenario, the empirical sample covariance is a poor\nestimator, and shrinkage helps improving the generalization performance of\nthe classifier.\nShrinkage can be used with LDA (or QDA) by setting the shrinkage parameter of\nthe LinearDiscriminantAnalysis class\n(or QuadraticDiscriminantAnalysis) to 'auto'.\nThis automatically determines the optimal shrinkage parameter in an analytic\nway following the lemma introduced by Ledoit and Wolf [2]. Note that\ncurrently shrinkage only works when setting the solver parameter to 'lsqr'\nor 'eigen' (only 'eigen' is implemented for QDA).",
+        "source_id": "lda_qda",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/lda_qda.rst",
+        "page": "lda_qda:003",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Shrinkage and Covariance Estimator"
+        },
+        "score": 0.4735744917239792,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:ensemble:002:024",
+        "text": "The figure below illustrates the effect of shrinkage and subsampling\non the goodness-of-fit of the model. We can clearly see that shrinkage\noutperforms no-shrinkage. Subsampling with shrinkage can further increase\nthe accuracy of the model. Subsampling without shrinkage, on the other hand,\ndoes poorly.\n\nAnother strategy to reduce the variance is by subsampling the features\nanalogous to the random splits in RandomForestClassifier.\nThe number of subsampled features can be controlled via the max_features\nparameter.\n\nNote:",
+        "source_id": "ensemble",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+        "page": "ensemble:002",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Subsampling"
+        },
+        "score": 0.34431689392168513,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:lda_qda:003:002",
+        "text": "The shrunk Ledoit and Wolf estimator of covariance may not always be the\nbest choice. For example if the distribution of the data\nis normally distributed, the\nOracle Approximating Shrinkage estimator sklearn.covariance.OAS\nyields a smaller Mean Squared Error than the one given by Ledoit and Wolf's\nformula used with shrinkage=\"auto\". In LDA and QDA, the data are assumed to be gaussian\nconditionally to the class. If these assumptions hold, using LDA and QDA with\nthe OAS estimator of covariance will yield a better classification\naccuracy than if Ledoit and Wolf or the empirical covariance estimator is used.",
+        "source_id": "lda_qda",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/lda_qda.rst",
+        "page": "lda_qda:003",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Shrinkage and Covariance Estimator"
+        },
+        "score": 0.27779959723114106,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:ensemble:002:024 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst | page ensemble:002]\nThe figure below illustrates the effect of shrinkage and subsampling\non the goodness-of-fit of the model. We can clearly see that shrinkage\noutperforms no-shrinkage. Subsampling with shrinkage can further increase\nthe accuracy of the model. Subsampling without shrinkage, on the other hand,\ndoes poorly.\n\nAnother strategy to reduce the variance is by subsampling the features\nanalogous to the random splits in RandomForestClassifier.\nThe number of subsampled features can be controlled via the max_features\nparameter.\n\nNote:",
+    "context_ids": [
+      "B:ensemble:002:024"
+    ],
+    "context_chars": 648,
+    "elapsed_ms": 1.144199999544071,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": false
+  },
+  {
+    "query_id": "T01",
+    "split": "dev",
+    "question": "Khi dữ liệu ảnh 64x64 pixel (4096 chiều) và chỉ cần giữ ít thành phần chính, nên dùng tùy chọn svd_solver nào của PCA và vì sao?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "decomposition",
+        "page": "decomposition:001",
+        "evidence": "svd_solver='randomized' is very useful in that case: since we are going to drop most of the singular vectors it is much more efficient to limit the computation to an approximated estimate of the singular vectors we will keep"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:decomposition:001:001",
+        "text": "For instance, if we work with 64x64 pixel gray-level pictures\nfor face recognition,\nthe dimensionality of the data is 4096 and it is slow to train an\nRBF support vector machine on such wide data. Furthermore we know that\nthe intrinsic dimensionality of the data is much lower than 4096 since all\npictures of human faces look somewhat alike.\nThe samples lie on a manifold of much lower\ndimension (say around 200 for instance). The PCA algorithm can be used\nto linearly transform the data while both reducing the dimensionality\nand preserving most of the explained variance at the same time.",
+        "source_id": "decomposition",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst",
+        "page": "decomposition:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "PCA using randomized SVD"
+        },
+        "score": 0.28438429186210934,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:decomposition:001:005",
+        "text": "Note: the implementation of inverse_transform in PCA with\nsvd_solver='randomized' is not the exact inverse transform of\ntransform even when whiten=False (default).",
+        "source_id": "decomposition",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst",
+        "page": "decomposition:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "PCA using randomized SVD"
+        },
+        "score": 0.242071225823778,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:decomposition:002:003",
+        "text": "The following example illustrates 16 components extracted using sparse PCA from\nthe Olivetti faces dataset.  It can be seen how the regularization term induces\nmany zeros. Furthermore, the natural structure of the data causes the non-zero\ncoefficients to be vertically adjacent. The model does not enforce this\nmathematically: each component is a vector $h \\in \\mathbf{R}^{4096}$, and\nthere is no notion of vertical adjacency except during the human-friendly\nvisualization as 64x64 pixel images. The fact that the components shown below\nappear local is the effect of the inherent structure of the data, which makes\nsuch local patterns minimize reconstruction error. There exist sparsity-inducing\nnorms that take into account adjacency and different kinds of structure; see\n[Jen09] for a review of such methods.\nFor more details on how to use Sparse PCA, see the Examples section, below.",
+        "source_id": "decomposition",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst",
+        "page": "decomposition:002",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Sparse principal components analysis (SparsePCA and MiniBatchSparsePCA)"
+        },
+        "score": 0.211782507443785,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:decomposition:001:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst | page decomposition:001]\nFor instance, if we work with 64x64 pixel gray-level pictures\nfor face recognition,\nthe dimensionality of the data is 4096 and it is slow to train an\nRBF support vector machine on such wide data. Furthermore we know that\nthe intrinsic dimensionality of the data is much lower than 4096 since all\npictures of human faces look somewhat alike.\nThe samples lie on a manifold of much lower\ndimension (say around 200 for instance). The PCA algorithm can be used\nto linearly transform the data while both reducing the dimensionality\nand preserving most of the explained variance at the same time.",
+    "context_ids": [
+      "B:decomposition:001:001"
+    ],
+    "context_chars": 728,
+    "elapsed_ms": 1.6887999991013203,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "T02",
+    "split": "dev",
+    "question": "Giá trị mặc định tốt thường dùng cho max_features trong random forest khác nhau thế nào giữa bài toán hồi quy và phân loại?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "ensemble",
+        "page": "ensemble:005",
+        "evidence": "Empirical good default values are max_features=1.0 or equivalently max_features=None (always considering all features instead of a random subset) for regression problems, and max_features=\"sqrt\" (using a random subset of size sqrt(n_features)) for classification tasks"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:ensemble:005:001",
+        "text": "Empirical good default values are\nmax_features=1.0 or equivalently max_features=None (always considering\nall features instead of a random subset) for regression problems, and\nmax_features=\"sqrt\" (using a random subset of size sqrt(n_features))\nfor classification tasks (where n_features is the number of features in\nthe data). The default value of max_features=1.0 is equivalent to bagged\ntrees and more randomness can be achieved by setting smaller values (e.g. 0.3\nis a typical default in the literature). ",
+        "source_id": "ensemble",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+        "page": "ensemble:005",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Parameters"
+        },
+        "score": 0.41184376379744186,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:ensemble:003:002",
+        "text": "### Random Forests\n\nIn random forests (see RandomForestClassifier and\nRandomForestRegressor classes), each tree in the ensemble is built\nfrom a sample drawn with replacement (i.e., a bootstrap sample) from the\ntraining set.\n\nDuring the construction of each tree in the forest, a random subset of the\nfeatures is considered. The size of this subset is controlled by the\nmax_features parameter; it may include either all input features or a random\nsubset of them (see the parameter tuning guidelines for more details).",
+        "source_id": "ensemble",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+        "page": "ensemble:003",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Random Forests"
+        },
+        "score": 0.32644338667726114,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:outlier_detection:003:001",
+        "text": "This path length, averaged over a forest of such random trees, is a\nmeasure of normality and our decision function.\n\nRandom partitioning produces noticeably shorter paths for anomalies.\nHence, when a forest of random trees collectively produce shorter path\nlengths for particular samples, they are highly likely to be anomalies.",
+        "source_id": "outlier_detection",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/outlier_detection.rst",
+        "page": "outlier_detection:003",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Isolation Forest"
+        },
+        "score": 0.29301888155689076,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:ensemble:005:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst | page ensemble:005]\nEmpirical good default values are\nmax_features=1.0 or equivalently max_features=None (always considering\nall features instead of a random subset) for regression problems, and\nmax_features=\"sqrt\" (using a random subset of size sqrt(n_features))\nfor classification tasks (where n_features is the number of features in\nthe data). The default value of max_features=1.0 is equivalent to bagged\ntrees and more randomness can be achieved by setting smaller values (e.g. 0.3\nis a typical default in the literature). ",
+    "context_ids": [
+      "B:ensemble:005:001"
+    ],
+    "context_chars": 632,
+    "elapsed_ms": 1.5047000015329104,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "T03",
+    "split": "dev",
+    "question": "NCA (Neighborhood Components Analysis) tối đa hóa đại lượng nào để cải thiện độ chính xác của phân loại láng giềng gần nhất?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "neighbors",
+        "page": "neighbors:008",
+        "evidence": "The algorithm directly maximizes a stochastic variant of the leave-one-out k-nearest neighbors (KNN) score on the training set."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:neighbors:008:000",
+        "text": "## Neighborhood Components Analysis\n\nNeighborhood Components Analysis (NCA, NeighborhoodComponentsAnalysis)\nis a distance metric learning algorithm which aims to improve the accuracy of\nnearest neighbors classification compared to the standard Euclidean distance.\nThe algorithm directly maximizes a stochastic variant of the leave-one-out\nk-nearest neighbors (KNN) score on the training set. It can also learn a\nlow-dimensional linear projection of data that can be used for data\nvisualization and fast classification.",
+        "source_id": "neighbors",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst",
+        "page": "neighbors:008",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Neighborhood Components Analysis"
+        },
+        "score": 0.4538775765651837,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:decomposition:010:010",
+        "text": "LatentDirichletAllocation also implements partial_fit method. This is used\nwhen data can be fetched sequentially.\n\nSee also nca_dim_reduction for dimensionality reduction with\nNeighborhood Components Analysis.",
+        "source_id": "decomposition",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/decomposition.rst",
+        "page": "decomposition:010",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Latent Dirichlet Allocation (LDA)"
+        },
+        "score": 0.3102158778554043,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:neighbors:008:005",
+        "text": "The plot shows decision boundaries for Nearest Neighbor Classification and\nNeighborhood Components Analysis classification on the iris dataset, when\ntraining and scoring on only two features, for visualisation purposes.",
+        "source_id": "neighbors",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst",
+        "page": "neighbors:008",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Classification"
+        },
+        "score": 0.3016800882003102,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:neighbors:008:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst | page neighbors:008]\n## Neighborhood Components Analysis\n\nNeighborhood Components Analysis (NCA, NeighborhoodComponentsAnalysis)\nis a distance metric learning algorithm which aims to improve the accuracy of\nnearest neighbors classification compared to the standard Euclidean distance.\nThe algorithm directly maximizes a stochastic variant of the leave-one-out\nk-nearest neighbors (KNN) score on the training set. It can also learn a\nlow-dimensional linear projection of data that can be used for data\nvisualization and fast classification.",
+    "context_ids": [
+      "B:neighbors:008:000"
+    ],
+    "context_chars": 645,
+    "elapsed_ms": 1.6404000016336795,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "T04",
+    "split": "dev",
+    "question": "Mật độ phần tử khác 0 mặc định của SparseRandomProjection được chọn như thế nào?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "random_projection",
+        "page": "random_projection:001",
+        "evidence": "By default the density of non zero elements is set to the minimum density as recommended by Ping Li et al.: $1 / \\sqrt{n_{\\text{features}}}$."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:compose:005:009",
+        "text": "Strings can reference columns if the input is a DataFrame, integers are always\ninterpreted as the positional columns.\n\nWe can keep the remaining rating columns by setting\nremainder='passthrough'. The values are appended to the end of the\ntransformation:\n\n  >>> column_trans = ColumnTransformer(\n  ...     [('city_category', OneHotEncoder(dtype='int'),['city']),\n  ...      ('title_bow', CountVectorizer(), 'title')],\n  ...     remainder='passthrough')\n\n  >>> column_trans.fit_transform(X)\n  array([[1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5, 4],\n         [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 3, 5],\n         [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 4, 4],\n         [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 5, 3]]...)",
+        "source_id": "compose",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+        "page": "compose:005",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "ColumnTransformer for heterogeneous data"
+        },
+        "score": 0.2812747353088945,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:compose:005:005",
+        "text": "('title_bow', CountVectorizer(), 'title')],\n  ...     remainder='drop', verbose_feature_names_out=False)\n\n  >>> column_trans.fit(X)\n  ColumnTransformer(transformers=[('categories', OneHotEncoder(dtype='int'),\n                                   ['city']),\n                                  ('title_bow', CountVectorizer(), 'title')],\n                    verbose_feature_names_out=False)\n\n  >>> column_trans.get_feature_names_out()\n  array(['city_London', 'city_Paris', 'city_Sallisaw', 'bow', 'feast',\n  'grapes', 'his', 'how', 'last', 'learned', 'moveable', 'of', 'the',\n   'trick', 'watson', 'wrath'], ...)\n\n  >>> column_trans.transform(X).toarray()\n  array([[1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],\n         [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0],\n         [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],\n         [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1]]...)",
+        "source_id": "compose",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+        "page": "compose:005",
+        "metadata": {
+          "guide_section": "Dataset transformations",
+          "section_heading": "ColumnTransformer for heterogeneous data"
+        },
+        "score": 0.27894261453305724,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:neighbors:001:003",
+        "text": "Because the query set matches the training set, the nearest neighbor of each\npoint is the point itself, at a distance of zero.\n\nIt is also possible to efficiently produce a sparse graph showing the\nconnections between neighboring points:\n\n    >>> nbrs.kneighbors_graph(X).toarray()\n    array([[1., 1., 0., 0., 0., 0.],\n           [1., 1., 0., 0., 0., 0.],\n           [0., 1., 1., 0., 0., 0.],\n           [0., 0., 0., 1., 1., 0.],\n           [0., 0., 0., 1., 1., 0.],\n           [0., 0., 0., 0., 1., 1.]])",
+        "source_id": "neighbors",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst",
+        "page": "neighbors:001",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Finding the Nearest Neighbors"
+        },
+        "score": 0.26470914030876597,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:neighbors:001:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst | page neighbors:001]\nBecause the query set matches the training set, the nearest neighbor of each\npoint is the point itself, at a distance of zero.\n\nIt is also possible to efficiently produce a sparse graph showing the\nconnections between neighboring points:\n\n    >>> nbrs.kneighbors_graph(X).toarray()\n    array([[1., 1., 0., 0., 0., 0.],\n           [1., 1., 0., 0., 0., 0.],\n           [0., 1., 1., 0., 0., 0.],\n           [0., 0., 0., 1., 1., 0.],\n           [0., 0., 0., 1., 1., 0.],\n           [0., 0., 0., 0., 1., 1.]])",
+    "context_ids": [
+      "B:neighbors:001:003"
+    ],
+    "context_chars": 631,
+    "elapsed_ms": 2.09260000337963,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  },
+  {
+    "query_id": "T05",
+    "split": "dev",
+    "question": "Tham số bandwidth ảnh hưởng thế nào đến độ mượt của ước lượng mật độ bằng kernel?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "density",
+        "page": "density:001",
+        "evidence": "A large bandwidth leads to a very smooth (i.e. high-bias) density distribution. A small bandwidth leads to an unsmooth (i.e. high-variance) density distribution."
+      }
+    ],
+    "results": [
+      {
+        "id": "B:density:001:003",
+        "text": "The bandwidth here acts as a smoothing parameter, controlling the tradeoff\nbetween bias and variance in the result.  A large bandwidth leads to a very\nsmooth (i.e. high-bias) density distribution.  A small bandwidth leads\nto an unsmooth (i.e. high-variance) density distribution.\n\nThe parameter bandwidth controls this smoothing. One can either set\nmanually this parameter or use Scott's and Silverman's estimation\nmethods.\n\nKernelDensity implements several common kernel\nforms, which are shown in the following figure:\n\nKernels' mathematical expressions\n\nThe form of these kernels is as follows:",
+        "source_id": "density",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/density.rst",
+        "page": "density:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Kernel Density Estimation"
+        },
+        "score": 0.44614039714753817,
+        "strategy": "tfidf",
+        "hit": true
+      },
+      {
+        "id": "B:gaussian_process:005:000",
+        "text": "### Matérn kernel\n\nThe Matern kernel is a stationary kernel and a generalization of the\nRBF kernel. It has an additional parameter $\\nu$ which controls\nthe smoothness of the resulting function. It is parameterized by a length-scale parameter $l>0$, which can either be a scalar (isotropic variant of the kernel) or a vector with the same number of dimensions as the inputs $x$ (anisotropic variant of the kernel).\n\nMathematical implementation of Matérn kernel\n\nThe kernel is given by:\n\nMath:",
+        "source_id": "gaussian_process",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/gaussian_process.rst",
+        "page": "gaussian_process:005",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Matérn kernel"
+        },
+        "score": 0.3135949018332281,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:density:001:002",
+        "text": "Here we have used kernel='gaussian', as seen above.\nMathematically, a kernel is a positive function $K(x;h)$\nwhich is controlled by the bandwidth parameter $h$.\nGiven this kernel form, the density estimate at a point $y$ within\na group of points $x_i; i=1, \\cdots, N$ is given by:\n\nMath:\n    \\rho_K(y) = \\sum_{i=1}^{N} K(y - x_i; h)",
+        "source_id": "density",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/density.rst",
+        "page": "density:001",
+        "metadata": {
+          "guide_section": "Unsupervised learning",
+          "section_heading": "Kernel Density Estimation"
+        },
+        "score": 0.30547651162703077,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:density:001:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/density.rst | page density:001]\nThe bandwidth here acts as a smoothing parameter, controlling the tradeoff\nbetween bias and variance in the result.  A large bandwidth leads to a very\nsmooth (i.e. high-bias) density distribution.  A small bandwidth leads\nto an unsmooth (i.e. high-variance) density distribution.\n\nThe parameter bandwidth controls this smoothing. One can either set\nmanually this parameter or use Scott's and Silverman's estimation\nmethods.\n\nKernelDensity implements several common kernel\nforms, which are shown in the following figure:\n\nKernels' mathematical expressions\n\nThe form of these kernels is as follows:",
+    "context_ids": [
+      "B:density:001:003"
+    ],
+    "context_chars": 717,
+    "elapsed_ms": 2.392300000792602,
+    "hit1": true,
+    "hit3": true,
+    "context_hit": true
+  },
+  {
+    "query_id": "T06",
+    "split": "dev",
+    "question": "Vì sao độ quan trọng đặc trưng dựa trên impurity của cây có thể gây sai lệch?",
+    "strategy": "tfidf",
+    "top_k": 3,
+    "budget_chars": 800,
+    "gold": [
+      {
+        "source_id": "permutation_importance",
+        "page": "permutation_importance:001",
+        "evidence": "impurity-based feature importance for trees is strongly biased and favor high cardinality features (typically numerical features) over low cardinality features"
+      }
+    ],
+    "results": [
+      {
+        "id": "B:tree:006:004",
+        "text": "* the impurity decrease for this split is smaller than min_impurity_decrease.\n\nSee the respective estimator docstring for other stopping conditions.",
+        "source_id": "tree",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst",
+        "page": "tree:006",
+        "metadata": {
+          "guide_section": "Supervised learning",
+          "section_heading": "Mathematical formulation"
+        },
+        "score": 0.2832947822727106,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:permutation_importance:001:002",
+        "text": "Tree-based models provide an alternative measure of feature importances\nbased on the mean decrease in impurity\n(MDI). Impurity is quantified by the splitting criterion of the decision trees\n(Gini, Log Loss or Mean Squared Error). However, this method can give high\nimportance to features that may not be predictive on unseen data when the model\nis overfitting. Permutation-based feature importance, on the other hand, avoids\nthis issue, since it can be computed on unseen data.",
+        "source_id": "permutation_importance",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/permutation_importance.rst",
+        "page": "permutation_importance:001",
+        "metadata": {
+          "guide_section": "Inspection",
+          "section_heading": "Relation to impurity-based importance in trees"
+        },
+        "score": 0.27311921154685703,
+        "strategy": "tfidf",
+        "hit": false
+      },
+      {
+        "id": "B:permutation_importance:001:004",
+        "text": "The following example highlights the limitations of impurity-based feature\nimportance in contrast to permutation-based feature importance:\n(example: plot_permutation_importance.py).",
+        "source_id": "permutation_importance",
+        "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/permutation_importance.rst",
+        "page": "permutation_importance:001",
+        "metadata": {
+          "guide_section": "Inspection",
+          "section_heading": "Relation to impurity-based importance in trees"
+        },
+        "score": 0.24810968339763417,
+        "strategy": "tfidf",
+        "hit": false
+      }
+    ],
+    "context": "[B:tree:006:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst | page tree:006]\n* the impurity decrease for this split is smaller than min_impurity_decrease.\n\nSee the respective estimator docstring for other stopping conditions.\n\n[B:permutation_importance:001:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/permutation_importance.rst | page permutation_importance:001]\nThe following example highlights the limitations of impurity-based feature\nimportance in contrast to permutation-based feature importance:\n(example: plot_permutation_importance.py).",
+    "context_ids": [
+      "B:tree:006:004",
+      "B:permutation_importance:001:004"
+    ],
+    "context_chars": 609,
+    "elapsed_ms": 1.1377000009815674,
+    "hit1": false,
+    "hit3": false,
+    "context_hit": false
+  }
+]

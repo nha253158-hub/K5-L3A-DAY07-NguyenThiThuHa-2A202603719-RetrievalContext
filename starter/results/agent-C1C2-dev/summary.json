@@ -1,0 +1,34 @@
+{
+ "tag": "C1C2",
+ "split": "dev",
+ "config": {
+  "split": "dev",
+  "method": "dense",
+  "top_k": 3,
+  "budget": 2000,
+  "max_searches": 3,
+  "use_filter": false,
+  "tag": "C1C2",
+  "context_order": "latest",
+  "force_final": true
+ },
+ "model": "deepseek/deepseek-v4.1-flash",
+ "n": 24,
+ "status": {
+  "answered": 21,
+  "abstain": 3,
+  "error": 0
+ },
+ "tool_use": "24/24",
+ "searches_dist": {
+  "0": 0,
+  "1": 12,
+  "2": 3,
+  "3": 9
+ },
+ "context_evidence": "21/22",
+ "tokens_in": 61458,
+ "tokens_out": 8946,
+ "cost_usd": 0.00486,
+ "median_seconds": 8.79
+}

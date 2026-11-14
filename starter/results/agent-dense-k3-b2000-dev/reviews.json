@@ -1,0 +1,181 @@
+[
+ {
+  "query_id": "D01",
+  "note": "004 nói không phụ thuộc splitter, O(depth); 000 là bảng O(log n)",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D02",
+  "note": "Từ chối nhầm: context có evidence nhưng hết 3 lượt search (search_limit)",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D04",
+  "note": "Model trả lời nhưng citation không khớp context/[id] trong text -> invalid_or_missing_citations",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D05",
+  "note": "Từ chối nhầm: evidence có trong context lượt 1, model vẫn search tiếp tới search_limit",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D06",
+  "note": "Từ chối: chunk ComplementNB bị đẩy khỏi context (budget giữ chunk lượt đầu)",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D07",
+  "note": "003 hỗ trợ ý adjusted=True/Youden J",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D08",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D09",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D10",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D11",
+  "note": "Không nhắc keep_empty_features=True; ý chính đúng",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D12",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D13",
+  "note": "Từ chối: evidence không vào context cuối (context_order=first)",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D14",
+  "note": "Từ chối: evidence RANSAC không vào context cuối",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D15",
+  "note": "Từ chối: evidence không vào context; câu cần nhiều đoạn",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D16",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T01",
+  "note": "Từ chối nhầm: context có evidence nhưng hết lượt search",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "T02",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T04",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T05",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T06",
+  "note": "Ý high cardinality có; không so sánh với nhị phân/categorical",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D17",
+  "note": "Search 3 lần rồi từ chối, không bịa số",
+  "citation_support": [],
+  "abstention_correct": true
+ },
+ {
+  "query_id": "D18",
+  "note": "Search 3 lần rồi từ chối, không bịa tham số",
+  "citation_support": [],
+  "abstention_correct": true
+ }
+]

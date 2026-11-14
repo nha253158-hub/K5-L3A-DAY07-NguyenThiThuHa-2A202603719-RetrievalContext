@@ -25,20 +25,21 @@ TOOLS = [
 ]
 
 class OpenRouterController:
-    def __init__(self, model=None, min_interval=3.0):
+    def __init__(self, model=None, min_interval=3.0, force_final_after=None):
         self.client = OpenAI(base_url="https://openrouter.ai/api/v1",
                              api_key=os.environ["OPENROUTER_API_KEY"], timeout=60)
         self.model = model or os.environ["OPENROUTER_MODEL"]
         self.min_interval, self._last = min_interval, 0.0
         self.usage = []
+        self.force_final_after = force_final_after
 
-    def _call(self, prompt):
+    def _call(self, prompt,force_answer=False):
         for i in range(6):
             time.sleep(max(0, self.min_interval - (time.time() - self._last)))
             self._last = time.time()
             try:
                 return self.client.chat.completions.create(
-                    model=self.model, temperature=0, max_tokens=1024, tools=TOOLS, tool_choice="required",
+                    model=self.model, temperature=0, max_tokens=1024, tools=TOOLS, tool_choice={"type": "function", "function": {"name": "answer"}} if force_answer else "required",
                     extra_body={"reasoning": {"enabled": False}},
                     messages=[{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}])
             except (APIStatusError, APITimeoutError, APIConnectionError) as e:
@@ -56,7 +57,10 @@ class OpenRouterController:
             prompt += f"\nQuery đã dùng: {h['queries']}\n\nContext:\n{h['context'] or '(rỗng)'}"
         else:
             prompt += "\nChưa có context, hãy gọi search."
-        resp = self._call(prompt)
+        force = bool(history and self.force_final_after and len(history[-1]['queries']) >= self.force_final_after)
+        if force:
+            prompt += "\n\nĐã hết lượt search. Bắt buộc gọi answer: trả lời nếu context đủ, ngược lại từ chối."
+        resp = self._call(prompt, force_answer=force)
         if resp.usage:
             self.usage.append({"in": resp.usage.prompt_tokens, "out": resp.usage.completion_tokens})
         msg = resp.choices[0].message

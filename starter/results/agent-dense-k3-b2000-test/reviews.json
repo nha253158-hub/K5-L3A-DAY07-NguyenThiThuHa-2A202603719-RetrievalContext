@@ -1,0 +1,60 @@
+[
+ {
+  "query_id": "N01",
+  "note": "Đủ 10^6 mẫu và max_iter = np.ceil(10**6/n)",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N02",
+  "note": "002:001 có câu cv=\"prefit\" chỉ dùng khi classifier đã train; 002:000 hỗ trợ ý bỏ qua CV",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N04",
+  "note": "Từ chối nhầm: lượt 2-3 tìm thấy neural_networks_supervised:004:002 nhưng context giữ chunk lượt 1 -> search_limit (lỗi dev số 1)",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "N05",
+  "note": "001:004 hỗ trợ ý dirichlet_distribution/dirichlet_process",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N06",
+  "note": "Evidence ở compose:002:000, không lần nào vào top-3 dense -> search_limit",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "N07",
+  "note": "Search 3 lần, không bịa số tiền",
+  "citation_support": [],
+  "abstention_correct": true
+ },
+ {
+  "query_id": "N08",
+  "note": "Search 3 lần, không bịa dung lượng",
+  "citation_support": [],
+  "abstention_correct": true
+ }
+]

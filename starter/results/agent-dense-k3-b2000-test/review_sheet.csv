@@ -1,0 +1,59 @@
+﻿query_id,answerable,status,question,expected_or_reason,answer,citations,cited_text,answer_grade,citation_support,abstention_correct,note
+N01,True,answered,"Theo kinh nghiệm, SGD thường hội tụ sau khoảng bao nhiêu mẫu huấn luyện, và nên đoán max_iter ban đầu thế nào?",Khoảng 10^6 mẫu; max_iter ban đầu hợp lý là np.ceil(10**6 / n) với n là kích thước tập train.,"Theo kinh nghiệm, SGD hội tụ sau khi quan sát khoảng $10^6$ mẫu huấn luyện. Do đó, một ước lượng ban đầu hợp lý cho số vòng lặp là max_iter = np.ceil(10**6 / n), trong đó n là kích thước của tập huấn luyện [B:sgd:004:003].",B:sgd:004:003,"[B:sgd:004:003] * Empirically, we found that SGD converges after observing
+  approximately $10^6$ training samples. Thus, a reasonable first guess
+  for the number of iterations is max_iter = np.ceil(10**6 / n),
+  where n is the size of the training set.
+
+* If you apply SGD to features extracted using PCA we found that
+  it is often wise to scale the feature values by some constant c
+  such that the average $L_2$ norm of the training data equals one.
+
+* We found that Averaged SGD works best with a larger number",2,1,,Đủ 10^6 mẫu và max_iter = np.ceil(10**6/n)
+N02,True,answered,"Khi nào mới nên dùng cv=""prefit"" trong TunedThresholdClassifierCV?",Chỉ khi classifier đã được huấn luyện sẵn và muốn tìm ngưỡng tốt nhất trên một tập validation mới (không dùng chung dữ liệu train).,"Chỉ nên dùng cv=""prefit"" khi classifier được cung cấp đã được huấn luyện sẵn (fitted classifier) và bạn chỉ muốn tìm ngưỡng quyết định (decision threshold) tốt nhất bằng một tập validation mới [B:classification_threshold:002:001]. Khi đặt cv=""prefit"", việc cross-validation nội bộ sẽ bị bỏ qua và ngưỡng quyết định được tinh chỉnh trên dữ liệu truyền vào phương thức fit [B:classification_threshold:002:000].
+
+Lưu ý: phải cực kỳ cẩn thận khi dùng tùy chọn này — không bao giờ dùng cùng một tập dữ liệu để vừa huấn luyện classifier vừa tinh chỉnh ngưỡng quyết định vì nguy cơ overfitting; nếu hạn chế tài nguyên, có thể dùng một số thực cho cv để giới hạn ở một lần chia train-test nội bộ [B:classification_threshold:002:001].",B:classification_threshold:002:001 B:classification_threshold:002:000,"[B:classification_threshold:002:001] However, you should be extremely careful when using this option. You should never use
+the same data for training the classifier and tuning the decision threshold due to the
+risk of overfitting. Refer to the following example section for more details (cf.
+TunedThresholdClassifierCV_no_cv). If you have limited resources, consider using
+a float number for cv to limit to an internal single train-test split.
+
+The option cv=""prefit"" should only be used when the provided classifier was already
+trained,
+---
+[B:classification_threshold:002:000] ### Important notes regarding the internal cross-validation
+
+By default TunedThresholdClassifierCV uses a 5-fold
+stratified cross-validation to tune the decision threshold. The parameter cv allows to
+control the cross-validation strategy. It is possible to bypass cross-validation by
+setting cv=""prefit"" and providing a fitted classifier. In this case, the decision
+threshold is tuned on the data provided to the fit method.",2,"1,1",,"002:001 có câu cv=""prefit"" chỉ dùng khi classifier đã train; 002:000 hỗ trợ ý bỏ qua CV"
+N03,True,answered,"Trong học bán giám sát của scikit-learn, mẫu chưa có nhãn được đánh dấu bằng giá trị nào trong y?",Số nguyên -1.,"Trong học bán giám sát của scikit-learn, các mẫu chưa có nhãn (unlabeled) được đánh dấu bằng giá trị số nguyên -1 trong y. Cụ thể, khi huấn luyện mô hình bằng phương thức fit, cần gán một định danh cho các điểm chưa có nhãn cùng với dữ liệu đã có nhãn, và định danh mà implementation này sử dụng là giá trị nguyên -1. Lưu ý: với nhãn dạng chuỗi (string labels), dtype của y nên là object để có thể chứa cả chuỗi lẫn số nguyên [B:semi_supervised:000:001].",B:semi_supervised:000:001,"[B:semi_supervised:000:001] It is important to assign an identifier to unlabeled points along with the
+labeled data when training the model with the fit method. The
+identifier that this implementation uses is the integer value $-1$.
+Note that for string labels, the dtype of y should be object so that it
+can contain both strings and integers.
+
+Note:
+
+Semi-supervised algorithms need to make assumptions about the distribution
+of the dataset in order to achieve performance gains. See here
+for more details.",2,1,,
+N04,True,abstain,"Với MLP, nên chọn solver nào cho tập dữ liệu nhỏ và solver nào cho tập dữ liệu tương đối lớn?","Dữ liệu nhỏ: L-BFGS (hội tụ nhanh, nghiệm tốt hơn); dữ liệu tương đối lớn: Adam (rất bền).",Không đủ bằng chứng để trả lời.,,,0,,,Từ chối nhầm: lượt 2-3 tìm thấy neural_networks_supervised:004:002 nhưng context giữ chunk lượt 1 -> search_limit (lỗi dev số 1)
+N05,True,answered,Đặt weight_concentration_prior thấp thì trọng số các thành phần của mô hình hỗn hợp thay đổi ra sao?,"Mô hình dồn phần lớn trọng số vào vài thành phần, các thành phần còn lại có trọng số rất gần 0.","Khi đặt `weight_concentration_prior` (tham số concentration của `BayesianGaussianMixture`) ở giá trị thấp, mô hình sẽ dồn phần lớn trọng số vào một vài thành phần và đặt trọng số của các thành phần còn lại rất gần bằng không [B:mixture:001:002]. Ngược lại, giá trị concentration prior cao sẽ cho phép nhiều thành phần hơn cùng hoạt động trong hỗn hợp [B:mixture:001:002]. Giá trị của `weight_concentration_prior` có ảnh hưởng mạnh đến số thành phần hoạt động thực tế thu được [B:mixture:001:004]. Ngoài ra, với giá trị concentration weight prior lớn, trọng số trở nên đồng đều hơn khi loại prior là 'dirichlet_distribution', nhưng điều này không nhất thiết đúng với loại 'dirichlet_process' (mặc định) [B:mixture:001:004].",B:mixture:001:002 B:mixture:001:004,"[B:mixture:001:002] Due to its Bayesian nature, the variational algorithm needs more hyperparameters
+than expectation-maximization, the most important of these being the
+concentration parameter weight_concentration_prior. Specifying a low value
+for the concentration prior will make the model put most of the weight on a few
+components and set the remaining components' weights very close to zero. High
+values of the concentration prior will allow a larger number of components to
+be active in the mixture.
+---
+[B:mixture:001:004] The next figure compares the results obtained for the different types of the
+weight concentration prior (parameter weight_concentration_prior_type)
+for different values of weight_concentration_prior.
+Here, we can see the value of the weight_concentration_prior parameter
+has a strong impact on the effective number of active components obtained. We
+can also notice that large values for the concentration weight prior lead to
+more uniform weights when the type of prior is 'dirichlet_distribution' wh",2,"1,1",,001:004 hỗ trợ ý dirichlet_distribution/dirichlet_process
+N06,True,abstain,"Khi bật tham số memory để cache Pipeline, bước cuối cùng có được cache không?","Không, bước cuối không bao giờ được cache, kể cả khi nó là transformer.",Không đủ bằng chứng để trả lời.,,,0,,,"Evidence ở compose:002:000, không lần nào vào top-3 dense -> search_limit"
+N07,False,abstain,"Trong ví dụ công ty bảo hiểm, việc tinh chỉnh ngưỡng bằng TunedThresholdClassifierCV giúp tăng lợi nhuận bao nhiêu tiền?","classification_threshold:001 có nhắc ví dụ bảo hiểm và ngưỡng ~0.02 nhưng không có số tiền/lợi nhuận (không có 'profit', 'gain', 'revenue').",Không đủ bằng chứng để trả lời.,,,,,1,"Search 3 lần, không bịa số tiền"
+N08,False,abstain,Thư mục cache của Pipeline (tham số memory) có giới hạn dung lượng mặc định bao nhiêu?,"compose:002 chỉ nói memory là đường dẫn hoặc joblib.Memory và cách xóa bằng rmtree; không có giới hạn dung lượng ('size', 'limit', 'disk' không xuất hiện).",Không đủ bằng chứng để trả lời.,,,,,1,"Search 3 lần, không bịa dung lượng"

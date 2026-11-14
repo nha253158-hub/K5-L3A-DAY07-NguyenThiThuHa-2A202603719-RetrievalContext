@@ -1,0 +1,50 @@
+[
+ {
+  "method": "tfidf",
+  "n": 22,
+  "hit1": 8,
+  "hit3": 12,
+  "context": 11,
+  "median_ms": 1.5
+ },
+ {
+  "method": "dense",
+  "n": 22,
+  "hit1": 13,
+  "hit3": 16,
+  "context": 16,
+  "median_ms": null
+ },
+ {
+  "method": "dense+filter",
+  "n": 22,
+  "hit1": 13,
+  "hit3": 17,
+  "context": 16,
+  "median_ms": null
+ },
+ {
+  "method": "bm25",
+  "n": 22,
+  "hit1": 7,
+  "hit3": 15,
+  "context": 10,
+  "median_ms": null
+ },
+ {
+  "method": "hybrid",
+  "n": 22,
+  "hit1": 9,
+  "hit3": 17,
+  "context": 15,
+  "median_ms": null
+ },
+ {
+  "method": "hybrid+filter",
+  "n": 22,
+  "hit1": 10,
+  "hit3": 18,
+  "context": 16,
+  "median_ms": null
+ }
+]

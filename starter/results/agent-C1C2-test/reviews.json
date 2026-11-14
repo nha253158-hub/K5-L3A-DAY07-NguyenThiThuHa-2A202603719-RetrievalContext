@@ -1,0 +1,65 @@
+[
+ {
+  "query_id": "N01",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N02",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N04",
+  "note": "Đủ L-BFGS cho dữ liệu nhỏ, Adam cho dữ liệu lớn; lượt 2 đưa evidence lên đầu context (C1)",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N05",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "N06",
+  "note": "status=answered nhưng nội dung là từ chối (\"Không đủ bằng chứng\") kèm citation -> chấm 0 như từ chối; 2 citation đúng cho các ý phụ. Evidence compose:002:000 không được truy xuất",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "N07",
+  "note": "Bị ép answer sau 3 search, trả lời không đủ bằng chứng, citations rỗng",
+  "citation_support": [],
+  "abstention_correct": true
+ },
+ {
+  "query_id": "N08",
+  "note": "Như N07",
+  "citation_support": [],
+  "abstention_correct": true
+ }
+]

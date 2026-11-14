@@ -1,0 +1,1628 @@
+[
+ {
+  "status": "answered",
+  "answer": "Theo kinh nghiệm, SGD hội tụ sau khi quan sát khoảng 10^6 mẫu huấn luyện. Do đó, một ước lượng ban đầu hợp lý cho số vòng lặp là max_iter = np.ceil(10**6 / n), với n là kích thước tập huấn luyện [B:sgd:004:003].",
+  "citations": [
+   "B:sgd:004:003"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "SGD convergence number of training samples max_iter",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:sgd:004:003",
+      "text": "* Empirically, we found that SGD converges after observing\n  approximately $10^6$ training samples. Thus, a reasonable first guess\n  for the number of iterations is max_iter = np.ceil(10**6 / n),\n  where n is the size of the training set.\n\n* If you apply SGD to features extracted using PCA we found that\n  it is often wise to scale the feature values by some constant c\n  such that the average $L_2$ norm of the training data equals one.\n\n* We found that Averaged SGD works best with a larger number of features\n  and a higher eta0.",
+      "source_id": "sgd",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+      "page": "sgd:004",
+      "metadata": {
+       "heading_path": "Stochastic Gradient Descent > Tips on Practical Use",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+       "char_end": 1730,
+       "n_chars": 533,
+       "section_heading": "Tips on Practical Use",
+       "document_id": "sgd",
+       "unit_id": "sgd:004",
+       "char_start": 1197,
+       "config": "B",
+       "page": "sgd:004",
+       "guide_section": "Supervised learning",
+       "text_sha256": "2c31276f618a1963fa4844b1b920a72477e4af8eff4bd2b4df53db6d73c78f21"
+      },
+      "score": 0.936007022857666,
+      "rank": 1
+     },
+     {
+      "id": "B:sgd:001:000",
+      "text": "## Classification\n\nThe class SGDClassifier implements a plain stochastic gradient\ndescent learning routine which supports different loss functions and\npenalties for classification. Below is the decision boundary of a\nSGDClassifier trained with the hinge loss, equivalent to a linear SVM.\n\nAs other classifiers, SGD has to be fitted with two arrays: an array X\nof shape (n_samples, n_features) holding the training samples, and an\narray y of shape (n_samples,) holding the target values (class labels)\nfor the training samples:\n\n    >>> from sklearn.linear_model import SGDClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = SGDClassifier(loss=\"hinge\", penalty=\"l2\", max_iter=5)\n    >>> clf.fit(X, y)\n    SGDClassifier(max_iter=5)",
+      "source_id": "sgd",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+      "page": "sgd:001",
+      "metadata": {
+       "char_end": 754,
+       "n_chars": 754,
+       "guide_section": "Supervised learning",
+       "unit_id": "sgd:001",
+       "heading_path": "Stochastic Gradient Descent > Classification",
+       "config": "B",
+       "text_sha256": "06577b8bed1b3b86d37e0035de3dd2e988644688d340840ab92eb731efc080f9",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+       "char_start": 0,
+       "section_heading": "Classification",
+       "document_id": "sgd",
+       "page": "sgd:001"
+      },
+      "score": 0.8879436254501343,
+      "rank": 2
+     },
+     {
+      "id": "B:ensemble:001:002",
+      "text": "#### Usage\n\nMost of the parameters are unchanged from\nGradientBoostingClassifier and GradientBoostingRegressor.\nOne exception is the max_iter parameter that replaces n_estimators, and\ncontrols the number of iterations of the boosting process:\n\n  >>> from sklearn.ensemble import HistGradientBoostingClassifier\n  >>> from sklearn.datasets import make_hastie_10_2\n\n  >>> X, y = make_hastie_10_2(random_state=0)\n  >>> X_train, X_test = X[:2000], X[2000:]\n  >>> y_train, y_test = y[:2000], y[2000:]\n\n  >>> clf = HistGradientBoostingClassifier(max_iter=100).fit(X_train, y_train)\n  >>> clf.score(X_test, y_test)\n  0.8965",
+      "source_id": "ensemble",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+      "page": "ensemble:001",
+      "metadata": {
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/ensemble.rst",
+       "text_sha256": "8c3ff323111a68118e003e2fa23ff2aee4fdff34994a0cd490b49f9935413adc",
+       "section_heading": "Usage",
+       "unit_id": "ensemble:001",
+       "heading_path": "Ensembles: Gradient boosting, random forests, bagging, voting, stacking > Gradient-boosted trees > Histogram-Based Gradient Boosting",
+       "char_end": 1657,
+       "n_chars": 615,
+       "guide_section": "Supervised learning",
+       "page": "ensemble:001",
+       "document_id": "ensemble",
+       "config": "B",
+       "char_start": 1042
+      },
+      "score": 0.8825437426567078,
+      "rank": 3
+     }
+    ],
+    "context": "[B:sgd:004:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst | page sgd:004]\n* Empirically, we found that SGD converges after observing\n  approximately $10^6$ training samples. Thus, a reasonable first guess\n  for the number of iterations is max_iter = np.ceil(10**6 / n),\n  where n is the size of the training set.\n\n* If you apply SGD to features extracted using PCA we found that\n  it is often wise to scale the feature values by some constant c\n  such that the average $L_2$ norm of the training data equals one.\n\n* We found that Averaged SGD works best with a larger number of features\n  and a higher eta0.\n\n[B:sgd:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst | page sgd:001]\n## Classification\n\nThe class SGDClassifier implements a plain stochastic gradient\ndescent learning routine which supports different loss functions and\npenalties for classification. Below is the decision boundary of a\nSGDClassifier trained with the hinge loss, equivalent to a linear SVM.\n\nAs other classifiers, SGD has to be fitted with two arrays: an array X\nof shape (n_samples, n_features) holding the training samples, and an\narray y of shape (n_samples,) holding the target values (class labels)\nfor the training samples:\n\n    >>> from sklearn.linear_model import SGDClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = SGDClassifier(loss=\"hinge\", penalty=\"l2\", max_iter=5)\n    >>> clf.fit(X, y)\n    SGDClassifier(max_iter=5)",
+    "context_ids": [
+     "B:sgd:004:003",
+     "B:sgd:001:000"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "SGD converges 10^6 training samples max_iter first guess",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:sgd:004:003",
+      "text": "* Empirically, we found that SGD converges after observing\n  approximately $10^6$ training samples. Thus, a reasonable first guess\n  for the number of iterations is max_iter = np.ceil(10**6 / n),\n  where n is the size of the training set.\n\n* If you apply SGD to features extracted using PCA we found that\n  it is often wise to scale the feature values by some constant c\n  such that the average $L_2$ norm of the training data equals one.\n\n* We found that Averaged SGD works best with a larger number of features\n  and a higher eta0.",
+      "source_id": "sgd",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+      "page": "sgd:004",
+      "metadata": {
+       "section_heading": "Tips on Practical Use",
+       "config": "B",
+       "heading_path": "Stochastic Gradient Descent > Tips on Practical Use",
+       "n_chars": 533,
+       "document_id": "sgd",
+       "unit_id": "sgd:004",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+       "char_end": 1730,
+       "char_start": 1197,
+       "text_sha256": "2c31276f618a1963fa4844b1b920a72477e4af8eff4bd2b4df53db6d73c78f21",
+       "page": "sgd:004",
+       "guide_section": "Supervised learning"
+      },
+      "score": 0.9345681667327881,
+      "rank": 1
+     },
+     {
+      "id": "B:sgd:001:000",
+      "text": "## Classification\n\nThe class SGDClassifier implements a plain stochastic gradient\ndescent learning routine which supports different loss functions and\npenalties for classification. Below is the decision boundary of a\nSGDClassifier trained with the hinge loss, equivalent to a linear SVM.\n\nAs other classifiers, SGD has to be fitted with two arrays: an array X\nof shape (n_samples, n_features) holding the training samples, and an\narray y of shape (n_samples,) holding the target values (class labels)\nfor the training samples:\n\n    >>> from sklearn.linear_model import SGDClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = SGDClassifier(loss=\"hinge\", penalty=\"l2\", max_iter=5)\n    >>> clf.fit(X, y)\n    SGDClassifier(max_iter=5)",
+      "source_id": "sgd",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+      "page": "sgd:001",
+      "metadata": {
+       "char_end": 754,
+       "section_heading": "Classification",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+       "text_sha256": "06577b8bed1b3b86d37e0035de3dd2e988644688d340840ab92eb731efc080f9",
+       "guide_section": "Supervised learning",
+       "unit_id": "sgd:001",
+       "heading_path": "Stochastic Gradient Descent > Classification",
+       "document_id": "sgd",
+       "config": "B",
+       "page": "sgd:001",
+       "n_chars": 754,
+       "char_start": 0
+      },
+      "score": 0.8816530704498291,
+      "rank": 2
+     },
+     {
+      "id": "B:sgd:002:006",
+      "text": "\\min_{w, b} \\frac{\\nu}{2}\\Vert w \\Vert^2 + b\\nu + \\frac{1}{n} \\sum_{i=1}^n \\max(0, 1 - (\\langle w, x_i \\rangle + b)) \\, .\n\nThis is similar to the optimization problems studied in section\nsgd_mathematical_formulation with $y_i = 1, 1 \\leq i \\leq n$ and\n$\\alpha = \\nu$, $L$ being the hinge loss function and $R$\nbeing the $L_2$ norm. We just need to add the term $b\\nu$ in the\noptimization loop.\n\nAs SGDClassifier and SGDRegressor, SGDOneClassSVM\nsupports averaged SGD. Averaging can be enabled by setting average=True.",
+      "source_id": "sgd",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+      "page": "sgd:002",
+      "metadata": {
+       "config": "B",
+       "char_end": 3543,
+       "n_chars": 517,
+       "section_heading": "Online One-Class SVM",
+       "unit_id": "sgd:002",
+       "guide_section": "Supervised learning",
+       "heading_path": "Stochastic Gradient Descent > Regression",
+       "document_id": "sgd",
+       "page": "sgd:002",
+       "text_sha256": "241fbb5a9837106dd0fdc0b1e16bec52cfc7cbd2985b5193f84218eb17c315ac",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst",
+       "char_start": 3026
+      },
+      "score": 0.8794193863868713,
+      "rank": 3
+     }
+    ],
+    "context": "[B:sgd:004:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst | page sgd:004]\n* Empirically, we found that SGD converges after observing\n  approximately $10^6$ training samples. Thus, a reasonable first guess\n  for the number of iterations is max_iter = np.ceil(10**6 / n),\n  where n is the size of the training set.\n\n* If you apply SGD to features extracted using PCA we found that\n  it is often wise to scale the feature values by some constant c\n  such that the average $L_2$ norm of the training data equals one.\n\n* We found that Averaged SGD works best with a larger number of features\n  and a higher eta0.\n\n[B:sgd:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/sgd.rst | page sgd:001]\n## Classification\n\nThe class SGDClassifier implements a plain stochastic gradient\ndescent learning routine which supports different loss functions and\npenalties for classification. Below is the decision boundary of a\nSGDClassifier trained with the hinge loss, equivalent to a linear SVM.\n\nAs other classifiers, SGD has to be fitted with two arrays: an array X\nof shape (n_samples, n_features) holding the training samples, and an\narray y of shape (n_samples,) holding the target values (class labels)\nfor the training samples:\n\n    >>> from sklearn.linear_model import SGDClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = SGDClassifier(loss=\"hinge\", penalty=\"l2\", max_iter=5)\n    >>> clf.fit(X, y)\n    SGDClassifier(max_iter=5)",
+    "context_ids": [
+     "B:sgd:004:003",
+     "B:sgd:001:000"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N01",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 2,
+  "seconds": 7.92,
+  "tokens_in": 2660,
+  "tokens_out": 263,
+  "context_hit": true
+ },
+ {
+  "status": "answered",
+  "answer": "Chỉ nên dùng cv=\"prefit\" khi classifier được cung cấp đã được huấn luyện (fitted) từ trước, và bạn chỉ muốn tìm ngưỡng quyết định (decision threshold) tốt nhất bằng một tập validation mới [B:classification_threshold:002:001].\n\nCụ thể, tùy chọn này cho phép bỏ qua cross-validation: khi đặt cv=\"prefit\" và truyền vào một classifier đã fit, ngưỡng quyết định sẽ được tune trên chính dữ liệu được đưa vào phương thức fit [B:classification_threshold:002:000].\n\nLưu ý: phải cực kỳ cẩn thận khi dùng tùy chọn này — không bao giờ dùng cùng một dữ liệu để huấn luyện classifier và tune ngưỡng quyết định vì nguy cơ overfitting. Nếu hạn chế tài nguyên, có thể cân nhắc dùng một số thực cho cv để giới hạn ở một lần chia train-test nội bộ [B:classification_threshold:002:001].",
+  "citations": [
+   "B:classification_threshold:002:001",
+   "B:classification_threshold:002:000"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "TunedThresholdClassifierCV cv prefit",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:classification_threshold:002:001",
+      "text": "However, you should be extremely careful when using this option. You should never use\nthe same data for training the classifier and tuning the decision threshold due to the\nrisk of overfitting. Refer to the following example section for more details (cf.\nTunedThresholdClassifierCV_no_cv). If you have limited resources, consider using\na float number for cv to limit to an internal single train-test split.\n\nThe option cv=\"prefit\" should only be used when the provided classifier was already\ntrained, and you just want to find the best decision threshold using a new validation\nset.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:002",
+      "metadata": {
+       "unit_id": "classification_threshold:002",
+       "char_start": 426,
+       "char_end": 1008,
+       "document_id": "classification_threshold",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "page": "classification_threshold:002",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold > Important notes regarding the internal cross-validation",
+       "section_heading": "Important notes regarding the internal cross-validation",
+       "guide_section": "Model selection and evaluation",
+       "config": "B",
+       "text_sha256": "b11cc4ee05dc8aeb26d55536929a05dd997eecbcd93d856489767360ebb213b4",
+       "n_chars": 582
+      },
+      "score": 0.9186730980873108,
+      "rank": 1
+     },
+     {
+      "id": "B:classification_threshold:002:000",
+      "text": "### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:002",
+      "metadata": {
+       "unit_id": "classification_threshold:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "section_heading": "Important notes regarding the internal cross-validation",
+       "document_id": "classification_threshold",
+       "guide_section": "Model selection and evaluation",
+       "text_sha256": "7297117171f32493297abf1a2fd3efad417a004a644da992d4ac0be628097a45",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold > Important notes regarding the internal cross-validation",
+       "config": "B",
+       "n_chars": 424,
+       "char_start": 0,
+       "page": "classification_threshold:002",
+       "char_end": 424
+      },
+      "score": 0.9139825105667114,
+      "rank": 2
+     },
+     {
+      "id": "B:classification_threshold:001:000",
+      "text": "## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "char_start": 0,
+       "section_heading": "Post-tuning the decision threshold",
+       "config": "B",
+       "document_id": "classification_threshold",
+       "n_chars": 334,
+       "unit_id": "classification_threshold:001",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "page": "classification_threshold:001",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "guide_section": "Model selection and evaluation",
+       "char_end": 334,
+       "text_sha256": "0f2f0ce13b2de07aa320da4e326ac888325df2f3cfc3d4cc25edb63a3235197d"
+      },
+      "score": 0.8950943946838379,
+      "rank": 3
+     }
+    ],
+    "context": "[B:classification_threshold:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:002]\nHowever, you should be extremely careful when using this option. You should never use\nthe same data for training the classifier and tuning the decision threshold due to the\nrisk of overfitting. Refer to the following example section for more details (cf.\nTunedThresholdClassifierCV_no_cv). If you have limited resources, consider using\na float number for cv to limit to an internal single train-test split.\n\nThe option cv=\"prefit\" should only be used when the provided classifier was already\ntrained, and you just want to find the best decision threshold using a new validation\nset.\n\n[B:classification_threshold:002:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:002]\n### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.\n\n[B:classification_threshold:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\n## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+    "context_ids": [
+     "B:classification_threshold:002:001",
+     "B:classification_threshold:002:000",
+     "B:classification_threshold:001:000"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N02",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 1,
+  "seconds": 5.79,
+  "tokens_in": 1583,
+  "tokens_out": 422,
+  "context_hit": true
+ },
+ {
+  "status": "answered",
+  "answer": "Trong học bán giám sát của scikit-learn, các mẫu chưa có nhãn (unlabeled) được đánh dấu bằng giá trị số nguyên -1 trong y. Cụ thể, khi huấn luyện mô hình bằng phương thức fit, cần gán một định danh (identifier) cho các điểm chưa có nhãn cùng với dữ liệu đã có nhãn, và định danh mà implementation này sử dụng là giá trị nguyên -1. Lưu ý rằng với nhãn dạng chuỗi (string labels), dtype của y nên là object để có thể chứa cả chuỗi và số nguyên [B:semi_supervised:000:001].",
+  "citations": [
+   "B:semi_supervised:000:001"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "semi-supervised unlabeled samples marked in y",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:semi_supervised:000:000",
+      "text": "# Semi-supervised learning\n\nSemi-supervised learning is a situation\nin which in your training data some of the samples are not labeled. The\nsemi-supervised estimators in sklearn.semi_supervised are able to\nmake use of this additional unlabeled data to better capture the shape of\nthe underlying data distribution and generalize better to new samples.\nThese algorithms can perform well when we have a very small amount of\nlabeled points and a large amount of unlabeled points.\n\nUnlabeled entries in y",
+      "source_id": "semi_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+      "page": "semi_supervised:000",
+      "metadata": {
+       "heading_path": "Semi-supervised learning",
+       "section_heading": "Semi-supervised learning",
+       "char_end": 499,
+       "text_sha256": "d74f1972e99fd48f3fad5a4cf56087599ce4c5e672c8fbfcdd87026dc51193a3",
+       "document_id": "semi_supervised",
+       "char_start": 0,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+       "guide_section": "Supervised learning",
+       "page": "semi_supervised:000",
+       "n_chars": 499,
+       "config": "B",
+       "unit_id": "semi_supervised:000"
+      },
+      "score": 0.889277458190918,
+      "rank": 1
+     },
+     {
+      "id": "B:multiclass:005:002",
+      "text": "### Target format\n\nA valid representation of multilabel y is an either dense or sparse\nbinary matrix of shape (n_samples, n_classes). Each column\nrepresents a class. The 1's in each row denote the positive classes a\nsample has been labeled with. An example of a dense matrix y for 3\nsamples:\n\n  >>> y = np.array([[1, 0, 0, 1], [0, 0, 1, 1], [0, 0, 0, 0]])\n  >>> print(y)\n  [[1 0 0 1]\n   [0 0 1 1]\n   [0 0 0 0]]\n\nDense binary matrices can also be created using\nMultiLabelBinarizer. For more information,\nrefer to preprocessing_targets.\n\nAn example of the same y in sparse matrix form:\n\n  >>> y_sparse = sparse.csr_array(y)\n  >>> print(y_sparse)\n  <Compressed Sparse Row sparse array of dtype 'int64'\n    with 4 stored elements and shape (3, 4)>\n    Coords Values\n    (0, 0) 1\n    (0, 3) 1\n    (1, 2) 1\n    (1, 3) 1",
+      "source_id": "multiclass",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/multiclass.rst",
+      "page": "multiclass:005",
+      "metadata": {
+       "document_id": "multiclass",
+       "page": "multiclass:005",
+       "section_heading": "Target format",
+       "unit_id": "multiclass:005",
+       "guide_section": "Supervised learning",
+       "char_end": 1799,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/multiclass.rst",
+       "text_sha256": "6446b6e19b383f85a6ecc99873c15d2564a433d12c57e6d0a39d1404efea0374",
+       "n_chars": 813,
+       "char_start": 986,
+       "config": "B",
+       "heading_path": "Multiclass and multioutput algorithms > Multilabel classification"
+      },
+      "score": 0.8689211010932922,
+      "rank": 2
+     },
+     {
+      "id": "B:semi_supervised:000:001",
+      "text": "It is important to assign an identifier to unlabeled points along with the\nlabeled data when training the model with the fit method. The\nidentifier that this implementation uses is the integer value $-1$.\nNote that for string labels, the dtype of y should be object so that it\ncan contain both strings and integers.\n\nNote:\n\nSemi-supervised algorithms need to make assumptions about the distribution\nof the dataset in order to achieve performance gains. See here\nfor more details.",
+      "source_id": "semi_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+      "page": "semi_supervised:000",
+      "metadata": {
+       "char_start": 501,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+       "char_end": 980,
+       "config": "B",
+       "unit_id": "semi_supervised:000",
+       "document_id": "semi_supervised",
+       "heading_path": "Semi-supervised learning",
+       "section_heading": "Semi-supervised learning",
+       "n_chars": 479,
+       "guide_section": "Supervised learning",
+       "text_sha256": "d33199cc1d3a240a77356b85ee68ae103d6157e841147e38f8d3ae8d3647d952",
+       "page": "semi_supervised:000"
+      },
+      "score": 0.8682483434677124,
+      "rank": 3
+     }
+    ],
+    "context": "[B:semi_supervised:000:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst | page semi_supervised:000]\n# Semi-supervised learning\n\nSemi-supervised learning is a situation\nin which in your training data some of the samples are not labeled. The\nsemi-supervised estimators in sklearn.semi_supervised are able to\nmake use of this additional unlabeled data to better capture the shape of\nthe underlying data distribution and generalize better to new samples.\nThese algorithms can perform well when we have a very small amount of\nlabeled points and a large amount of unlabeled points.\n\nUnlabeled entries in y\n\n[B:multiclass:005:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/multiclass.rst | page multiclass:005]\n### Target format\n\nA valid representation of multilabel y is an either dense or sparse\nbinary matrix of shape (n_samples, n_classes). Each column\nrepresents a class. The 1's in each row denote the positive classes a\nsample has been labeled with. An example of a dense matrix y for 3\nsamples:\n\n  >>> y = np.array([[1, 0, 0, 1], [0, 0, 1, 1], [0, 0, 0, 0]])\n  >>> print(y)\n  [[1 0 0 1]\n   [0 0 1 1]\n   [0 0 0 0]]\n\nDense binary matrices can also be created using\nMultiLabelBinarizer. For more information,\nrefer to preprocessing_targets.\n\nAn example of the same y in sparse matrix form:\n\n  >>> y_sparse = sparse.csr_array(y)\n  >>> print(y_sparse)\n  <Compressed Sparse Row sparse array of dtype 'int64'\n    with 4 stored elements and shape (3, 4)>\n    Coords Values\n    (0, 0) 1\n    (0, 3) 1\n    (1, 2) 1\n    (1, 3) 1",
+    "context_ids": [
+     "B:semi_supervised:000:000",
+     "B:multiclass:005:002"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "unlabeled entries in y semi-supervised -1",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:semi_supervised:000:000",
+      "text": "# Semi-supervised learning\n\nSemi-supervised learning is a situation\nin which in your training data some of the samples are not labeled. The\nsemi-supervised estimators in sklearn.semi_supervised are able to\nmake use of this additional unlabeled data to better capture the shape of\nthe underlying data distribution and generalize better to new samples.\nThese algorithms can perform well when we have a very small amount of\nlabeled points and a large amount of unlabeled points.\n\nUnlabeled entries in y",
+      "source_id": "semi_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+      "page": "semi_supervised:000",
+      "metadata": {
+       "heading_path": "Semi-supervised learning",
+       "guide_section": "Supervised learning",
+       "char_end": 499,
+       "config": "B",
+       "text_sha256": "d74f1972e99fd48f3fad5a4cf56087599ce4c5e672c8fbfcdd87026dc51193a3",
+       "unit_id": "semi_supervised:000",
+       "page": "semi_supervised:000",
+       "char_start": 0,
+       "section_heading": "Semi-supervised learning",
+       "n_chars": 499,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+       "document_id": "semi_supervised"
+      },
+      "score": 0.8755056858062744,
+      "rank": 1
+     },
+     {
+      "id": "B:semi_supervised:000:001",
+      "text": "It is important to assign an identifier to unlabeled points along with the\nlabeled data when training the model with the fit method. The\nidentifier that this implementation uses is the integer value $-1$.\nNote that for string labels, the dtype of y should be object so that it\ncan contain both strings and integers.\n\nNote:\n\nSemi-supervised algorithms need to make assumptions about the distribution\nof the dataset in order to achieve performance gains. See here\nfor more details.",
+      "source_id": "semi_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+      "page": "semi_supervised:000",
+      "metadata": {
+       "char_start": 501,
+       "section_heading": "Semi-supervised learning",
+       "char_end": 980,
+       "heading_path": "Semi-supervised learning",
+       "guide_section": "Supervised learning",
+       "unit_id": "semi_supervised:000",
+       "config": "B",
+       "document_id": "semi_supervised",
+       "page": "semi_supervised:000",
+       "text_sha256": "d33199cc1d3a240a77356b85ee68ae103d6157e841147e38f8d3ae8d3647d952",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst",
+       "n_chars": 479
+      },
+      "score": 0.8711194396018982,
+      "rank": 2
+     },
+     {
+      "id": "B:model_evaluation:013:004",
+      "text": "The first [.9, .1] in y_proba denotes 90% probability that the first\nsample has label 0.  The log loss is non-negative.",
+      "source_id": "model_evaluation",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst",
+      "page": "model_evaluation:013",
+      "metadata": {
+       "page": "model_evaluation:013",
+       "text_sha256": "6171f7fe095b9e8a8225eb9f4800223e11acc288d736cbb12a65fc2a9d22e4bc",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst",
+       "guide_section": "Model selection and evaluation",
+       "document_id": "model_evaluation",
+       "char_end": 1950,
+       "heading_path": "Metrics and scoring: quantifying the quality of predictions > Classification metrics > Log loss",
+       "char_start": 1831,
+       "section_heading": "Log loss",
+       "config": "B",
+       "n_chars": 119,
+       "unit_id": "model_evaluation:013"
+      },
+      "score": 0.8593786954879761,
+      "rank": 3
+     }
+    ],
+    "context": "[B:semi_supervised:000:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst | page semi_supervised:000]\n# Semi-supervised learning\n\nSemi-supervised learning is a situation\nin which in your training data some of the samples are not labeled. The\nsemi-supervised estimators in sklearn.semi_supervised are able to\nmake use of this additional unlabeled data to better capture the shape of\nthe underlying data distribution and generalize better to new samples.\nThese algorithms can perform well when we have a very small amount of\nlabeled points and a large amount of unlabeled points.\n\nUnlabeled entries in y\n\n[B:semi_supervised:000:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/semi_supervised.rst | page semi_supervised:000]\nIt is important to assign an identifier to unlabeled points along with the\nlabeled data when training the model with the fit method. The\nidentifier that this implementation uses is the integer value $-1$.\nNote that for string labels, the dtype of y should be object so that it\ncan contain both strings and integers.\n\nNote:\n\nSemi-supervised algorithms need to make assumptions about the distribution\nof the dataset in order to achieve performance gains. See here\nfor more details.\n\n[B:model_evaluation:013:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/model_evaluation.rst | page model_evaluation:013]\nThe first [.9, .1] in y_proba denotes 90% probability that the first\nsample has label 0.  The log loss is non-negative.",
+    "context_ids": [
+     "B:semi_supervised:000:000",
+     "B:semi_supervised:000:001",
+     "B:model_evaluation:013:004"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N03",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 2,
+  "seconds": 8.41,
+  "tokens_in": 2697,
+  "tokens_out": 305,
+  "context_hit": true
+ },
+ {
+  "status": "answered",
+  "answer": "Với MLP:\n\n- Với tập dữ liệu nhỏ: nên chọn L-BFGS. Thực nghiệm cho thấy L-BFGS hội tụ nhanh hơn và cho lời giải tốt hơn trên tập dữ liệu nhỏ [B:neural_networks_supervised:004:002].\n- Với tập dữ liệu tương đối lớn: nên chọn Adam, vì nó rất mạnh mẽ (robust), thường hội tụ nhanh và cho hiệu năng khá tốt [B:neural_networks_supervised:004:002]. Ngoài ra, SGD với momentum hoặc nesterov's momentum có thể hoạt động tốt hơn hai thuật toán trên nếu learning rate được điều chỉnh đúng [B:neural_networks_supervised:004:002].",
+  "citations": [
+   "B:neural_networks_supervised:004:002"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "MLP solver small dataset large dataset recommendation",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:linear_model:018:002",
+      "text": "1. Select min_samples random samples from the original data and check\n   whether the set of data is valid (see is_data_valid).\n2. Fit a model to the random subset (estimator.fit) and check\n   whether the estimated model is valid (see is_model_valid).\n3. Classify all data as inliers or outliers by calculating the residuals\n   to the estimated model (estimator.predict(X) - y) - all data\n   samples with absolute residuals smaller than or equal to the\n   residual_threshold are considered as inliers.\n4. Save fitted model as best model if number of inlier samples is\n   maximal. In case the current estimated model has the same number of\n   inliers, it is only considered as the best model if it has better score.",
+      "source_id": "linear_model",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+      "page": "linear_model:018",
+      "metadata": {
+       "text_sha256": "a7df5582f07b847b9fa31845cf02619907040ce40479ecffa9f515ba83f507c2",
+       "config": "B",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+       "char_start": 815,
+       "document_id": "linear_model",
+       "heading_path": "Linear Models > Robustness regression: outliers and modeling errors > RANSAC: RANdom SAmple Consensus",
+       "n_chars": 713,
+       "section_heading": "RANSAC: RANdom SAmple Consensus",
+       "page": "linear_model:018",
+       "unit_id": "linear_model:018",
+       "char_end": 1528,
+       "guide_section": "Supervised learning"
+      },
+      "score": 0.8757045865058899,
+      "rank": 1
+     },
+     {
+      "id": "B:neural_networks_supervised:001:000",
+      "text": "## Classification\n\nClass MLPClassifier implements a multi-layer perceptron (MLP) algorithm\nthat trains using Backpropagation.\n\nMLP trains on two arrays: array X of size (n_samples, n_features), which holds\nthe training samples represented as floating point feature vectors; and array\ny of size (n_samples,), which holds the target values (class labels) for the\ntraining samples:\n\n    >>> from sklearn.neural_network import MLPClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = MLPClassifier(solver='lbfgs', alpha=1e-5,\n    ...                     hidden_layer_sizes=(5, 2), random_state=1)\n    ...\n    >>> clf.fit(X, y)\n    MLPClassifier(alpha=1e-05, hidden_layer_sizes=(5, 2), random_state=1,\n                  solver='lbfgs')",
+      "source_id": "neural_networks_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+      "page": "neural_networks_supervised:001",
+      "metadata": {
+       "heading_path": "Neural network models (supervised) > Classification",
+       "unit_id": "neural_networks_supervised:001",
+       "guide_section": "Supervised learning",
+       "page": "neural_networks_supervised:001",
+       "text_sha256": "760fcc026851d6a28a21e1065c410837e2f256d8ba090ad3b3f70ff6d5d79930",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+       "document_id": "neural_networks_supervised",
+       "char_start": 0,
+       "char_end": 753,
+       "section_heading": "Classification",
+       "n_chars": 753,
+       "config": "B"
+      },
+      "score": 0.8697627186775208,
+      "rank": 2
+     },
+     {
+      "id": "B:tree:004:003",
+      "text": "* Use min_samples_split or min_samples_leaf to ensure that multiple\n  samples inform every decision in the tree, by controlling which splits will\n  be considered. A very small number will usually mean the tree will overfit,\n  whereas a large number will prevent the tree from learning the data. Try\n  min_samples_leaf=5 as an initial value. If the sample size varies\n  greatly, a float number can be used as percentage in these two parameters.\n  While min_samples_split can create arbitrarily small leaves,\n  min_samples_leaf guarantees that each leaf has a minimum size, avoiding\n  low-variance, over-fit leaf nodes in regression problems.  For\n  classification with few classes, min_samples_leaf=1 is often the best\n  choice.",
+      "source_id": "tree",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst",
+      "page": "tree:004",
+      "metadata": {
+       "document_id": "tree",
+       "guide_section": "Supervised learning",
+       "text_sha256": "37c28946945a8f37530d6168a0de2c8379f5ae8d16a9b5edfc0fa3a0917588a7",
+       "n_chars": 727,
+       "char_start": 1039,
+       "page": "tree:004",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/tree.rst",
+       "config": "B",
+       "heading_path": "Decision Trees > Tips on practical use",
+       "section_heading": "Tips on practical use",
+       "unit_id": "tree:004",
+       "char_end": 1766
+      },
+      "score": 0.8686961531639099,
+      "rank": 3
+     }
+    ],
+    "context": "[B:linear_model:018:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst | page linear_model:018]\n1. Select min_samples random samples from the original data and check\n   whether the set of data is valid (see is_data_valid).\n2. Fit a model to the random subset (estimator.fit) and check\n   whether the estimated model is valid (see is_model_valid).\n3. Classify all data as inliers or outliers by calculating the residuals\n   to the estimated model (estimator.predict(X) - y) - all data\n   samples with absolute residuals smaller than or equal to the\n   residual_threshold are considered as inliers.\n4. Save fitted model as best model if number of inlier samples is\n   maximal. In case the current estimated model has the same number of\n   inliers, it is only considered as the best model if it has better score.\n\n[B:neural_networks_supervised:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst | page neural_networks_supervised:001]\n## Classification\n\nClass MLPClassifier implements a multi-layer perceptron (MLP) algorithm\nthat trains using Backpropagation.\n\nMLP trains on two arrays: array X of size (n_samples, n_features), which holds\nthe training samples represented as floating point feature vectors; and array\ny of size (n_samples,), which holds the target values (class labels) for the\ntraining samples:\n\n    >>> from sklearn.neural_network import MLPClassifier\n    >>> X = [[0., 0.], [1., 1.]]\n    >>> y = [0, 1]\n    >>> clf = MLPClassifier(solver='lbfgs', alpha=1e-5,\n    ...                     hidden_layer_sizes=(5, 2), random_state=1)\n    ...\n    >>> clf.fit(X, y)\n    MLPClassifier(alpha=1e-05, hidden_layer_sizes=(5, 2), random_state=1,\n                  solver='lbfgs')",
+    "context_ids": [
+     "B:linear_model:018:002",
+     "B:neural_networks_supervised:001:000"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "MLP solver lbfgs adam sgd small datasets large datasets",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:linear_model:013:004",
+      "text": "The \"lbfgs\" solver is used by default for its robustness. For\nn_samples >> n_features, \"newton-cholesky\" is a good choice and can reach high\nprecision (tiny tol values). For large datasets\nthe \"saga\" solver is usually faster (than \"lbfgs\"), in particular for low precision\n(high tol).\nFor large dataset, you may also consider using SGDClassifier\nwith loss=\"log_loss\", which might be even faster but requires more tuning.\n\nReferences\n\nThe following references explain some of the solvers.\n\n* For \"lbfgs\", see documentation of\n  SciPy minimize\n\n* \"liblinear\"",
+      "source_id": "linear_model",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+      "page": "linear_model:013",
+      "metadata": {
+       "char_start": 1801,
+       "unit_id": "linear_model:013",
+       "config": "B",
+       "page": "linear_model:013",
+       "heading_path": "Linear Models > Logistic regression > Solvers",
+       "section_heading": "Solvers",
+       "document_id": "linear_model",
+       "text_sha256": "df8ea6c52bbc6b42eda114fd47c61cef7c16f295c5219887aa9782ed29917337",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst",
+       "n_chars": 556,
+       "char_end": 2357,
+       "guide_section": "Supervised learning"
+      },
+      "score": 0.8899130821228027,
+      "rank": 1
+     },
+     {
+      "id": "B:neural_networks_supervised:002:003",
+      "text": "Adam is similar to SGD in a sense that it is a stochastic optimizer, but it can\nautomatically adjust the amount to update parameters based on adaptive estimates\nof lower-order moments.\n\nWith SGD or Adam, training supports online and mini-batch learning.\n\nL-BFGS is a solver that approximates the Hessian matrix which represents the\nsecond-order partial derivative of a function. Further it approximates the\ninverse of the Hessian matrix to perform parameter updates. The implementation\nuses the Scipy version of L-BFGS.",
+      "source_id": "neural_networks_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+      "page": "neural_networks_supervised:002",
+      "metadata": {
+       "char_start": 1320,
+       "section_heading": "Algorithms",
+       "document_id": "neural_networks_supervised",
+       "unit_id": "neural_networks_supervised:002",
+       "char_end": 1839,
+       "text_sha256": "3863590a90a385dc21cedd442136b67a010646eba2211006241f264b5d475b6d",
+       "config": "B",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+       "n_chars": 519,
+       "page": "neural_networks_supervised:002",
+       "guide_section": "Supervised learning",
+       "heading_path": "Neural network models (supervised) > Regression"
+      },
+      "score": 0.8890266418457031,
+      "rank": 2
+     },
+     {
+      "id": "B:neural_networks_supervised:004:002",
+      "text": "* Empirically, we observed that L-BFGS converges faster and\n  with better solutions on small datasets. For relatively large\n  datasets, however, Adam is very robust. It usually converges\n  quickly and gives pretty good performance. SGD with momentum or\n  nesterov's momentum, on the other hand, can perform better than\n  those two algorithms if learning rate is correctly tuned.",
+      "source_id": "neural_networks_supervised",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+      "page": "neural_networks_supervised:004",
+      "metadata": {
+       "char_start": 1024,
+       "page": "neural_networks_supervised:004",
+       "guide_section": "Supervised learning",
+       "config": "B",
+       "char_end": 1402,
+       "document_id": "neural_networks_supervised",
+       "unit_id": "neural_networks_supervised:004",
+       "n_chars": 378,
+       "heading_path": "Neural network models (supervised) > Tips on Practical Use",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst",
+       "section_heading": "Tips on Practical Use",
+       "text_sha256": "1713e18be1dd162a2127a1e93dcefd53cff234794fe71d368d999e31dc2951b1"
+      },
+      "score": 0.8876852989196777,
+      "rank": 3
+     }
+    ],
+    "context": "[B:linear_model:013:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/linear_model.rst | page linear_model:013]\nThe \"lbfgs\" solver is used by default for its robustness. For\nn_samples >> n_features, \"newton-cholesky\" is a good choice and can reach high\nprecision (tiny tol values). For large datasets\nthe \"saga\" solver is usually faster (than \"lbfgs\"), in particular for low precision\n(high tol).\nFor large dataset, you may also consider using SGDClassifier\nwith loss=\"log_loss\", which might be even faster but requires more tuning.\n\nReferences\n\nThe following references explain some of the solvers.\n\n* For \"lbfgs\", see documentation of\n  SciPy minimize\n\n* \"liblinear\"\n\n[B:neural_networks_supervised:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst | page neural_networks_supervised:002]\nAdam is similar to SGD in a sense that it is a stochastic optimizer, but it can\nautomatically adjust the amount to update parameters based on adaptive estimates\nof lower-order moments.\n\nWith SGD or Adam, training supports online and mini-batch learning.\n\nL-BFGS is a solver that approximates the Hessian matrix which represents the\nsecond-order partial derivative of a function. Further it approximates the\ninverse of the Hessian matrix to perform parameter updates. The implementation\nuses the Scipy version of L-BFGS.\n\n[B:neural_networks_supervised:004:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neural_networks_supervised.rst | page neural_networks_supervised:004]\n* Empirically, we observed that L-BFGS converges faster and\n  with better solutions on small datasets. For relatively large\n  datasets, however, Adam is very robust. It usually converges\n  quickly and gives pretty good performance. SGD with momentum or\n  nesterov's momentum, on the other hand, can perform better than\n  those two algorithms if learning rate is correctly tuned.",
+    "context_ids": [
+     "B:linear_model:013:004",
+     "B:neural_networks_supervised:002:003",
+     "B:neural_networks_supervised:004:002"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N04",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 2,
+  "seconds": 9.27,
+  "tokens_in": 2790,
+  "tokens_out": 377,
+  "context_hit": true
+ },
+ {
+  "status": "answered",
+  "answer": "Khi đặt `weight_concentration_prior` thấp, mô hình sẽ dồn phần lớn trọng số vào một vài thành phần và đặt trọng số của các thành phần còn lại rất gần bằng 0 [B:mixture:001:002]. Ngược lại, giá trị cao của concentration prior cho phép nhiều thành phần hơn cùng hoạt động trong hỗn hợp [B:mixture:001:002]. Giá trị của tham số này có ảnh hưởng mạnh đến số thành phần \"hoạt động\" thực tế thu được [B:mixture:001:004].",
+  "citations": [
+   "B:mixture:001:002",
+   "B:mixture:001:004"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "weight_concentration_prior BayesianGaussianMixture weights",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:mixture:001:006",
+      "text": "On the following figure we are fitting a dataset not well-depicted by a\nGaussian mixture. Adjusting the weight_concentration_prior, parameter of the\nBayesianGaussianMixture controls the number of components used to fit\nthis data. We also present on the last two plots a random sampling generated\nfrom the two resulting mixtures.\n\nPros and cons of variational inference with BayesianGaussianMixture\n\nPros",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "unit_id": "mixture:001",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+       "guide_section": "Unsupervised learning",
+       "document_id": "mixture",
+       "config": "B",
+       "n_chars": 403,
+       "char_end": 3794,
+       "text_sha256": "98ab029a9675176ad5e24559c9d48b4395e60cecbf05e9ab774f5a4ce24cfa81",
+       "page": "mixture:001",
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "section_heading": "Variational Bayesian Gaussian Mixture",
+       "char_start": 3391
+      },
+      "score": 0.917563796043396,
+      "rank": 1
+     },
+     {
+      "id": "B:mixture:001:002",
+      "text": "Due to its Bayesian nature, the variational algorithm needs more hyperparameters\nthan expectation-maximization, the most important of these being the\nconcentration parameter weight_concentration_prior. Specifying a low value\nfor the concentration prior will make the model put most of the weight on a few\ncomponents and set the remaining components' weights very close to zero. High\nvalues of the concentration prior will allow a larger number of components to\nbe active in the mixture.",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "char_end": 1503,
+       "n_chars": 486,
+       "page": "mixture:001",
+       "section_heading": "Variational Bayesian Gaussian Mixture",
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "config": "B",
+       "char_start": 1017,
+       "unit_id": "mixture:001",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+       "guide_section": "Unsupervised learning",
+       "document_id": "mixture",
+       "text_sha256": "77ef427934bda066fc2f08695bd7b7ce680e8d3fd78deb236712d8fb0cf863e5"
+      },
+      "score": 0.8908610343933105,
+      "rank": 2
+     },
+     {
+      "id": "B:mixture:001:004",
+      "text": "The next figure compares the results obtained for the different types of the\nweight concentration prior (parameter weight_concentration_prior_type)\nfor different values of weight_concentration_prior.\nHere, we can see the value of the weight_concentration_prior parameter\nhas a strong impact on the effective number of active components obtained. We\ncan also notice that large values for the concentration weight prior lead to\nmore uniform weights when the type of prior is 'dirichlet_distribution' while\nthis is not necessarily the case for the 'dirichlet_process' type (used by\ndefault).",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "config": "B",
+       "page": "mixture:001",
+       "document_id": "mixture",
+       "unit_id": "mixture:001",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+       "guide_section": "Unsupervised learning",
+       "text_sha256": "b9039ebb2a19cda97cfba540de286091b94ddbdbc9e0e16fdb2463dee1e1274f",
+       "n_chars": 588,
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "char_end": 2588,
+       "char_start": 2000,
+       "section_heading": "Variational Bayesian Gaussian Mixture"
+      },
+      "score": 0.8841956853866577,
+      "rank": 3
+     }
+    ],
+    "context": "[B:mixture:001:006 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nOn the following figure we are fitting a dataset not well-depicted by a\nGaussian mixture. Adjusting the weight_concentration_prior, parameter of the\nBayesianGaussianMixture controls the number of components used to fit\nthis data. We also present on the last two plots a random sampling generated\nfrom the two resulting mixtures.\n\nPros and cons of variational inference with BayesianGaussianMixture\n\nPros\n\n[B:mixture:001:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nDue to its Bayesian nature, the variational algorithm needs more hyperparameters\nthan expectation-maximization, the most important of these being the\nconcentration parameter weight_concentration_prior. Specifying a low value\nfor the concentration prior will make the model put most of the weight on a few\ncomponents and set the remaining components' weights very close to zero. High\nvalues of the concentration prior will allow a larger number of components to\nbe active in the mixture.\n\n[B:mixture:001:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nThe next figure compares the results obtained for the different types of the\nweight concentration prior (parameter weight_concentration_prior_type)\nfor different values of weight_concentration_prior.\nHere, we can see the value of the weight_concentration_prior parameter\nhas a strong impact on the effective number of active components obtained. We\ncan also notice that large values for the concentration weight prior lead to\nmore uniform weights when the type of prior is 'dirichlet_distribution' while\nthis is not necessarily the case for the 'dirichlet_process' type (used by\ndefault).",
+    "context_ids": [
+     "B:mixture:001:006",
+     "B:mixture:001:002",
+     "B:mixture:001:004"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "weight_concentration_prior low value weights few components",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:mixture:001:004",
+      "text": "The next figure compares the results obtained for the different types of the\nweight concentration prior (parameter weight_concentration_prior_type)\nfor different values of weight_concentration_prior.\nHere, we can see the value of the weight_concentration_prior parameter\nhas a strong impact on the effective number of active components obtained. We\ncan also notice that large values for the concentration weight prior lead to\nmore uniform weights when the type of prior is 'dirichlet_distribution' while\nthis is not necessarily the case for the 'dirichlet_process' type (used by\ndefault).",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "text_sha256": "b9039ebb2a19cda97cfba540de286091b94ddbdbc9e0e16fdb2463dee1e1274f",
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "n_chars": 588,
+       "unit_id": "mixture:001",
+       "guide_section": "Unsupervised learning",
+       "page": "mixture:001",
+       "char_start": 2000,
+       "config": "B",
+       "section_heading": "Variational Bayesian Gaussian Mixture",
+       "char_end": 2588,
+       "document_id": "mixture",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst"
+      },
+      "score": 0.8877142667770386,
+      "rank": 1
+     },
+     {
+      "id": "B:mixture:001:002",
+      "text": "Due to its Bayesian nature, the variational algorithm needs more hyperparameters\nthan expectation-maximization, the most important of these being the\nconcentration parameter weight_concentration_prior. Specifying a low value\nfor the concentration prior will make the model put most of the weight on a few\ncomponents and set the remaining components' weights very close to zero. High\nvalues of the concentration prior will allow a larger number of components to\nbe active in the mixture.",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "guide_section": "Unsupervised learning",
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "config": "B",
+       "unit_id": "mixture:001",
+       "document_id": "mixture",
+       "char_start": 1017,
+       "section_heading": "Variational Bayesian Gaussian Mixture",
+       "text_sha256": "77ef427934bda066fc2f08695bd7b7ce680e8d3fd78deb236712d8fb0cf863e5",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+       "n_chars": 486,
+       "char_end": 1503,
+       "page": "mixture:001"
+      },
+      "score": 0.8812063932418823,
+      "rank": 2
+     },
+     {
+      "id": "B:mixture:001:007",
+      "text": ":Automatic selection: When weight_concentration_prior is small enough and\n  n_components is larger than what is found necessary by the model, the\n  Variational Bayesian mixture model has a natural tendency to set some mixture\n  weights values close to zero. This makes it possible to let the model choose\n  a suitable number of effective components automatically. Only an upper bound\n  of this number needs to be provided. Note however that the \"ideal\" number of\n  active components is very application specific and is typically ill-defined\n  in a data exploration setting.",
+      "source_id": "mixture",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+      "page": "mixture:001",
+      "metadata": {
+       "document_id": "mixture",
+       "unit_id": "mixture:001",
+       "n_chars": 573,
+       "text_sha256": "8ce0b0e03f4d74870dae1712158b1a93a62998510278acbf555e2371afe20b57",
+       "page": "mixture:001",
+       "section_heading": "Variational Bayesian Gaussian Mixture",
+       "config": "B",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst",
+       "heading_path": "Gaussian mixture models > Variational Bayesian Gaussian Mixture",
+       "guide_section": "Unsupervised learning",
+       "char_end": 4369,
+       "char_start": 3796
+      },
+      "score": 0.8731896877288818,
+      "rank": 3
+     }
+    ],
+    "context": "[B:mixture:001:004 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nThe next figure compares the results obtained for the different types of the\nweight concentration prior (parameter weight_concentration_prior_type)\nfor different values of weight_concentration_prior.\nHere, we can see the value of the weight_concentration_prior parameter\nhas a strong impact on the effective number of active components obtained. We\ncan also notice that large values for the concentration weight prior lead to\nmore uniform weights when the type of prior is 'dirichlet_distribution' while\nthis is not necessarily the case for the 'dirichlet_process' type (used by\ndefault).\n\n[B:mixture:001:002 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nDue to its Bayesian nature, the variational algorithm needs more hyperparameters\nthan expectation-maximization, the most important of these being the\nconcentration parameter weight_concentration_prior. Specifying a low value\nfor the concentration prior will make the model put most of the weight on a few\ncomponents and set the remaining components' weights very close to zero. High\nvalues of the concentration prior will allow a larger number of components to\nbe active in the mixture.\n\n[B:mixture:001:006 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/mixture.rst | page mixture:001]\nOn the following figure we are fitting a dataset not well-depicted by a\nGaussian mixture. Adjusting the weight_concentration_prior, parameter of the\nBayesianGaussianMixture controls the number of components used to fit\nthis data. We also present on the last two plots a random sampling generated\nfrom the two resulting mixtures.\n\nPros and cons of variational inference with BayesianGaussianMixture\n\nPros",
+    "context_ids": [
+     "B:mixture:001:004",
+     "B:mixture:001:002",
+     "B:mixture:001:006"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N05",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 2,
+  "seconds": 8.84,
+  "tokens_in": 2679,
+  "tokens_out": 296,
+  "context_hit": true
+ },
+ {
+  "status": "answered",
+  "answer": "Không đủ bằng chứng để trả lời. Context chỉ nêu rằng tham số memory cần thiết để cache các transformer (transformers) [B:compose:002:001], và việc bật caching sẽ kích hoạt clone các transformer trước khi fit [B:compose:002:003], nhưng không nói rõ bước cuối cùng (final estimator) có được cache hay không.",
+  "citations": [
+   "B:compose:002:001",
+   "B:compose:002:003"
+  ],
+  "events": [
+   {
+    "event": "search",
+    "query": "Pipeline memory caching final step",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:003",
+      "text": "Enabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "unit_id": "compose:002",
+       "config": "B",
+       "text_sha256": "f45e873ece6c63c91cc1a227c3a9a2d133c82b6ca0d957975ab8ae991b8f74bd",
+       "page": "compose:002",
+       "n_chars": 858,
+       "char_end": 2666,
+       "char_start": 1808,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "document_id": "compose",
+       "guide_section": "Dataset transformations"
+      },
+      "score": 0.8959226608276367,
+      "rank": 1
+     },
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "char_end": 1234,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "unit_id": "compose:002",
+       "char_start": 521,
+       "config": "B",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "page": "compose:002",
+       "n_chars": 713,
+       "document_id": "compose",
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "guide_section": "Dataset transformations"
+      },
+      "score": 0.8937720656394958,
+      "rank": 2
+     },
+     {
+      "id": "B:compose:002:002",
+      "text": "Side effect of caching transformers\n\nUsing a Pipeline without cache enabled, it is possible to\ninspect the original instance such as:\n\n    >>> from sklearn.datasets import load_digits\n    >>> X_digits, y_digits = load_digits(return_X_y=True)\n    >>> pca1 = PCA(n_components=10)\n    >>> svm1 = SVC()\n    >>> pipe = Pipeline([('reduce_dim', pca1), ('clf', svm1)])\n    >>> pipe.fit(X_digits, y_digits)\n    Pipeline(steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> # The pca instance can be inspected directly\n    >>> pca1.components_.shape\n    (10, 64)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "guide_section": "Dataset transformations",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "config": "B",
+       "text_sha256": "91acbc9fe8393a36e8ed5f2becc85ebfb26ef78a7ef1fa060eecb64a595cd883",
+       "document_id": "compose",
+       "char_end": 1806,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "unit_id": "compose:002",
+       "char_start": 1236,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "n_chars": 570,
+       "page": "compose:002"
+      },
+      "score": 0.8828562498092651,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nEnabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)\n\n[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+    "context_ids": [
+     "B:compose:002:003",
+     "B:compose:002:001"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "Pipeline memory caching final estimator not cached",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:003",
+      "text": "Enabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "n_chars": 858,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "text_sha256": "f45e873ece6c63c91cc1a227c3a9a2d133c82b6ca0d957975ab8ae991b8f74bd",
+       "page": "compose:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "guide_section": "Dataset transformations",
+       "char_end": 2666,
+       "document_id": "compose",
+       "unit_id": "compose:002",
+       "config": "B",
+       "char_start": 1808,
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation"
+      },
+      "score": 0.9044415950775146,
+      "rank": 1
+     },
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "config": "B",
+       "unit_id": "compose:002",
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "page": "compose:002",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "char_start": 521,
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "char_end": 1234,
+       "document_id": "compose",
+       "n_chars": 713,
+       "guide_section": "Dataset transformations"
+      },
+      "score": 0.890041708946228,
+      "rank": 2
+     },
+     {
+      "id": "B:compose:002:002",
+      "text": "Side effect of caching transformers\n\nUsing a Pipeline without cache enabled, it is possible to\ninspect the original instance such as:\n\n    >>> from sklearn.datasets import load_digits\n    >>> X_digits, y_digits = load_digits(return_X_y=True)\n    >>> pca1 = PCA(n_components=10)\n    >>> svm1 = SVC()\n    >>> pipe = Pipeline([('reduce_dim', pca1), ('clf', svm1)])\n    >>> pipe.fit(X_digits, y_digits)\n    Pipeline(steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> # The pca instance can be inspected directly\n    >>> pca1.components_.shape\n    (10, 64)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "page": "compose:002",
+       "document_id": "compose",
+       "char_end": 1806,
+       "guide_section": "Dataset transformations",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "text_sha256": "91acbc9fe8393a36e8ed5f2becc85ebfb26ef78a7ef1fa060eecb64a595cd883",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "char_start": 1236,
+       "config": "B",
+       "n_chars": 570,
+       "unit_id": "compose:002",
+       "section_heading": "Caching transformers: avoid repeated computation"
+      },
+      "score": 0.879957914352417,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nEnabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)\n\n[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+    "context_ids": [
+     "B:compose:002:003",
+     "B:compose:002:001"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "Pipeline memory caching final step not cached",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:003",
+      "text": "Enabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "guide_section": "Dataset transformations",
+       "page": "compose:002",
+       "config": "B",
+       "n_chars": 858,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "text_sha256": "f45e873ece6c63c91cc1a227c3a9a2d133c82b6ca0d957975ab8ae991b8f74bd",
+       "char_start": 1808,
+       "unit_id": "compose:002",
+       "char_end": 2666,
+       "document_id": "compose"
+      },
+      "score": 0.8968243598937988,
+      "rank": 1
+     },
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "n_chars": 713,
+       "char_start": 521,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "unit_id": "compose:002",
+       "char_end": 1234,
+       "page": "compose:002",
+       "guide_section": "Dataset transformations",
+       "document_id": "compose",
+       "config": "B"
+      },
+      "score": 0.882175087928772,
+      "rank": 2
+     },
+     {
+      "id": "B:compose:002:002",
+      "text": "Side effect of caching transformers\n\nUsing a Pipeline without cache enabled, it is possible to\ninspect the original instance such as:\n\n    >>> from sklearn.datasets import load_digits\n    >>> X_digits, y_digits = load_digits(return_X_y=True)\n    >>> pca1 = PCA(n_components=10)\n    >>> svm1 = SVC()\n    >>> pipe = Pipeline([('reduce_dim', pca1), ('clf', svm1)])\n    >>> pipe.fit(X_digits, y_digits)\n    Pipeline(steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> # The pca instance can be inspected directly\n    >>> pca1.components_.shape\n    (10, 64)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "text_sha256": "91acbc9fe8393a36e8ed5f2becc85ebfb26ef78a7ef1fa060eecb64a595cd883",
+       "guide_section": "Dataset transformations",
+       "page": "compose:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "document_id": "compose",
+       "char_end": 1806,
+       "n_chars": 570,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "unit_id": "compose:002",
+       "config": "B",
+       "char_start": 1236
+      },
+      "score": 0.8762906789779663,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nEnabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)\n\n[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+    "context_ids": [
+     "B:compose:002:003",
+     "B:compose:002:001"
+    ]
+   },
+   {
+    "event": "answer"
+   }
+  ],
+  "query_id": "N06",
+  "answerable": true,
+  "filter": null,
+  "n_searches": 3,
+  "seconds": 12.89,
+  "tokens_in": 3897,
+  "tokens_out": 390,
+  "context_hit": false
+ },
+ {
+  "status": "abstain",
+  "answer": "Không đủ bằng chứng để trả lời.",
+  "citations": [],
+  "events": [
+   {
+    "event": "search",
+    "query": "TunedThresholdClassifierCV insurance company profit threshold tuning",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:classification_threshold:001:001",
+      "text": "The following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "char_end": 995,
+       "guide_section": "Model selection and evaluation",
+       "section_heading": "Post-tuning the decision threshold",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "n_chars": 659,
+       "unit_id": "classification_threshold:001",
+       "text_sha256": "c27a890e19d8d7d3d87cf6d18ff7221ee5fedc7f5e01f5096006ab7586f0e70a",
+       "char_start": 336,
+       "config": "B",
+       "page": "classification_threshold:001",
+       "document_id": "classification_threshold",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold"
+      },
+      "score": 0.8914522528648376,
+      "rank": 1
+     },
+     {
+      "id": "B:classification_threshold:002:000",
+      "text": "### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:002",
+      "metadata": {
+       "document_id": "classification_threshold",
+       "config": "B",
+       "page": "classification_threshold:002",
+       "text_sha256": "7297117171f32493297abf1a2fd3efad417a004a644da992d4ac0be628097a45",
+       "unit_id": "classification_threshold:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "guide_section": "Model selection and evaluation",
+       "char_end": 424,
+       "section_heading": "Important notes regarding the internal cross-validation",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold > Important notes regarding the internal cross-validation",
+       "char_start": 0,
+       "n_chars": 424
+      },
+      "score": 0.8855350017547607,
+      "rank": 2
+     },
+     {
+      "id": "B:classification_threshold:001:000",
+      "text": "## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "char_start": 0,
+       "char_end": 334,
+       "config": "B",
+       "document_id": "classification_threshold",
+       "text_sha256": "0f2f0ce13b2de07aa320da4e326ac888325df2f3cfc3d4cc25edb63a3235197d",
+       "n_chars": 334,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "guide_section": "Model selection and evaluation",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "unit_id": "classification_threshold:001",
+       "section_heading": "Post-tuning the decision threshold",
+       "page": "classification_threshold:001"
+      },
+      "score": 0.8818555474281311,
+      "rank": 3
+     }
+    ],
+    "context": "[B:classification_threshold:001:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\nThe following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).\n\n[B:classification_threshold:002:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:002]\n### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.\n\n[B:classification_threshold:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\n## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+    "context_ids": [
+     "B:classification_threshold:001:001",
+     "B:classification_threshold:002:000",
+     "B:classification_threshold:001:000"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "insurance company profit gain tuned threshold amount",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:classification_threshold:001:001",
+      "text": "The following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "config": "B",
+       "n_chars": 659,
+       "document_id": "classification_threshold",
+       "char_end": 995,
+       "page": "classification_threshold:001",
+       "char_start": 336,
+       "section_heading": "Post-tuning the decision threshold",
+       "text_sha256": "c27a890e19d8d7d3d87cf6d18ff7221ee5fedc7f5e01f5096006ab7586f0e70a",
+       "guide_section": "Model selection and evaluation",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "unit_id": "classification_threshold:001",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst"
+      },
+      "score": 0.8609911203384399,
+      "rank": 1
+     },
+     {
+      "id": "B:classification_threshold:002:000",
+      "text": "### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:002",
+      "metadata": {
+       "guide_section": "Model selection and evaluation",
+       "n_chars": 424,
+       "char_start": 0,
+       "config": "B",
+       "char_end": 424,
+       "section_heading": "Important notes regarding the internal cross-validation",
+       "text_sha256": "7297117171f32493297abf1a2fd3efad417a004a644da992d4ac0be628097a45",
+       "unit_id": "classification_threshold:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "page": "classification_threshold:002",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold > Important notes regarding the internal cross-validation",
+       "document_id": "classification_threshold"
+      },
+      "score": 0.8285398483276367,
+      "rank": 2
+     },
+     {
+      "id": "B:classification_threshold:001:000",
+      "text": "## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "char_end": 334,
+       "document_id": "classification_threshold",
+       "n_chars": 334,
+       "text_sha256": "0f2f0ce13b2de07aa320da4e326ac888325df2f3cfc3d4cc25edb63a3235197d",
+       "section_heading": "Post-tuning the decision threshold",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "page": "classification_threshold:001",
+       "config": "B",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "guide_section": "Model selection and evaluation",
+       "char_start": 0,
+       "unit_id": "classification_threshold:001"
+      },
+      "score": 0.8237701058387756,
+      "rank": 3
+     }
+    ],
+    "context": "[B:classification_threshold:001:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\nThe following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).\n\n[B:classification_threshold:002:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:002]\n### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.\n\n[B:classification_threshold:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\n## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+    "context_ids": [
+     "B:classification_threshold:001:001",
+     "B:classification_threshold:002:000",
+     "B:classification_threshold:001:000"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "insurance company profit gain tuned threshold amount dollars",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:classification_threshold:001:001",
+      "text": "The following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "guide_section": "Model selection and evaluation",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "page": "classification_threshold:001",
+       "config": "B",
+       "text_sha256": "c27a890e19d8d7d3d87cf6d18ff7221ee5fedc7f5e01f5096006ab7586f0e70a",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "section_heading": "Post-tuning the decision threshold",
+       "n_chars": 659,
+       "char_end": 995,
+       "document_id": "classification_threshold",
+       "unit_id": "classification_threshold:001",
+       "char_start": 336
+      },
+      "score": 0.8563100695610046,
+      "rank": 1
+     },
+     {
+      "id": "B:classification_threshold:002:000",
+      "text": "### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:002",
+      "metadata": {
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold > Important notes regarding the internal cross-validation",
+       "n_chars": 424,
+       "section_heading": "Important notes regarding the internal cross-validation",
+       "config": "B",
+       "text_sha256": "7297117171f32493297abf1a2fd3efad417a004a644da992d4ac0be628097a45",
+       "char_start": 0,
+       "unit_id": "classification_threshold:002",
+       "document_id": "classification_threshold",
+       "guide_section": "Model selection and evaluation",
+       "char_end": 424,
+       "page": "classification_threshold:002",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst"
+      },
+      "score": 0.82061368227005,
+      "rank": 2
+     },
+     {
+      "id": "B:classification_threshold:001:000",
+      "text": "## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+      "source_id": "classification_threshold",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+      "page": "classification_threshold:001",
+      "metadata": {
+       "guide_section": "Model selection and evaluation",
+       "config": "B",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst",
+       "char_end": 334,
+       "section_heading": "Post-tuning the decision threshold",
+       "unit_id": "classification_threshold:001",
+       "heading_path": "Tuning the decision threshold for class prediction > Post-tuning the decision threshold",
+       "char_start": 0,
+       "text_sha256": "0f2f0ce13b2de07aa320da4e326ac888325df2f3cfc3d4cc25edb63a3235197d",
+       "n_chars": 334,
+       "document_id": "classification_threshold",
+       "page": "classification_threshold:001"
+      },
+      "score": 0.8165213465690613,
+      "rank": 3
+     }
+    ],
+    "context": "[B:classification_threshold:001:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\nThe following image illustrates the tuning of the decision threshold for a gradient\nboosting classifier. While the vanilla and tuned classifiers provide the same\npredict_proba outputs and thus the same Receiver Operating Characteristic (ROC)\nand Precision-Recall curves, the class label predictions differ because of the tuned\ndecision threshold. The vanilla classifier predicts the class of interest for a\nconditional probability greater than 0.5 while the tuned classifier predicts the class\nof interest for a very low probability (around 0.02). This decision threshold optimizes\na utility metric defined by the business (in this case an insurance company).\n\n[B:classification_threshold:002:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:002]\n### Important notes regarding the internal cross-validation\n\nBy default TunedThresholdClassifierCV uses a 5-fold\nstratified cross-validation to tune the decision threshold. The parameter cv allows to\ncontrol the cross-validation strategy. It is possible to bypass cross-validation by\nsetting cv=\"prefit\" and providing a fitted classifier. In this case, the decision\nthreshold is tuned on the data provided to the fit method.\n\n[B:classification_threshold:001:000 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/classification_threshold.rst | page classification_threshold:001]\n## Post-tuning the decision threshold\n\nOne solution to address the problem stated in the introduction is to tune the decision\nthreshold of the classifier once the model has been trained. The\nTunedThresholdClassifierCV tunes this threshold using\nan internal cross-validation. The optimum threshold is chosen to maximize a given\nmetric.",
+    "context_ids": [
+     "B:classification_threshold:001:001",
+     "B:classification_threshold:002:000",
+     "B:classification_threshold:001:000"
+    ]
+   },
+   {
+    "event": "invalid_or_missing_citations"
+   }
+  ],
+  "query_id": "N07",
+  "answerable": false,
+  "filter": null,
+  "n_searches": 3,
+  "seconds": 11.17,
+  "tokens_in": 3755,
+  "tokens_out": 360,
+  "context_hit": null
+ },
+ {
+  "status": "abstain",
+  "answer": "Không đủ bằng chứng để trả lời.",
+  "citations": [],
+  "events": [
+   {
+    "event": "search",
+    "query": "Pipeline memory caching joblib",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "guide_section": "Dataset transformations",
+       "char_start": 521,
+       "config": "B",
+       "n_chars": 713,
+       "unit_id": "compose:002",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "page": "compose:002",
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "char_end": 1234,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "document_id": "compose"
+      },
+      "score": 0.9124363660812378,
+      "rank": 1
+     },
+     {
+      "id": "B:compose:002:003",
+      "text": "Enabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "config": "B",
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "unit_id": "compose:002",
+       "page": "compose:002",
+       "document_id": "compose",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "n_chars": 858,
+       "guide_section": "Dataset transformations",
+       "char_end": 2666,
+       "char_start": 1808,
+       "text_sha256": "f45e873ece6c63c91cc1a227c3a9a2d133c82b6ca0d957975ab8ae991b8f74bd"
+      },
+      "score": 0.8865858316421509,
+      "rank": 2
+     },
+     {
+      "id": "B:compose:002:002",
+      "text": "Side effect of caching transformers\n\nUsing a Pipeline without cache enabled, it is possible to\ninspect the original instance such as:\n\n    >>> from sklearn.datasets import load_digits\n    >>> X_digits, y_digits = load_digits(return_X_y=True)\n    >>> pca1 = PCA(n_components=10)\n    >>> svm1 = SVC()\n    >>> pipe = Pipeline([('reduce_dim', pca1), ('clf', svm1)])\n    >>> pipe.fit(X_digits, y_digits)\n    Pipeline(steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> # The pca instance can be inspected directly\n    >>> pca1.components_.shape\n    (10, 64)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "unit_id": "compose:002",
+       "char_end": 1806,
+       "char_start": 1236,
+       "config": "B",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "document_id": "compose",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "page": "compose:002",
+       "n_chars": 570,
+       "text_sha256": "91acbc9fe8393a36e8ed5f2becc85ebfb26ef78a7ef1fa060eecb64a595cd883",
+       "guide_section": "Dataset transformations"
+      },
+      "score": 0.8801569938659668,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)\n\n[B:compose:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nEnabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+    "context_ids": [
+     "B:compose:002:001",
+     "B:compose:002:003"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "joblib.Memory cache size limit bytes",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "guide_section": "Dataset transformations",
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "unit_id": "compose:002",
+       "char_end": 1234,
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "n_chars": 713,
+       "page": "compose:002",
+       "config": "B",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "document_id": "compose",
+       "char_start": 521
+      },
+      "score": 0.8758058547973633,
+      "rank": 1
+     },
+     {
+      "id": "B:svm:004:005",
+      "text": "* Kernel cache size: For SVC, SVR, NuSVC and\n  NuSVR, the size of the kernel cache has a strong impact on run\n  times for larger problems.  If you have enough RAM available, it is\n  recommended to set cache_size to a higher value than the default of\n  200(MB), such as 500(MB) or 1000(MB).\n\n* Setting C: C is 1 by default and it's a reasonable default\n  choice.  If you have a lot of noisy observations you should decrease it:\n  decreasing C corresponds to more regularization.",
+      "source_id": "svm",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst",
+      "page": "svm:004",
+      "metadata": {
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst",
+       "heading_path": "Support Vector Machines > Density estimation, novelty detection",
+       "guide_section": "Supervised learning",
+       "document_id": "svm",
+       "char_start": 1897,
+       "page": "svm:004",
+       "n_chars": 477,
+       "section_heading": "Tips on Practical Use",
+       "unit_id": "svm:004",
+       "char_end": 2374,
+       "text_sha256": "e4a61c171c684b422b156e91a829cdbb16ea3e7967e148251e0e859400d9e7fb",
+       "config": "B"
+      },
+      "score": 0.8559197187423706,
+      "rank": 2
+     },
+     {
+      "id": "B:neighbors:005:013",
+      "text": "memory\n  As leaf_size increases, the memory required to store a tree structure\n  decreases.  This is especially important in the case of ball tree, which\n  stores a $D$-dimensional centroid for each node.  The required\n  storage space for BallTree is approximately 1 / leaf_size times\n  the size of the training set.\n\nleaf_size is not referenced for brute force queries.\n\nValid Metrics for Nearest Neighbor Algorithms",
+      "source_id": "neighbors",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst",
+      "page": "neighbors:005",
+      "metadata": {
+       "heading_path": "Nearest Neighbors > Nearest Neighbor Algorithms > Ball Tree",
+       "char_start": 6259,
+       "section_heading": "Ball Tree",
+       "page": "neighbors:005",
+       "document_id": "neighbors",
+       "char_end": 6676,
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst",
+       "unit_id": "neighbors:005",
+       "guide_section": "Supervised learning",
+       "text_sha256": "353c5edf3018ce03ad9831036c6a3828415577e041861981315dabaedd710a31",
+       "n_chars": 417,
+       "config": "B"
+      },
+      "score": 0.8532921075820923,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)\n\n[B:svm:004:005 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/svm.rst | page svm:004]\n* Kernel cache size: For SVC, SVR, NuSVC and\n  NuSVR, the size of the kernel cache has a strong impact on run\n  times for larger problems.  If you have enough RAM available, it is\n  recommended to set cache_size to a higher value than the default of\n  200(MB), such as 500(MB) or 1000(MB).\n\n* Setting C: C is 1 by default and it's a reasonable default\n  choice.  If you have a lot of noisy observations you should decrease it:\n  decreasing C corresponds to more regularization.\n\n[B:neighbors:005:013 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/neighbors.rst | page neighbors:005]\nmemory\n  As leaf_size increases, the memory required to store a tree structure\n  decreases.  This is especially important in the case of ball tree, which\n  stores a $D$-dimensional centroid for each node.  The required\n  storage space for BallTree is approximately 1 / leaf_size times\n  the size of the training set.\n\nleaf_size is not referenced for brute force queries.\n\nValid Metrics for Nearest Neighbor Algorithms",
+    "context_ids": [
+     "B:compose:002:001",
+     "B:svm:004:005",
+     "B:neighbors:005:013"
+    ]
+   },
+   {
+    "event": "search",
+    "query": "Pipeline memory cache directory size limit",
+    "filter": null,
+    "results": [
+     {
+      "id": "B:compose:002:003",
+      "text": "Enabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "page": "compose:002",
+       "n_chars": 858,
+       "text_sha256": "f45e873ece6c63c91cc1a227c3a9a2d133c82b6ca0d957975ab8ae991b8f74bd",
+       "document_id": "compose",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "guide_section": "Dataset transformations",
+       "char_start": 1808,
+       "char_end": 2666,
+       "config": "B",
+       "unit_id": "compose:002"
+      },
+      "score": 0.8709160685539246,
+      "rank": 1
+     },
+     {
+      "id": "B:compose:002:001",
+      "text": "The parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "guide_section": "Dataset transformations",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "char_end": 1234,
+       "text_sha256": "03e9e28406af3e76fe8a2c2df286aa6ffdc95e41f857aedaaec430149329632f",
+       "page": "compose:002",
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "char_start": 521,
+       "config": "B",
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "n_chars": 713,
+       "document_id": "compose",
+       "unit_id": "compose:002"
+      },
+      "score": 0.8705227375030518,
+      "rank": 2
+     },
+     {
+      "id": "B:compose:002:002",
+      "text": "Side effect of caching transformers\n\nUsing a Pipeline without cache enabled, it is possible to\ninspect the original instance such as:\n\n    >>> from sklearn.datasets import load_digits\n    >>> X_digits, y_digits = load_digits(return_X_y=True)\n    >>> pca1 = PCA(n_components=10)\n    >>> svm1 = SVC()\n    >>> pipe = Pipeline([('reduce_dim', pca1), ('clf', svm1)])\n    >>> pipe.fit(X_digits, y_digits)\n    Pipeline(steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> # The pca instance can be inspected directly\n    >>> pca1.components_.shape\n    (10, 64)",
+      "source_id": "compose",
+      "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+      "page": "compose:002",
+      "metadata": {
+       "section_heading": "Caching transformers: avoid repeated computation",
+       "char_end": 1806,
+       "guide_section": "Dataset transformations",
+       "source": "https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst",
+       "text_sha256": "91acbc9fe8393a36e8ed5f2becc85ebfb26ef78a7ef1fa060eecb64a595cd883",
+       "unit_id": "compose:002",
+       "document_id": "compose",
+       "config": "B",
+       "n_chars": 570,
+       "heading_path": "Pipelines and composite estimators > Pipeline: chaining estimators > Caching transformers: avoid repeated computation",
+       "char_start": 1236,
+       "page": "compose:002"
+      },
+      "score": 0.8569265007972717,
+      "rank": 3
+     }
+    ],
+    "context": "[B:compose:002:003 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nEnabling caching triggers a clone of the transformers before fitting.\nTherefore, the transformer instance given to the pipeline cannot be\ninspected directly.\nIn the following example, accessing the PCA\ninstance pca2 will raise an AttributeError since pca2 will be an\nunfitted transformer.\nInstead, use the attribute named_steps to inspect estimators within\nthe pipeline:\n\n    >>> cachedir = mkdtemp()\n    >>> pca2 = PCA(n_components=10)\n    >>> svm2 = SVC()\n    >>> cached_pipe = Pipeline([('reduce_dim', pca2), ('clf', svm2)],\n    ...                        memory=cachedir)\n    >>> cached_pipe.fit(X_digits, y_digits)\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA(n_components=10)), ('clf', SVC())])\n    >>> cached_pipe.named_steps['reduce_dim'].components_.shape\n    (10, 64)\n    >>> # Remove the cache directory\n    >>> rmtree(cachedir)\n\n[B:compose:002:001 | https://github.com/scikit-learn/scikit-learn/blob/1.9.1/doc/modules/compose.rst | page compose:002]\nThe parameter memory is needed in order to cache the transformers.\nmemory can be either a string containing the directory where to cache the\ntransformers or a joblib.Memory\nobject:\n\n    >>> from tempfile import mkdtemp\n    >>> from shutil import rmtree\n    >>> from sklearn.decomposition import PCA\n    >>> from sklearn.svm import SVC\n    >>> from sklearn.pipeline import Pipeline\n    >>> estimators = [('reduce_dim', PCA()), ('clf', SVC())]\n    >>> cachedir = mkdtemp()\n    >>> pipe = Pipeline(estimators, memory=cachedir)\n    >>> pipe\n    Pipeline(memory=...,\n             steps=[('reduce_dim', PCA()), ('clf', SVC())])\n    >>> # Clear the cache directory when you don't need it anymore\n    >>> rmtree(cachedir)",
+    "context_ids": [
+     "B:compose:002:003",
+     "B:compose:002:001"
+    ]
+   },
+   {
+    "event": "invalid_or_missing_citations"
+   }
+  ],
+  "query_id": "N08",
+  "answerable": false,
+  "filter": null,
+  "n_searches": 3,
+  "seconds": 12.55,
+  "tokens_in": 3950,
+  "tokens_out": 417,
+  "context_hit": null
+ }
+]

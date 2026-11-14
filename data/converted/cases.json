@@ -1,0 +1,162 @@
+[
+ {
+  "id": "D01",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D02",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D03",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D04",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D05",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D06",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D07",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D08",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D09",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D10",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D11",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D12",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D13",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D14",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D15",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "D16",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T01",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T02",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T03",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T04",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T05",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "T06",
+  "split": "dev",
+  "answerable": true
+ },
+ {
+  "id": "N01",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "N02",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "N03",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "N04",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "N05",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "N06",
+  "split": "test",
+  "answerable": true
+ },
+ {
+  "id": "D17",
+  "split": "dev",
+  "answerable": false
+ },
+ {
+  "id": "D18",
+  "split": "dev",
+  "answerable": false
+ },
+ {
+  "id": "N07",
+  "split": "test",
+  "answerable": false
+ },
+ {
+  "id": "N08",
+  "split": "test",
+  "answerable": false
+ }
+]

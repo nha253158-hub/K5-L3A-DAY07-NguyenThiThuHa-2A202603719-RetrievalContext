@@ -1,0 +1,341 @@
+﻿query_id,answerable,status,question,expected_or_reason,answer,citations,cited_text,answer_grade,citation_support,abstention_correct,note
+D01,True,answered,"Chi phí suy luận (inference) của một cây quyết định phụ thuộc vào yếu tố nào, và có phụ thuộc vào chiến lược chọn splitter không?","Không phụ thuộc splitter; chỉ phụ thuộc độ sâu của cây, O(depth), xấp xỉ O(log n_samples) với cây gần cân bằng.","Chi phí suy luận (inference) của một cây quyết định **không phụ thuộc vào chiến lược chọn splitter** (dù là ""best"" hay ""random""). Nó chỉ phụ thuộc vào **độ sâu của cây (tree depth)**, với độ phức tạp $\mathcal{O}(\text{depth})$ [B:tree:003:004].
+
+Trong bảng độ phức tạp worst-case cho cây nhị phân cân bằng, cả hai splitter ""best"" và ""random"" đều có cùng total inference cost là $\mathcal{O}(\log(n_{samples}))$ [B:tree:003:000].
+
+Giải thích: trong một cây nhị phân gần cân bằng, mỗi lần split chia đôi dữ liệu, và số lần chia đôi tăng theo độ sâu dưới dạng lũy thừa của hai. Nếu quá trình này tiếp tục cho đến khi mỗi mẫu nằm riêng trong một lá, độ sâu thu được là $\mathcal{O}(\log(n_{samples}))$ [B:tree:003:004].",B:tree:003:004 B:tree:003:000,"[B:tree:003:004] Inference cost is independent of the splitter strategy. It depends only on the
+tree depth, $\mathcal{O}(\text{depth})$. In an approximately balanced
+binary tree, each split halves the data, and then the number of such halvings
+grows with the depth as powers of two. If this process continues until each
+sample is isolated in its own leaf, the resulting depth is
+$\mathcal{O}(\log(n_{samples}))$.
+---
+[B:tree:003:000] ## Complexity
+
+The following table shows the worst-case complexity estimates for a balanced
+binary tree:
+
+| Splitter | Total training cost                                                  | Total inference cost                   |
+
+| ""best""   | $\mathcal{O}(n_{features} \, n^2_{samples} \log(n_{samples}))$ | $\mathcal{O}(\log(n_{samples}))$ |
+
+| ""random"" | $\mathcal{O}(n_{features} \, n^2_{samples})$                   | $\mathcal{O}(\log(n_{samples}))$ |
+
+In general, the training cost to constru",2,"1,1",,
+D02,True,answered,Tại sao Silhouette Coefficient có thể đánh giá thấp các cụm dựa trên mật độ như kết quả của DBSCAN?,Chỉ số này thường cao hơn với cụm lồi (convex) so với các khái niệm cụm khác như cụm dựa trên mật độ của DBSCAN.,"Silhouette Coefficient có thể đánh giá thấp các cụm dựa trên mật độ như kết quả của DBSCAN vì điểm này nói chung cao hơn đối với các cụm lồi (convex clusters) so với các khái niệm cụm khác, chẳng hạn như cụm dựa trên mật độ như những cụm thu được qua DBSCAN [B:clustering:019:002].",B:clustering:019:002,"[B:clustering:019:002] Advantages:
+
+- The score is bounded between -1 for incorrect clustering and +1 for highly
+  dense clustering. Scores around zero indicate overlapping clusters.
+
+- The score is higher when clusters are dense and well separated, which
+  relates to a standard concept of a cluster.
+
+Drawbacks:
+
+- The Silhouette Coefficient is generally higher for convex clusters than
+  other concepts of clusters, such as density based clusters like those
+  obtained through DBSCAN.
+
+References",2,1,,
+D03,True,answered,Khi nào việc co giãn từng mẫu về chuẩn đơn vị (unit norm) là hữu ích?,Khi dùng dạng toàn phương như tích vô hướng hoặc kernel bất kỳ để đo độ tương đồng giữa các cặp mẫu.,Việc co giãn từng mẫu về chuẩn đơn vị (unit norm) là hữu ích nếu bạn dự định sử dụng một dạng bậc hai (quadratic form) như tích vô hướng (dot-product) hoặc bất kỳ kernel nào khác để đo độ tương đồng giữa các cặp mẫu [B:preprocessing:006:000]. Giả định này là nền tảng của Mô hình Không gian Vector (Vector Space Model) thường được dùng trong các ngữ cảnh phân loại và gom nhóm văn bản [B:preprocessing:006:000].,B:preprocessing:006:000,"[B:preprocessing:006:000] ## Normalization
+
+Normalization is the process of scaling individual samples to have
+unit norm. This process can be useful if you plan to use a quadratic form
+such as the dot-product or any other kernel to quantify the similarity
+of any pair of samples.
+
+This assumption is the base of the Vector Space Model often used in text
+classification and clustering contexts.
+
+The function normalize provides a quick and easy way to perform this
+operation on a single array-like dataset, either using the l1,",2,1,,
+D04,True,answered,Vì sao không nên xáo trộn dữ liệu trước khi cross-validation nếu các mẫu là bài báo được sắp xếp theo thời gian đăng?,Xáo trộn sẽ dẫn tới mô hình overfit và điểm validation bị thổi phồng vì kiểm tra trên các mẫu giống mẫu train (gần nhau về thời gian).,"Không nên xáo trộn vì các mẫu bài báo sắp xếp theo thời gian đăng không phải là i.i.d. (không độc lập và phân phối giống nhau). Khi đó, xáo trộn dữ liệu nhiều khả năng dẫn đến một mô hình bị overfit và điểm validation bị thổi phồng: mô hình sẽ được kiểm tra trên các mẫu có tính tương đồng một cách nhân tạo (gần nhau về thời gian) với các mẫu huấn luyện [B:cross_validation:007:000].
+
+Lưu ý rằng xáo trộn chỉ thực sự cần thiết khi thứ tự dữ liệu không tùy ý (ví dụ các mẫu cùng nhãn nằm liền nhau) [B:cross_validation:007:000]. Với dữ liệu chuỗi thời gian, do có tự tương quan giữa các quan sát gần nhau về thời gian, các kỹ thuật cross-validation cổ điển như KFold và ShuffleSplit (giả định mẫu i.i.d.) sẽ tạo ra tương quan không hợp lý giữa tập train và test, cho ước lượng sai về generalization error; vì vậy nên đánh giá trên các quan sát ""tương lai"" ít giống dữ liệu huấn luyện nhất, chẳng hạn dùng TimeSeriesSplit [B:cross_validation:006:003].",B:cross_validation:007:000 B:cross_validation:006:003,"[B:cross_validation:007:000] ## A note on shuffling
+
+If the data ordering is not arbitrary (e.g. samples with the same class label
+are contiguous), shuffling it first may be essential to get a meaningful
+cross-validation result. However, the opposite may be true if the samples are not
+independently and identically distributed. For example, if samples correspond
+to news articles, and are ordered by their time of publication, then shuffling
+the data will likely lead to a model that is overfit and an inflated validation
+score:
+---
+[B:cross_validation:006:003] ### Cross validation of time series data
+
+Time series data is characterized by the correlation between observations
+that are near in time (autocorrelation). However, classical
+cross-validation techniques such as KFold and
+ShuffleSplit assume the samples are independent and
+identically distributed, and would result in unreasonable correlation
+between training and testing instances (yielding poor estimates of
+generalization error) on time series data. Therefore, it is very important
+to evaluate ou",2,"1,1",,
+D05,True,answered,Tham số class_weight của SVC xử lý bài toán các lớp mất cân bằng như thế nào?,class_weight là dict {class_label: value} với value > 0; nó đặt tham số C của lớp đó thành C * value.,"Trong SVC, khi dữ liệu mất cân bằng (ví dụ nhiều mẫu dương và ít mẫu âm), có thể đặt class_weight='balanced' và/hoặc thử các giá trị tham số phạt C khác nhau [B:svm:004:009].
+
+Về cơ chế: để dành nhiều trọng số hơn cho một số lớp hoặc một số mẫu riêng lẻ, có thể dùng các tham số class_weight và sample_weight [B:svm:003:000]. SVC (nhưng không phải NuSVC) triển khai tham số class_weight trong phương thức fit. Nó là một dictionary dạng {class_label : value}, trong đó value là một số thực dấu phẩy động > 0, đặt tham số C của lớp class_label thành C * value [B:svm:003:000].",B:svm:004:009 B:svm:003:000,"[B:svm:004:009] * In SVC, if the data is unbalanced (e.g. many
+  positive and few negative), set class_weight='balanced' and/or try
+  different penalty parameters C.
+---
+[B:svm:003:000] ### Unbalanced problems
+
+In problems where it is desired to give more importance to certain
+classes or certain individual samples, the parameters class_weight and
+sample_weight can be used.
+
+SVC (but not NuSVC) implements the parameter
+class_weight in the fit method. It's a dictionary of the form
+{class_label : value}, where value is a floating point number > 0
+that sets the parameter C of class class_label to C * value.
+The figure below illustrates the decision boundary of an unbalanced problem",2,"1,1",,
+D06,True,abstain,Biến thể Naive Bayes nào đặc biệt phù hợp với tập dữ liệu mất cân bằng?,"Complement Naive Bayes (ComplementNB), một điều chỉnh của Multinomial NB, dùng thống kê từ phần bù của mỗi lớp.",Không đủ bằng chứng để trả lời.,,,0,,,
+D07,True,answered,Balanced accuracy được tính như thế nào trong trường hợp phân loại nhị phân?,Bằng trung bình cộng của sensitivity (true positive rate) và specificity (true negative rate).,"Trong trường hợp phân loại nhị phân, balanced accuracy bằng trung bình cộng của sensitivity (true positive rate) và specificity (true negative rate), hay chính là diện tích dưới đường cong ROC với dự đoán nhị phân thay vì điểm số [B:model_evaluation:007:001].
+
+Công thức:
+
+balanced-accuracy = (1/2) * ( TP/(TP + FN) + TN/(TN + FP) ) [B:model_evaluation:007:001]
+
+Nếu bộ phân loại hoạt động tốt như nhau trên cả hai lớp, giá trị này rút gọn thành accuracy thông thường (số dự đoán đúng chia cho tổng số dự đoán) [B:model_evaluation:007:001].",B:model_evaluation:007:001,"[B:model_evaluation:007:001] In the binary case, balanced accuracy is equal to the arithmetic mean of
+sensitivity
+(true positive rate) and specificity (true negative
+rate), or the area under the ROC curve with binary predictions rather than
+scores:
+
+Math:
+
+    \texttt{balanced-accuracy} = \frac{1}{2}\left( \frac{TP}{TP + FN} + \frac{TN}{TN + FP}\right )
+
+If the classifier performs equally well on either class, this term reduces to
+the conventional accuracy (i.e., the number of correct predictions divided by
+the total number",2,1,,
+D08,True,answered,Isolation Forest nhận biết điểm bất thường dựa trên độ dài đường đi trong các cây ngẫu nhiên như thế nào?,Phân hoạch ngẫu nhiên tạo ra đường đi ngắn hơn rõ rệt cho điểm bất thường; độ dài đường đi trung bình trên rừng là thước đo mức bình thường.,"Isolation Forest 'cô lập' các quan sát bằng cách chọn ngẫu nhiên một đặc trưng rồi chọn ngẫu nhiên một giá trị split giữa giá trị lớn nhất và nhỏ nhất của đặc trưng đó [B:outlier_detection:003:000]. Vì việc phân hoạch đệ quy có thể biểu diễn bằng cấu trúc cây, số lần split cần để cô lập một mẫu tương đương với độ dài đường đi từ nút gốc đến nút kết thúc [B:outlier_detection:003:000]. Độ dài đường đi này, được lấy trung bình trên cả rừng cây ngẫu nhiên, chính là thước đo tính ""bình thường"" và là decision function [B:outlier_detection:003:001]. Việc phân hoạch ngẫu nhiên tạo ra các đường đi ngắn hơn rõ rệt đối với các điểm bất thường; do đó, khi một rừng cây ngẫu nhiên cùng tạo ra độ dài đường đi ngắn cho những mẫu nhất định, thì những mẫu đó rất có khả năng là bất thường [B:outlier_detection:003:001].",B:outlier_detection:003:000 B:outlier_detection:003:001,"[B:outlier_detection:003:000] ### Isolation Forest
+
+One efficient way of performing outlier detection in high-dimensional datasets
+is to use random forests.
+The ensemble.IsolationForest 'isolates' observations by randomly selecting
+a feature and then randomly selecting a split value between the maximum and
+minimum values of the selected feature.
+
+Since recursive partitioning can be represented by a tree structure, the
+number of splittings required to isolate a sample is equivalent to the path
+length from the root node to the
+---
+[B:outlier_detection:003:001] This path length, averaged over a forest of such random trees, is a
+measure of normality and our decision function.
+
+Random partitioning produces noticeably shorter paths for anomalies.
+Hence, when a forest of random trees collectively produce shorter path
+lengths for particular samples, they are highly likely to be anomalies.",2,"1,1",,
+D09,True,answered,Khi số mẫu rất nhỏ so với số đặc trưng thì LassoLarsCV có lợi thế gì so với LassoCV khi chọn tham số alpha?,LassoLarsCV thường chạy nhanh hơn LassoCV trong trường hợp đó.,"Khi số mẫu rất nhỏ so với số đặc trưng, LassoLarsCV thường nhanh hơn LassoCV. Ngoài ra, LassoLarsCV còn có lợi thế là khám phá được nhiều giá trị alpha liên quan hơn (exploring more relevant values of alpha parameter) [B:linear_model:005:001].",B:linear_model:005:001,"[B:linear_model:005:001] #### Using cross-validation
+
+scikit-learn exposes objects that set the Lasso alpha parameter by
+cross-validation: LassoCV and LassoLarsCV.
+LassoLarsCV is based on the least_angle_regression algorithm
+explained below.
+
+For high-dimensional datasets with many collinear features,
+LassoCV is most often preferable. However, LassoLarsCV has
+the advantage of exploring more relevant values of alpha parameter, and
+if the number of samples is very small compared to the number of
+features, it is often fast",2,1,,
+D10,True,answered,Khi dùng nhiều metric cùng lúc (multimetric) với GridSearchCV thì tham số refit phải được đặt như thế nào?,Phải đặt refit thành tên metric (string) dùng để tìm best_params_ và dựng best_estimator_ trên toàn bộ dữ liệu; nếu không refit thì đặt refit=False; để mặc định None sẽ gây lỗi.,"Khi dùng multimetric (nhiều metric cùng lúc) với GridSearchCV, tham số `refit` phải được đặt bằng tên metric (chuỗi) mà bạn muốn dùng để tìm `best_params_` và dùng nó để xây dựng `best_estimator_` trên toàn bộ dataset [B:grid_search:006:002].
+
+Cụ thể:
+- Nếu muốn refit, đặt `refit` bằng chuỗi tên metric đó [B:grid_search:006:002].
+- Nếu không muốn refit, đặt `refit=False` [B:grid_search:006:002].
+- Để `refit` ở giá trị mặc định `None` sẽ gây ra lỗi khi dùng nhiều metric [B:grid_search:006:002].
+
+Lưu ý: `HalvingRandomSearchCV` và `HalvingGridSearchCV` không hỗ trợ multimetric scoring [B:grid_search:006:002].",B:grid_search:006:002,"[B:grid_search:006:002] When specifying multiple metrics, the refit parameter must be set to the
+metric (string) for which the best_params_ will be found and used to build
+the best_estimator_ on the whole dataset. If the search should not be
+refit, set refit=False. Leaving refit to the default value None will
+result in an error when using multiple metrics.
+
+See (example: plot_multi_metric_evaluation.py)
+for an example usage.
+
+HalvingRandomSearchCV and HalvingGridSearchCV do not support
+multimetric scoring.",2,1,,
+D11,True,answered,Mặc định các imputer của scikit-learn xử lý cột chỉ chứa toàn giá trị thiếu như thế nào?,Mặc định loại bỏ (drop) các cột hoàn toàn trống; có thể dùng keep_empty_features=True để giữ lại.,"Theo mặc định, các imputer của scikit-learn sẽ **loại bỏ (drop) các feature hoàn toàn rỗng**, tức là các cột chỉ chứa toàn giá trị thiếu. Ví dụ với `SimpleImputer()` mặc định, khi fit_transform trên `X = np.array([[np.nan, 1], [np.nan, 2], [np.nan, 3]])`, cột đầu tiên toàn `np.nan` bị loại bỏ và kết quả chỉ còn một cột `[[1.], [2.], [3.]]` [B:impute:004:000].",B:impute:004:000,"[B:impute:004:000] ## Keeping the number of features constant
+
+By default, the scikit-learn imputers will drop fully empty features, i.e.
+columns containing only missing values. For instance:
+
+  >>> imputer = SimpleImputer()
+  >>> X = np.array([[np.nan, 1], [np.nan, 2], [np.nan, 3]])
+  >>> imputer.fit_transform(X)
+  array([[1.],
+         [2.],
+         [3.]])",2,1,,
+D12,True,answered,Tại sao không nên fit bộ hiệu chỉnh xác suất (calibrator) trên chính dữ liệu đã dùng để huấn luyện bộ phân loại?,Vì calibrator sẽ bị thiên lệch: ánh xạ ra xác suất gần 0 và 1 hơn mức đúng do bộ phân loại tốt hơn trên dữ liệu huấn luyện.,"Không nên fit bộ hiệu chỉnh xác suất (calibrator) trên chính dữ liệu đã dùng để huấn luyện bộ phân loại vì khi đó calibrator sẽ được huấn luyện trên các dự đoán không ""unbiased"" (thiên lệch), dẫn tới hiệu chỉnh không đúng. Vì lý do này, CalibratedClassifierCV sử dụng cách tiếp cận cross-validation để đảm bảo luôn dùng dữ liệu không thiên lệch (unbiased data) để fit calibrator: dữ liệu được chia thành k cặp (train_set, test_set) theo cv [B:calibration:002:002]. Khi ensemble=False, cross-validation được dùng để thu được các dự đoán 'unbiased' cho toàn bộ dữ liệu thông qua cross_val_predict, và các dự đoán không thiên lệch này mới được dùng để huấn luyện calibrator [B:calibration:002:006].",B:calibration:002:002 B:calibration:002:006,"[B:calibration:002:002] ## Usage
+
+The CalibratedClassifierCV class is used to calibrate a classifier.
+
+CalibratedClassifierCV uses a cross-validation approach to ensure
+unbiased data is always used to fit the calibrator. The data is split into $k$
+(train_set, test_set) couples (as determined by cv). When ensemble=True
+(default), the following procedure is repeated independently for each
+cross-validation split:
+---
+[B:calibration:002:006] When ensemble=False, cross-validation is used to obtain 'unbiased'
+predictions for all the data, via
+cross_val_predict.
+These unbiased predictions are then used to train the calibrator. The attribute
+calibrated_classifiers_ consists of only one (classifier, calibrator)
+couple where the classifier is the base_estimator trained on all the data.
+In this case the output of predict_proba for
+CalibratedClassifierCV is the predicted probabilities obtained
+from the single (classifier, calibrator) couple",1,"1,1",,
+D13,True,answered,Giả định nào của inertia làm K-means hoạt động kém với các cụm kéo dài hoặc hình dạng không đều?,"Inertia giả định các cụm lồi và đẳng hướng (convex and isotropic), nên phản ứng kém với cụm kéo dài hoặc manifold hình dạng bất thường.","K-means (và tiêu chí inertia) ngầm giả định các cụm có dạng ""isotropic blob"" — tức là cụm dạng khối cầu/đẳng hướng, tách rời và có phương sai tương đương nhau. Tài liệu nêu rõ: KMeans ""clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia"" [B:clustering:001:000], và khi so sánh với spectral clustering, k-means được mô tả là thuật toán ""which assumes isotropic blob shapes"", trong khi spectral clustering có thể tìm được cụm với hình dạng ""folded"" [B:clustering:018:004]. Chính vì giả định đẳng hướng này, inertia (tổng bình phương khoảng cách trong cụm) chỉ đo được mức ""coherent"" theo nghĩa khoảng cách tới tâm, nên K-means hoạt động kém với các cụm kéo dài hoặc hình dạng không đều — tài liệu chỉ nói chung rằng inertia ""suffers from various drawbacks"" [B:clustering:001:001] mà không liệt kê chi tiết trong đoạn được cung cấp.",B:clustering:001:000 B:clustering:001:001 B:clustering:018:004,"[B:clustering:001:000] ## K-means
+
+The KMeans algorithm clusters data by trying to separate samples in n
+groups of equal variance, minimizing a criterion known as the inertia or
+within-cluster sum-of-squares (see below). This algorithm requires the number
+of clusters to be specified. It scales well to large numbers of samples and has
+been used across a large range of application areas in many different fields.
+---
+[B:clustering:001:001] The k-means algorithm divides a set of $N$ samples $X$ into
+$K$ disjoint clusters $C$, each described by the mean $\mu_j$
+of the samples in the cluster. The means are commonly called the cluster
+""centroids""; note that they are not, in general, points from $X$,
+although they live in the same space.
+
+The K-means algorithm aims to choose centroids that minimise the inertia,
+or within-cluster sum-of-squares criterion:
+
+Math:
+    \sum_{i=0}^{N-1}\min_{\mu_j \in C}(||x_i - \mu_j||^2)
+
+Inertia can be r
+---
+[B:clustering:018:004] - No assumption is made on the cluster structure: can be used to compare
+  clustering algorithms such as k-means which assumes isotropic blob shapes
+  with results of spectral clustering algorithms which can find cluster with
+  ""folded"" shapes.
+
+Drawbacks:
+
+- Contrary to inertia, FMI-based measures require the knowledge of the
+  ground truth classes while almost never available in practice or requires
+  manual assignment by human annotators (as in the supervised learning
+  setting).
+
+References",1,"1,1,1",,
+D14,True,abstain,Estimator hồi quy bền vững nào xử lý tốt hơn các ngoại lai (outliers) lớn theo hướng y?,RANSAC xử lý tốt hơn với ngoại lai lớn theo hướng y (tình huống phổ biến nhất).,Không đủ bằng chứng để trả lời.,,,0,,,
+D15,True,abstain,Những estimator nào hỗ trợ sẵn giá trị thiếu (missing values) mà không cần imputer?,DecisionTree/ExtraTree (classifier và regressor) và HistGradientBoosting có hỗ trợ giá trị thiếu tích hợp sẵn.,Không đủ bằng chứng để trả lời.,,,0,,,
+D16,True,answered,Shrinkage trong LDA giúp ích trong tình huống nào?,Khi số mẫu huấn luyện nhỏ so với số đặc trưng: shrinkage là một dạng regularization cải thiện việc ước lượng ma trận hiệp phương sai.,"Shrinkage trong LDA là một dạng regularization dùng để cải thiện việc ước lượng ma trận hiệp phương sai (covariance) trong tình huống số lượng mẫu huấn luyện nhỏ so với số lượng đặc trưng (features). Trong tình huống này, covariance mẫu thực nghiệm (empirical sample covariance) là một estimator kém, và shrinkage giúp cải thiện hiệu năng tổng quát hóa (generalization performance) của bộ phân loại [B:lda_qda:003:000].
+
+Shrinkage có thể dùng với LDA (hoặc QDA) bằng cách đặt tham số shrinkage của lớp LinearDiscriminantAnalysis (hoặc QuadraticDiscriminantAnalysis) thành 'auto'. Khi đó nó tự động xác định tham số shrinkage tối ưu theo cách giải tích dựa trên bổ đề của Ledoit và Wolf. Lưu ý hiện tại shrinkage chỉ hoạt động khi đặt tham số solver là 'lsqr' hoặc 'eigen' (chỉ 'eigen' được triển khai cho QDA) [B:lda_qda:003:000].
+
+Ngoài ra, estimator covariance Ledoit và Wolf đã shrink không phải lúc nào cũng là lựa chọn tốt nhất. Ví dụ, nếu dữ liệu có phân phối chuẩn (normally distributed), estimator Oracle Approximating Shrinkage (sklearn.covariance.OAS) cho Mean Squared Error nhỏ hơn so với công thức Ledoit và Wolf dùng với shrinkage=""auto"". Trong LDA và QDA, dữ liệu được giả định là gaussian có điều kiện theo lớp; nếu các giả định này đúng, dùng LDA và QDA với estimator covariance OAS sẽ cho độ chính xác phân loại tốt hơn so với dùng Ledoit và Wolf hoặc estimator covariance thực nghiệm [B:lda_qda:003:002].",B:lda_qda:003:000 B:lda_qda:003:002,"[B:lda_qda:003:000] ## Shrinkage and Covariance Estimator
+
+Shrinkage is a form of regularization used to improve the estimation of
+covariance matrices in situations where the number of training samples is
+small compared to the number of features.
+In this scenario, the empirical sample covariance is a poor
+estimator, and shrinkage helps improving the generalization performance of
+the classifier.
+Shrinkage can be used with LDA (or QDA) by setting the shrinkage parameter of
+the LinearDiscriminantAnalysis class
+(or Qua
+---
+[B:lda_qda:003:002] The shrunk Ledoit and Wolf estimator of covariance may not always be the
+best choice. For example if the distribution of the data
+is normally distributed, the
+Oracle Approximating Shrinkage estimator sklearn.covariance.OAS
+yields a smaller Mean Squared Error than the one given by Ledoit and Wolf's
+formula used with shrinkage=""auto"". In LDA and QDA, the data are assumed to be gaussian
+conditionally to the class. If these assumptions hold, using LDA and QDA with
+the OAS estimator of covariance wil",2,"1,1",,
+T01,True,answered,"Khi dữ liệu ảnh 64x64 pixel (4096 chiều) và chỉ cần giữ ít thành phần chính, nên dùng tùy chọn svd_solver nào của PCA và vì sao?","svd_solver='randomized', vì chỉ cần ước lượng xấp xỉ các singular vector sẽ giữ lại nên hiệu quả hơn nhiều.","Nên dùng tùy chọn `svd_solver='randomized'` của PCA. Lý do: khi ta sẽ bỏ đi phần lớn các singular vector (chỉ giữ ít thành phần chính), việc giới hạn tính toán vào một ước lượng xấp xỉ của các singular vector sẽ được giữ lại để thực hiện transform là hiệu quả hơn nhiều [B:decomposition:001:002]. Điều này phù hợp với mục tiêu chiếu dữ liệu xuống không gian ít chiều hơn mà vẫn giữ phần lớn phương sai, bằng cách bỏ các thành phần gắn với singular value nhỏ hơn [B:decomposition:001:000]. Lưu ý: với `svd_solver='randomized'`, `inverse_transform` không phải là phép biến đổi nghịch đảo chính xác của `transform` ngay cả khi `whiten=False` (mặc định) [B:decomposition:001:005].",B:decomposition:001:002 B:decomposition:001:000 B:decomposition:001:005,"[B:decomposition:001:002] The class PCA used with the optional parameter
+svd_solver='randomized' is very useful in that case: since we are going
+to drop most of the singular vectors it is much more efficient to limit the
+computation to an approximated estimate of the singular vectors we will keep
+to actually perform the transform.
+---
+[B:decomposition:001:000] ### PCA using randomized SVD
+
+It is often interesting to project data to a lower-dimensional
+space that preserves most of the variance, by dropping the singular vector
+of components associated with lower singular values.
+---
+[B:decomposition:001:005] Note: the implementation of inverse_transform in PCA with
+svd_solver='randomized' is not the exact inverse transform of
+transform even when whiten=False (default).",2,"1,1,1",,
+T02,True,answered,Giá trị mặc định tốt thường dùng cho max_features trong random forest khác nhau thế nào giữa bài toán hồi quy và phân loại?,"Hồi quy: max_features=1.0 (tương đương None, xét mọi đặc trưng); phân loại: max_features='sqrt'.","Theo hướng dẫn, giá trị mặc định tốt (dựa trên thực nghiệm) cho `max_features` trong random forest là:
+
+- **Bài toán hồi quy (regression):** `max_features=1.0`, tương đương `max_features=None`, tức là luôn xem xét tất cả các đặc trưng thay vì một tập con ngẫu nhiên [B:ensemble:005:001].
+- **Bài toán phân loại (classification):** `max_features=""sqrt""`, tức là dùng một tập con ngẫu nhiên có kích thước `sqrt(n_features)`, với `n_features` là số đặc trưng trong dữ liệu [B:ensemble:005:001].
+
+Lưu ý thêm: giá trị mặc định `max_features=1.0` tương đương với bagged trees, và có thể đạt được nhiều tính ngẫu nhiên hơn bằng cách đặt giá trị nhỏ hơn (ví dụ 0.3 là giá trị mặc định điển hình trong tài liệu) [B:ensemble:005:001].",B:ensemble:005:001,"[B:ensemble:005:001] Empirical good default values are
+max_features=1.0 or equivalently max_features=None (always considering
+all features instead of a random subset) for regression problems, and
+max_features=""sqrt"" (using a random subset of size sqrt(n_features))
+for classification tasks (where n_features is the number of features in
+the data). The default value of max_features=1.0 is equivalent to bagged
+trees and more randomness can be achieved by setting smaller values (e.g. 0.3
+is a typical default in the liter",2,1,,
+T03,True,answered,NCA (Neighborhood Components Analysis) tối đa hóa đại lượng nào để cải thiện độ chính xác của phân loại láng giềng gần nhất?,Một biến thể ngẫu nhiên (stochastic) của điểm leave-one-out k-nearest neighbors trên tập huấn luyện.,NCA (Neighborhood Components Analysis) là một thuật toán học metric khoảng cách nhằm cải thiện độ chính xác của phân loại láng giềng gần nhất so với khoảng cách Euclidean chuẩn. Thuật toán trực tiếp tối đa hóa một biến thể ngẫu nhiên (stochastic variant) của điểm số leave-one-out k-nearest neighbors (KNN) trên tập huấn luyện [B:neighbors:008:000].,B:neighbors:008:000,"[B:neighbors:008:000] ## Neighborhood Components Analysis
+
+Neighborhood Components Analysis (NCA, NeighborhoodComponentsAnalysis)
+is a distance metric learning algorithm which aims to improve the accuracy of
+nearest neighbors classification compared to the standard Euclidean distance.
+The algorithm directly maximizes a stochastic variant of the leave-one-out
+k-nearest neighbors (KNN) score on the training set. It can also learn a
+low-dimensional linear projection of data that can be used for data
+visualization and fa",2,1,,
+T04,True,answered,Mật độ phần tử khác 0 mặc định của SparseRandomProjection được chọn như thế nào?,"Mặc định là mật độ tối thiểu theo khuyến nghị của Ping Li et al., bằng 1/sqrt(n_features).","Theo mặc định, mật độ phần tử khác 0 (density) của SparseRandomProjection được đặt bằng mật độ tối thiểu (minimum density) như khuyến nghị của Ping Li et al.: 1 / sqrt(n_features), với n_features là số đặc trưng của dữ liệu đầu vào [B:random_projection:001:002].",B:random_projection:001:002,"[B:random_projection:001:002] \left\{
+    \begin{array}{c c l}
+    -\sqrt{\frac{s}{n_{\text{components}}}} & & 1 / 2s\\
+    0 &\text{with probability}  & 1 - 1 / s \\
+    +\sqrt{\frac{s}{n_{\text{components}}}} & & 1 / 2s\\
+    \end{array}
+    \right.
+
+where $n_{\text{components}}$ is the size of the projected subspace.
+By default the density of non zero elements is set to the minimum density as
+recommended by Ping Li et al.: $1 / \sqrt{n_{\text{features}}}$.
+
+Here is a small excerpt which illustrates how to use the sparse r",2,1,,
+T05,True,answered,Tham số bandwidth ảnh hưởng thế nào đến độ mượt của ước lượng mật độ bằng kernel?,Bandwidth lớn cho phân phối rất mượt (bias cao); bandwidth nhỏ cho phân phối không mượt (variance cao).,"Trong ước lượng mật độ bằng kernel (KernelDensity), `bandwidth` đóng vai trò là tham số làm mượt (smoothing parameter), điều chỉnh sự đánh đổi giữa bias và variance của kết quả [B:density:001:003].
+
+- Bandwidth lớn → phân bố mật độ rất mượt (tức là high-bias) [B:density:001:003].
+- Bandwidth nhỏ → phân bố mật độ kém mượt (tức là high-variance) [B:density:001:003].
+
+Tham số `bandwidth` này có thể được đặt thủ công hoặc ước lượng bằng các phương pháp của Scott và Silverman [B:density:001:003].",B:density:001:003,"[B:density:001:003] The bandwidth here acts as a smoothing parameter, controlling the tradeoff
+between bias and variance in the result.  A large bandwidth leads to a very
+smooth (i.e. high-bias) density distribution.  A small bandwidth leads
+to an unsmooth (i.e. high-variance) density distribution.
+
+The parameter bandwidth controls this smoothing. One can either set
+manually this parameter or use Scott's and Silverman's estimation
+methods.
+
+KernelDensity implements several common kernel
+forms, which are shown in th",2,1,,
+T06,True,answered,Vì sao độ quan trọng đặc trưng dựa trên impurity của cây có thể gây sai lệch?,"Nó thiên lệch mạnh, ưu tiên các đặc trưng có nhiều giá trị (high cardinality, thường là số) hơn đặc trưng ít giá trị như nhị phân hoặc categorical nhỏ.","Độ quan trọng đặc trưng dựa trên impurity (impurity-based feature importance, hay MDI - mean decrease in impurity) của các mô hình dựa trên cây mắc hai khiếm khuyết có thể dẫn đến kết luận sai lệch [B:ensemble:006:004]:
+
+1. **Được tính trên thống kê từ tập huấn luyện**: chúng được tính từ các thống kê rút ra từ tập dữ liệu huấn luyện, do đó không nhất thiết cho biết đặc trưng nào quan trọng nhất để đưa ra dự đoán tốt trên tập dữ liệu held-out (dữ liệu chưa thấy) [B:ensemble:006:004].
+
+2. **Ưu ái các đặc trưng có cardinality cao**: chúng thiên vị các đặc trưng có số lượng giá trị duy nhất lớn (high cardinality) [B:ensemble:006:004].
+
+Ngoài ra, phương pháp này có thể gán độ quan trọng cao cho những đặc trưng có thể không mang tính dự đoán trên dữ liệu chưa thấy khi mô hình bị overfitting [B:permutation_importance:001:002]. Impurity được định lượng bằng tiêu chí phân tách của cây quyết định (Gini, Log Loss hoặc Mean Squared Error) [B:permutation_importance:001:002].
+
+Permutation_importance là một giải pháp thay thế cho impurity-based feature importance vì không mắc các khiếm khuyết này [B:ensemble:006:004], do nó có thể được tính trên dữ liệu chưa thấy [B:permutation_importance:001:002].",B:ensemble:006:004 B:permutation_importance:001:002,"[B:ensemble:006:004] The impurity-based feature importances computed on tree-based models suffer
+from two flaws that can lead to misleading conclusions. First they are
+computed on statistics derived from the training dataset and therefore do
+not necessarily inform us on which features are most important to make good
+predictions on held-out dataset. Secondly, they favor high cardinality
+features, that is features with many unique values.
+permutation_importance is an alternative to impurity-based feature
+importance th
+---
+[B:permutation_importance:001:002] Tree-based models provide an alternative measure of feature importances
+based on the mean decrease in impurity
+(MDI). Impurity is quantified by the splitting criterion of the decision trees
+(Gini, Log Loss or Mean Squared Error). However, this method can give high
+importance to features that may not be predictive on unseen data when the model
+is overfitting. Permutation-based feature importance, on the other hand, avoids
+this issue, since it can be computed on unseen data.",2,"1,1",,"Agent không nêu phần so sánh với đặc trưng nhị phân hay categorical, nhưng ý chính (thiên về high cardinality) đã có."
+D17,False,abstain,"Theo User Guide, K-means đạt độ chính xác bao nhiêu trên bộ dữ liệu MNIST?",Corpus không nhắc tới MNIST (grep 'MNIST' trên 288 trang = 0); trang clustering chỉ nói về giả định của inertia.,Không đủ bằng chứng để trả lời.,,,,,1,
+D18,False,abstain,Cần đặt tham số device nào để RandomForestClassifier huấn luyện trên GPU CUDA?,Không có 'CUDA' hay 'device=' trong corpus; trang ensemble không nói về GPU.,Không đủ bằng chứng để trả lời.,,,,,1,

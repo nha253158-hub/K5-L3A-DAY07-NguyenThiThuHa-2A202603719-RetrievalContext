@@ -1,0 +1,200 @@
+[
+ {
+  "query_id": "D01",
+  "note": "Đủ 3 ý; 004 chứa câu độc lập với splitter và O(depth); 000 là bảng O(log n) cho best/random",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D02",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D04",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D05",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D06",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D07",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D08",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D09",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D10",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D11",
+  "note": "Agent thiếu ý keep_empty_features=True có trong đáp án chuẩn",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D12",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D13",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D14",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D15",
+  "note": "",
+  "citation_support": [],
+  "answer_grade": 0
+ },
+ {
+  "query_id": "D16",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T01",
+  "note": "Citation 3 (001:005) hỗ trợ câu lưu ý inverse_transform (bổ sung nhãn thiếu)",
+  "citation_support": [
+   true,
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T02",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T03",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T04",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T05",
+  "note": "",
+  "citation_support": [
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "T06",
+  "note": "",
+  "citation_support": [
+   true,
+   true
+  ],
+  "answer_grade": 2
+ },
+ {
+  "query_id": "D17",
+  "note": "",
+  "citation_support": [],
+  "abstention_correct": true
+ },
+ {
+  "query_id": "D18",
+  "note": "",
+  "citation_support": [],
+  "abstention_correct": true
+ }
+]
