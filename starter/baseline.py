@@ -47,9 +47,13 @@ def validate(chunks, questions):
                 raise ValueError(f"question {q['id']}: gold không nằm trọn trong chunk đúng nguồn/trang")
 
 
-def hit(chunk, gold):
-    return any(chunk['source_id'] == g['source_id'] and chunk['page'] == g['page'] and g['evidence'] in chunk['text'] for g in gold)
+def norm_ws(s):
+    return re.sub(r'\s+', ' ', s).strip()
 
+
+def hit(chunk, gold):
+    return any(chunk['source_id'] == g['source_id'] and chunk['page'] == g['page']
+               and norm_ws(g['evidence']) in norm_ws(chunk['text']) for g in gold)
 
 class TfidfIndex:
     def __init__(self, chunks):
